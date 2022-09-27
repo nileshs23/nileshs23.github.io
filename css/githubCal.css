@@ -23,16 +23,14 @@ rect.ContributionCalendar-day[data-level='3'] {
 }
 
 rect.ContributionCalendar-day[data-level='4'] {
-    
     fill: var(--color-calendar-graph-day-L4-bg);
 }
 
 .calendar .width-full > .float-left {
     display: none;
-    
 }
 
-.calendar { 
+.calendar {
     font-family: Helvetica, arial;
     border: 1px solid #DDDDDD;
     border-radius: 3px;
@@ -43,7 +41,6 @@ rect.ContributionCalendar-day[data-level='4'] {
 
 .calendar-graph text.wday,
 .calendar-graph text.month {
-    
     font-size: 10px;
     fill: #aaa;
 }
@@ -53,7 +50,6 @@ rect.ContributionCalendar-day[data-level='4'] {
     padding: 0 14px 10px 0;
     display: inline-block;
     float: right;
-    
 }
 
 .contrib-legend .legend {
@@ -63,14 +59,12 @@ rect.ContributionCalendar-day[data-level='4'] {
     position: relative;
     bottom: -1px;
     padding: 0;
-    
 }
 
 .contrib-legend .legend li {
     display: inline-block;
     width: 10px;
     height: 10px;
-    
 }
 
 .text-small {
@@ -79,7 +73,6 @@ rect.ContributionCalendar-day[data-level='4'] {
 }
 
 .calendar-graph {
-    
     padding: 5px 0 0;
     text-align: center;
 }
@@ -90,12 +83,10 @@ rect.ContributionCalendar-day[data-level='4'] {
     border-left: 1px solid #ddd;
     border-top: 1px solid #ddd;
     font-size: 11px;
-    
 }
 
 .contrib-column-first {
     border-left: 0;
-    
 }
 
 .table-column {
@@ -104,7 +95,6 @@ rect.ContributionCalendar-day[data-level='4'] {
     padding-right: 10px;
     padding-left: 10px;
     vertical-align: top;
-    
 }
 
 .contrib-number {
@@ -113,21 +103,18 @@ rect.ContributionCalendar-day[data-level='4'] {
     font-size: 24px;
     display: block;
     color: #333;
-    
 }
 
 .calendar img.spinner {
     width: 70px;
     margin-top: 50px;
     min-height: 70px;
-    
 }
 
 .monospace {
     text-align: center;
     color: #000;
     font-family: monospace;
-    
 }
 
 .monospace a {
@@ -136,7 +123,6 @@ rect.ContributionCalendar-day[data-level='4'] {
 }
 
 .contrib-footer {
-    
     font-size: 11px;
     padding: 0 10px 12px;
     text-align: left;
@@ -168,11 +154,9 @@ h2.f4.text-normal.mb-3 {
 }
 #user-activity-overview{
     display:none;
-    
 }
 
 .day-tooltip {
-    
     white-space: nowrap;
     position: absolute;
     z-index: 99999;
@@ -189,11 +173,9 @@ h2.f4.text-normal.mb-3 {
     color: #dfe2e5;
 }
 .day-tooltip.is-visible {
-    
     display: block;
 }
 .day-tooltip:after {
-   
     position: absolute;
     bottom: -10px;
     left: 50%;
@@ -211,8 +193,13 @@ text.ContributionCalendar-label {
     font-size: 11px;
 }
 
-
-
-/* @media screen and (max-width: 768px) {
-    
-} */
+@media screen and (max-width: 600px) {
+  .calendar{
+    visibility: hidden;
+    clear: both;
+    float: left;
+    margin: 10px auto 5px 20px;
+    width: 28%;
+    display: none;
+  }
+}
