@@ -2,1004 +2,522 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="">
-	<meta name="author" content="">
-
-	<link rel="shortcut icon" href="img/favicon.ico">
-	<title>Nilesh Solanki - Portfolio</title>
-	<link rel="icon"
-		href="https://static.vecteezy.com/system/resources/thumbnails/000/351/686/small/Business__28148_29.jpg"
-		type="image/icon type">
-
-	<!-- Global stylesheets -->
-	<link rel="stylesheet" href="./css/githubCal.css" />
-	<link href="css/bootstrap/bootstrap.min.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900"
-		rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
-		rel="stylesheet">
-	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
-	<link href="css/devicons/css/devicons.min.css" rel="stylesheet">
-	<link href="css/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
-	<link href="css/style.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Nilesh Solanki</title>
+    <!-- font icons -->
+    <link rel="stylesheet" href="styles/vendors/themify-icons/css/themify-icons.css">
+    <!--main styles -->
+    <link rel="stylesheet" href="styles/css/index.css">
+    <link rel="stylesheet" href="styles/css/socialMedia.css">
+    <link rel="stylesheet" href="styles/css/statsMasai.css">
+    <link rel="stylesheet" href="styles/css/project.css">
 
 
-
+    <!-- Optionally, include the theme (if you don't want to struggle to write the CSS) -->
+    <link rel="stylesheet" href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css" />
 </head>
 
-<body id="page-top">
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
 
-	<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-		<a class="navbar-brand js-scroll-trigger" href="#page-top">
-			<span class="d-block d-lg-none  mx-0 px-0"><img src="img/logo-white.png" alt="" class="img-fluid"></span>
-			<span class="d-none d-lg-block">
-				<img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="img/profile.jpg"
-					alt="upload profile pic">
-			</span>
-		</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="#home">Home</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="#experience">About</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="#portfolio">Projects</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="#skills1">Skills</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="#statistics">Statistics</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="#education">Education</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
+    <!-- page Navigation -->
+    <nav class="navbar custom-navbar navbar-expand-md navbar-light fixed-top" data-spy="affix" data-offset-top="10">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <img src="resources/imgs/logo.png" alt="">
+            </a>
+            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About Me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
 
-	<div class="container-fluid p-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#statistics">Statistics</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#education">Education</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/resources/resume/Resume.pdf" class="ml-4 nav-link btn btn-primary btn-sm rounded"
+                            download="Nilesh_Solanki_Resume">Resume</a>
+                    </li>
 
-		<!--====================================================
-                        HOME
-    ======================================================-->
-		<section class="resume-section p-3 p-lg-5 d-flex d-column" id="home" class="hero-wrap js-fullheight"
-			style="background-image: url(img/portfolio/bg_1.jpg);" data-stellar-background-ratio="0.5">
-			<div class="my-auto">
-				<!-- <img src="img/logo-s.png" class="img-fluid mb-3" alt=""> -->
-				<h1 class="mb-0">Nilesh
-					<span class="text-primary">Solanki</span>
-				</h1>
-				<div class="subheading mb-5">
-					<p>Full Stack Web Developer</p>
-				</div>
-				<p class="mb-5" style="max-width: 500px;">I am Computer Engineer from Savitribai Phule Pune University.
-					Completed Full Stack Web Development Course from Masai School.</p>
-				<!-- <br> -->
-				<p>Proficient in JAVA, HTML, CSS , JAVASCRIPT,and SQL.</p>
-				<ul class="list-inline list-social-icons mb-0">
+                    <!-- <li class="nav-item">
+                        <a href="components.html" class="ml-4 nav-link btn btn-primary btn-sm rounded">Components</a>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- End Of Second Navigation -->
 
-					<li class="list-inline-item">
-						<a href="https://twitter.com/Nilesh8446" target="_blank">
-							<span class="fa-stack fa-lg">
-								<i class="fa fa-circle fa-stack-2x"></i>
-								<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-							</span>
-						</a>
-					</li>
-					<li class="list-inline-item">
-						<a href="https://www.linkedin.com/in/nilesh2398/" target="_blank">
-							<span class="fa-stack fa-lg">
-								<i class="fa fa-circle fa-stack-2x"></i>
-								<i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-							</span>
-						</a>
-					</li>
-					<li class="list-inline-item">
-						<a href="https://github.com/nileshs23" target="_blank">
-							<span class="fa-stack fa-lg">
-								<i class="fa fa-circle fa-stack-2x"></i>
-								<i class="fa fa-github fa-stack-1x fa-inverse"></i>
-							</span>
-						</a>
+    <!-- Page Header -->
 
-						</a>
-					</li>
-					<li class="list-inline-item">
-						<a href="/img/Resume.pdf"	download="Nilesh_Solanki_Resume">
+    <header class="header">
+        <div class="overlay">
+            <h1 class="subtitle">Back-End Java Developer</h1>
+            <h1 class="title">Nilesh Solanki</h1>
+            <div id="socialMedia">
+                <a href="https://twitter.com/Nilesh8446" class="ml-4 nav-link btn btn-primary btn-sm">Twitter</a>
 
-							<button class="btn btn-general btn-white" type="button">
-								Resume <i class="fa fa-cloud-download "></i>
-							</button>
-						</a>
-					</li>
-				</ul>
+                <a href="https://www.linkedin.com/in/nilesh2398/"
+                    class="ml-4 nav-link btn btn-primary btn-sm">LinkedIn</a>
+
+                <a href="https://github.com/nileshs23/" class="ml-4 nav-link btn btn-primary btn-sm">Github</a>
+
+                <a href="/resources/resume/Resume.pdf" class="ml-4 nav-link btn btn-primary btn-sm"
+                    download="Nilesh_Solanki_Resume">Resume</a>
+            </div>
+        </div>
+        <div class="shape">
+            <svg viewBox="0 0 1500 200">
+                <path
+                    d="m 0,240 h 1500.4828 v -71.92164 c 0,0 -286.2763,-81.79324 -743.19024,-81.79324 C 300.37862,86.28512 0,168.07836 0,168.07836 Z" />
+            </svg>
+        </div>
 
 
-			</div>
-		</section>
 
-		<!--====================================================
-                        About Me
-    ======================================================-->
+        <div class="mouse-icon">
+            <div class="wheel"></div>
+        </div>
+    </header>
 
-		<section class="resume-section p-3 p-lg-5 " id="experience" class="hero-wrap js-fullheight"
-			style="background-image: url(img/portfolio/bg_1.jpg);" data-stellar-background-ratio="0.5">
-			<div class="row my-auto">
-				<div class="col-12">
-					<h2 class="text-center">About Me</h2>
-					<div class="mb-5 heading-border"></div>
-				</div>
+    <section id="home" class="section pt-0">
+        <div class="container">
+            <h6 class="section-title text-center">Home</h6>
+            <h6 class="section-subtitle text-center mb-5 pb-3"></h6>
 
-				<div class="mb-5" style="max-width: 600px;font-size: larger;">
-					<p>I am Computer Engineer Graduated from SPPU in 2021. </br>
-						So far, I have <span style="font-weight: bolder">Java, Javascript, HTML, CSS, </span> and <span
-							style="font-weight: bolder">Git/GitHub </span> under my portfolio.
-						</br> In addition, I've started learning <span style="font-weight: bold;">SQL, Springboot,
-						</span> and <span style="font-weight: bolder">AWS</span>.
-						</br>I'm still enthusiastically grabbing onto other programming languages, frameworks, or
-						principles I can
-						integrate into the Development.
-					</p>
-				</div>
+            <p>
+            <h2>I am <span style="color: red;">Computer Engineer</span> from Savitribai Phule Pune University.
+                I have Completed Full Stack Web Development Course from
+                <span style="color: red;">Masai
+                    School.</span>
+            </h2>
 
+            </p>
+        </div>
+    </section>
+    <!-- End Of Page Header -->
 
-			</div>
-		</section>
+    <!-- home Section -->
 
-		<!--====================================================
-                        PROJECTS
-    ======================================================-->
-		<section class="resume-section p-3 p-lg-5 d-flex flex-column" id="portfolio" class="hero-wrap js-fullheight"
-			style="background-image: url(img/portfolio/bg_1.jpg);" data-stellar-background-ratio="0.5">
-			<div class="row my-auto">
-				<div class="col-12">
-					<h2 class="  text-center">Projects</h2>
-					<div class="mb-5 heading-border"></div>
-				</div>
+    <!-- End OF home Section -->
 
-			</div>
-			<div class="row my-auto">
-				<div class="col-sm-4 portfolio-item filter finance">
-					<a class="portfolio-link" href="#portfolioModal4" data-toggle="modal">
-						<div class="caption-port">
-							<div class="caption-port-content">
-								<i class="fa fa-search-plus fa-3x"></i>
-							</div>
-						</div>
-						<img class="img-fluid" src="img/portfolio/p-4.jpg" alt="">
-					</a>
-				</div>
-				<div class="col-sm-4 portfolio-item filter marketing">
-					<a class="portfolio-link" href="#portfolioModal5" data-toggle="modal">
-						<div class="caption-port">
-							<div class="caption-port-content">
-								<i class="fa fa-search-plus fa-3x"></i>
-							</div>
-						</div>
-						<img class="img-fluid" src="img/portfolio/p-5.jpg" alt="">
-					</a>
-				</div>
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 pr-md-5 mb-4 mb-md-0">
+                    <h6 class="section-title mb-0">About Me</h6>
+                    <h6 class="section-subtitle mb-4">Full Stack Java Developer</h6>
+                    <h5>I am Computer Engineer Graduated from SPPU in 2021.
+                        So far, I have Java, Javascript, HTML, CSS, and Git/GitHub under my portfolio.
+                        In addition, I've started learning SQL, Springboot, and AWS.
+                        I'm still enthusiastically grabbing onto other programming
+                        languages, frameworks, or principles I can integrate into the
+                        Development.</h5>
+                </div>
+                <div class="col-md-6 pl-md-5">
+                    <div class="row">
+                        <div class="col-6">
+                            <img src="resources/imgs/about-1.jpg" alt="" class="w-100 shadow-sm">
+                        </div>
+                        <div class="col-12 mt-4">
+                            <tr>
+                                <td>
+                                    <dl class="row">
+                                        <dt class="col-sm-3">Degree</dt>
+                                        <dd class="col-sm-9">Computer Engineering
+                                        </dd>
 
-				<!-- add new project here -->
-				<!-- <div class="col-sm-4 portfolio-item filter consulting">
-                  <a class="portfolio-link" href="#portfolioModal6" data-toggle="modal">
-                      <div class="caption-port">
-                          <div class="caption-port-content">
-                              <i class="fa fa-search-plus fa-3x"></i>
-                          </div>
-                      </div>
-                      <img class="img-fluid" src="img/portfolio/p-6.jpg" alt="">
-                  </a>
-              </div>  -->
-			</div>
-	</div>
-	</section>
+                                        <dt class="col-sm-3">City</dt>
+                                        <dd class="col-sm-9">Shirpur,Maharashtra</dd>
 
-	<!--====================================================
-                        TECH STACK
-    ======================================================-->
-	<section class=" d-flex flex-column" id="skills1">
-		<div class="p-lg-5 p-3 skill-cover">
-			<h3 class="text-center text-white">Coding Skills</h3>
-			<div class="my-auto">
+                                        <dt class="col-sm-3">Nationality</dt>
+                                        <dd class="col-sm-9">Indian</dd>
 
-				<div class="subheading mb-3 text-white">Programming Languages &amp; Tools</div>
-				<ul class="list-inline list-icons text-white">
-					<li class="list-inline-item">
-						<i class="devicons devicons-html5"></i>
-					</li>
-					<li class="list-inline-item">
-						<i class="devicons devicons-css3"></i>
-					</li>
-					<li class="list-inline-item">
-						<i class="devicons devicons-javascript"></i>
-					</li>
-					<li class="list-inline-item">
-						<i class="devicons devicons-java"></i>
-					</li>
-					<li class="list-inline-item">
-						<i class="devicons devicons-python"></i>
-					</li>
-					<li class="list-inline-item">
-						<i class="devicons devicons-mysql"></i>
-					</li>
-					<li class="list-inline-item">
-						<i class="devicons devicons-git"></i>
-					</li>
-					<li class="list-inline-item">
-						<i class="devicons devicons-npm"></i>
-					</li>
+                                        <dt class="col-sm-3">Hobbies</dt>
+                                        <dd class="col-sm-9">Reading Books</dd>
+                                    </dl>
+                                </td>
+                            </tr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End OF About Section -->
 
-				</ul>
+    <!-- projects Section -->
+    <section id="projects" class="section portfolio-section">
+        <div class="container">
+            <h6 class="section-title text-center">My Projects</h6>
+            <h6 class="section-subtitle mb-5 text-center">Projects That I have Developed So Far !</h6>
+            <div class="filters">
+                <a href="#" data-filter=".new" class="active">
+                    New
+                </a>
+                <a href="#" data-filter=".java">
+                    Java
+                </a>
+                <a href="#" data-filter=".web">
+                    Web
+                </a>
+                <a href="#" data-filter=".ml">
+                    ML
+                </a>
+            </div>
+            <div class="portfolio-container">
 
-
-				<div class="subheading mb-3 text-white">Tech Skills</div>
-				<ul class="fa-ul mb-0 text-white">
-					<li>
-						<i class="fa-li fa fa-check"></i>
-						Designing Desktop-first, Responsive Design
-					</li>
-					<li>
-						<i class="fa-li fa fa-check"></i>
-						Data Structures &amp; Algorithms
-					</li>
-					<li>
-						<i class="fa-li fa fa-check"></i>
-						Restful API
-					</li>
-					<li>
-
-				</ul>
-
-				<br>
-
-				<div class="subheading mb-3 text-white">Soft Skills</div>
-				<ul class="fa-ul mb-0 text-white">
-					<li>
-						<i class="fa-li fa fa-check"></i>
-						Proactive
-					</li>
-					<li>
-						<i class="fa-li fa fa-check"></i>
-						Adaptability
-					</li>
-					<li>
-						<i class="fa-li fa fa-check"></i>
-						Team Work
-					</li>
-					<li>
-				</ul>
-
-
-				<br>
-				<br>
-			</div>
-
-		</div>
-		</div>
-
-	</section>
-
-	<!-- ========================================================
-                          Statistics
-      ======================================================== -->
-
-
-	<section class=" d-flex flex-column" id="statistics">
-
-		<div class="p-lg-5 p-3 skill-cover">
-
-			<h3 class="text-center text-white">Statistics</h3>
-			<div class="calendar">
-				<!-- Loading stuff -->
-				Loading the data just for you.
-			</div>
-
-			<div class="row text-center my-auto ">
-
-				<div class="col-md-3 col-sm-6">
-					<div class="skill-item">
-						<i class="fa fa-code fa-5x"></i>
-						<h4><span class="counter"> 1200 </span><span>+</span></h4>
-						<p style="font-size: 12px;">Coding Hours</p>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6">
-					<div class="skill-item">
-						<i class="fa fa-lightbulb-o fa-5x"></i>
-						<h4><span class="counter"> 300 </span><span>Hours</span></h4>
-						<p style="font-size: 12px;">Data Structures and Algorithms</p>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6">
-					<div class="skill-item">
-						<i class="fa fa-codepen fa-5x"></i>
-						<h4><span class="counter"> 10-12 </span><span>+</span></h4>
-						<p style="font-size: 12px;">Mini Projects</p>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6">
-					<div class="skill-item">
-						<i class="fa fa-space-shuttle fa-5x"></i>
-						<h4><span class="counter"> 5 </span><span>+</span></h4>
-						<p style="font-size: 12px;">PROJECTS </p>
-					</div>
-				</div>
-			</div>
-		</div>
-
-	</section>
-
-	<!--====================================================
-                         Education
-    ======================================================-->
-	<section class="resume-section p-3 p-lg-5 d-flex flex-column" id="education" class="hero-wrap js-fullheight"
-		style="background-image: url(img/portfolio/bg_1.jpg);" data-stellar-background-ratio="0.5">
-		<div class="my-auto">
-			<h2 class="mb-5">Education</h2>
-
-			<div class="resume-item d-flex flex-column flex-md-row mb-5">
-				<div class="resume-content mr-auto">
-					<h3 class="mb-0">Masai School</h3>
-					<div class="subheading mb-3">Full Stack Web Development</div>
-					<div>Java Backend Developer</div>
-					<!-- <p>GPA: 3.23</p> -->
-				</div>
-				<div class="resume-date text-md-right">
-					<span class="text-primary">Mar 2022 - Present</span>
-				</div>
-			</div>
-
-			<div class="resume-item d-flex flex-column flex-md-row">
-				<div class="resume-content mr-auto">
-					<h3 class="mb-0">Savitribai Phule Pune University </h3>
-					<div class="subheading mb-3">Bachelor's in Computer Engineer</div>
-					<p>GPA: 6.74</p>
-				</div>
-				<div class="resume-date text-md-right">
-					<span class="text-primary">August 2016 - Aug 2021</span>
-				</div>
-			</div>
-
-		</div>
-	</section>
-
-	<!--====================================================
-                          CONTACT
-    ======================================================-->
-	<section class="resume-section p-3 p-lg-5 d-flex flex-column" class="hero-wrap js-fullheight"
-		style="background-image: url(img/portfolio/bg_1.jpg);" data-stellar-background-ratio="0.5">
-		<div class="row my-auto" id="contact">
-			<!-- <h2 class="subheading">Hello I'm</h2>
-							<h1 class="mb-4">Elen Henderson</h1> -->
-			<div class="col-md-10">
-				<div class="col-md-5 col-sm-10 mt-lg-0">
-					<div class="contact-cont2">
-						<div class="contact-add contact-box-desc">
-							<h3><i class="fa fa-map-marker cl-atlantis fa-2x"></i> Address</h3>
-							<h4>Shirpur <br>
-								Maharashtra, India <br></h4>
-						</div>
-						<div class="contact-phone contact-side-desc contact-box-desc">
-							<h3><i class="fa fa-phone cl-atlantis fa-2x"></i> Phone</h3>
-							<h3>8446578717</h3>
-						</div>
-						<div class="contact-mail contact-side-desc contact-box-desc">
-							<h3><i class="fa fa-envelope-o cl-atlantis fa-2x"></i> Email</h3>
-							<address class="address-details-f">
-
-								<h4> Email: <a href="mailto:nilehs2398@gmail.com" class="">nilehs2398@gmail.com</h4></a>
-							</address>
-							<ul class="list-inline list-social-icons mb-0">
-
-								<li class="list-inline-item">
-									<a href="https://twitter.com/Nilesh8446" target="_blank">
-										<span class="fa-stack fa-lg">
-											<i class="fa fa-circle fa-stack-2x"></i>
-											<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-										</span>
-									</a>
-								</li>
-								<li class="list-inline-item">
-									<a href="https://www.linkedin.com/in/nilesh2398/" target="_blank">
-										<span class="fa-stack fa-lg">
-											<i class="fa fa-circle fa-stack-2x"></i>
-											<i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-										</span>
-									</a>
-								</li>
-								<li class="list-inline-item">
-									<a href="https://github.com/nileshs23" target="_blank">
-										<span class="fa-stack fa-lg">
-											<i class="fa fa-circle fa-stack-2x"></i>
-											<i class="fa fa-github fa-stack-1x fa-inverse"></i>
-										</span>
-									</a>
-
-									</a>
-								</li>
-
-								<li class="list-inline-item">
-									<a href="https://drive.google.com/file/d/1UGZMrzS3wbMK65z2Fj81Jq4tJbCE1rnU/view?usp=sharing"
-										target="_blank">
-										<span class="fa-stack fa-lg">
-											<i class="fa fa-circle fa-stack-2x"></i>
-											<i class="fa fa-address-book fa-stack-1x fa-inverse"></i>
-										</span>
-									</a>
-
-									</a>
-								</li>
-								<!-- <li class="list-inline-item">
-									<a href="https://drive.google.com/file/d/1UGZMrzS3wbMK65z2Fj81Jq4tJbCE1rnU/view?usp=sharing"
-										target="_blank">
-										<span class="fa-stack fa-lg">
-											<button class="btn btn-general btn-white" type="button"> Resume </button>
-										</span>
-									</a>
-								</li> -->
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-
-	</section>
-
-
-	</div>
-
-	<!--====================================================
-                    PORTFOLIO MODALS
-======================================================-->
-	<!-- <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true" >
-      <div class="modal-dialog" role="document">
-          <div class="modal-content">
-              <div class="close-modal" data-dismiss="modal">
-                  <div class="lr">
-                      <div class="rl"></div>
-                  </div>
-              </div>
-              <div class="container">
-                  <div class="row">
-                          <div class="modal-body">
-                              <div class="title-bar">
-                                <div class="col-md-12">
-                                  <h2 class="text-center">Our Project</h2>
-                                  <div class="heading-border"></div>
+                <!-- memeory ai pop up style-->
+                <!-- <div class="col-md-6 col-lg-4 web new">
+                    <div class="portfolio-item">
+                        <img src="assets/imgs/web-1.jpg" class="img-fluid">
+                        <div class="content-holder">
+                            <a class="img-popup" href="assets/imgs/web-1.jpg"></a>
+                            <div class="text-holder">
+                                <h6 class="title">Memory.Ai clone</h6>
+                                <p class="subtitle"></p>
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    Timely automates company time tracking, so you and your team
+                                    can focus on the work that matters. Easily Navigate through
+                                    categories And Calculate Wages.
                                 </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-md-6">
-                                  <img class="img-fluid img-centered" src="img/portfolio/p-1.jpg" alt="">
+                                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                                    Tech Stack : Javascript | HTML | CSS
                                 </div>
-                                <div class="col-md-6">
-                                  <p>Our new Project every processes had become fragmented; meaning quality and service were inconsistent. This lack of standardization was adversely impacting operating costs, productivity and customer satisfaction. For several years now Payfast has worked strategically with innovations as a means of developing new solutions, products and services. In line with this vision, Success was approached to find new payments solutions to offer Payfast customers on their website, including open invoice and partial payments options.</p>
-                                  <ul class="list-inline item-details">
-                                      <li>Client:
-                                          <strong>
-                                            <a href="#">Techs Soft</a>
-                                          </strong>
-                                      </li>
-                                      <li>Date:
-                                          <strong>
-                                            <a href="#">April 2018</a>
-                                          </strong>
-                                      </li>
-                                      <li>Service:
-                                          <strong>
-                                            <a href="#">Web Development</a>
-                                          </strong>
-                                      </li>
-                                  </ul>
-                                  <button class="btn btn-general btn-white" type="button" data-dismiss="modal">
-                                      <i class="fa fa-times"></i> Close
-                                  </button>
-                              </div>
+                                <button type="button" class="btn btn-secondary">Live Demo</button>
+                                <button type="button" class="btn btn-success">GitHub</button>
                             </div>
-                          </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-    </div>
-    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl"></div>
+                        </div>
+                    </div>
+                </div> -->
+
+
+                <div class="col-md-6 col-lg-4 web new">
+                    <div class="portfolio-item">
+                        <img src="resources/imgs/web-1.jpg" class="projectImg">
+                        <div class="projectContent">
+                            <a class="img-popup" href="resources/imgs/web-1.jpg"></a>
+                            <div class="text-holder">
+                                <h6 class="title">Memory.Ai clone</h6>
+                                <p class="subtitle"></p>
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    Timely automates company time tracking, so you and your team
+                                    can focus on the work that matters. Easily Navigate through
+                                    categories And Calculate Wages.
+                                </div>
+                                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                                    Tech Stack : Javascript | HTML | CSS
+                                </div>
+                                <button type="button" class="btn btn-secondary"><a
+                                        href="https://fantastic-queijadas-e98c0f.netlify.app/" style="color:white">Live
+                                        Demo</a></button>
+                                <button type="button" class="btn btn-success"><a
+                                        href="https://github.com/nileshs23/dear-shade-414"
+                                        style="color:white">GitHub</a></button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="container">
-                <div class="row">
-                        <div class="modal-body">
-                            <div class="title-bar">
-                              <div class="col-md-12">
-                                <h2 class="text-center">Our Project</h2>
-                                <div class="heading-border"></div>
-                              </div>
+
+                <div class="col-md-6 col-lg-4 web new">
+                    <div class="portfolio-item">
+                        <img src="resources/imgs/web-2.jpg" class="projectImg">
+                        <div class="projectContent">
+                            <a class="img-popup" href="resources/imgs/web-2.jpg"></a>
+                            <div class="text-holder">
+                                <h6 class="title">Deccan Herald clone</h6>
+                                <p class="subtitle"></p>
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    Indian English e-Newspaper. Having different sections of Sports,
+                                    Trending,Politics,etc. Easily Navigate through categories.Login And Signup
+                                    functionality available.
+                                </div>
+                                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                                    Tech Stack : Javascript | HTML | CSS
+                                </div>
+                                <button type="button" class="btn btn-secondary"><a
+                                        href="https://zippy-biscochitos-543e9f.netlify.app/" style="color:white">Live
+                                        Demo</a></button>
+                                <button type="button" class="btn btn-success"><a
+                                        href="https://github.com/nileshs23/Deccan-Herald-Clone"
+                                        style="color:white">GitHub</a></button>
                             </div>
-                            <div class="row">
-                              <div class="col-md-6">
-                                <img class="img-fluid img-centered" src="img/portfolio/p-2.jpg" alt="">
-                              </div>
-                              <div class="col-md-6">
-                                <p>Our new Project every processes had become fragmented; meaning quality and service were inconsistent. This lack of standardization was adversely impacting operating costs, productivity and customer satisfaction. For several years now Payfast has worked strategically with innovations as a means of developing new solutions, products and services. In line with this vision, Success was approached to find new payments solutions to offer Payfast customers on their website, including open invoice and partial payments options.</p>
-                                <ul class="list-inline item-details">
-                                    <li>Client:
-                                        <strong>
-                                          <a href="#">Techs Soft</a>
-                                        </strong>
-                                    </li>
-                                    <li>Date:
-                                        <strong>
-                                          <a href="#">April 2018</a>
-                                        </strong>
-                                    </li>
-                                    <li>Service:
-                                        <strong>
-                                          <a href="#">Web Development</a>
-                                        </strong>
-                                    </li>
-                                </ul>
-                                <button class="btn btn-general btn-white" type="button" data-dismiss="modal">
-                                    <i class="fa fa-times"></i> Close
-                                </button>
-                            </div>
-                          </div>
                         </div>
-                </div>
-            </div>
-            </div>
-        </div>
-    </div>
-    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl"></div>
                     </div>
                 </div>
-                <div class="container">
-                <div class="row">
-                        <div class="modal-body">
-                            <div class="title-bar">
-                              <div class="col-md-12">
-                                <h2 class="text-center">Our Project</h2>
-                                <div class="heading-border"></div>
-                              </div>
+
+                <!-- java student mgmt sys -->
+                <div class="col-md-6 col-lg-4 java new>
+                    <div class=" portfolio-item">
+                    <img src="resources/imgs/java-1.jpg" class="projectImg">
+                    <div class="projectContent">
+                        <a class="img-popup" href="resources/imgs/java-1.jpg"></a>
+                        <div class="text-holder">
+                            <h6 class="title">Student Management System</h6>
+                            <p class="subtitle">Student Management System uses database technology To
+                                insert Students into the database. Basic CRUD operations are implemented.</p>
+                            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                                Tech Stack : Java | JDBC | Maven
                             </div>
-                            <div class="row">
-                              <div class="col-md-6">
-                                <img class="img-fluid img-centered" src="img/portfolio/p-3.jpg" alt="">
-                              </div>
-                              <div class="col-md-6">
-                                <p>Our new Project every processes had become fragmented; meaning quality and service were inconsistent. This lack of standardization was adversely impacting operating costs, productivity and customer satisfaction. For several years now Payfast has worked strategically with innovations as a means of developing new solutions, products and services. In line with this vision, Success was approached to find new payments solutions to offer Payfast customers on their website, including open invoice and partial payments options.</p>
-                                <ul class="list-inline item-details">
-                                    <li>Client:
-                                        <strong>
-                                          <a href="#">Techs Soft</a>
-                                        </strong>
-                                    </li>
-                                    <li>Date:
-                                        <strong>
-                                          <a href="#">April 2018</a>
-                                        </strong>
-                                    </li>
-                                    <li>Service:
-                                        <strong>
-                                          <a href="#">Web Development</a>
-                                        </strong>
-                                    </li>
-                                </ul>
-                                <button class="btn btn-general btn-white" type="button" data-dismiss="modal">
-                                    <i class="fa fa-times"></i> Close
-                                </button>
-                              </div>
-                          </div>
+
+                            <button type="button" class="btn btn-success"><a
+                                    href="https://github.com/nileshs23/divine-society-1574"
+                                    style="color:white">GitHub</a></button>
                         </div>
-                </div>
-            </div>
-            </div>
-        </div>
-    </div> -->
-	<div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="close-modal" data-dismiss="modal">
-					<div class="lr">
-						<div class="rl"></div>
-					</div>
-				</div>
-				<div class="container">
-					<div class="row">
-						<div class="modal-body">
-							<div class="title-bar">
-								<div class="col-md-12">
-									<h2 class="text-center">Memory.ai Clone</h2>
-									<div class="heading-border"></div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-6">
-									<img class="img-fluid img-centered" src="img/portfolio/p-4.jpg" alt="">
-								</div>
-								<div class="col-md-6">
-									<p><span style="font-weight: bolder;">Timely automates company time tracking, so you
-											and
-											your team can focus on the work that matters. Easily Navigate through
-											categories And Calculate
-											Wages.</span>
-
-
-									</p>
-
-
-									<ul class="list-inline item-details">
-
-										<li>GitHub:
-
-											<strong>
-												<a href="https://github.com/nileshs23/dear-shade-414"
-													target="_blank">Collaborative Project</a>
-											</strong>
-										</li>
-										<li>Live Demo:
-
-											<strong>
-												<a href="https://fantastic-queijadas-e98c0f.netlify.app/"
-													target="_blank">Memory.ai</a>
-											</strong>
-										</li>
-										<li>Date:
-											<strong>
-												<a href="#">June 2022</a>
-											</strong>
-										</li>
-										<li>Tech Stack:
-											<strong>
-												<a href="#">Javascript | HTML | CSS</a>
-											</strong>
-										</li>
-									</ul>
-									<button class="btn btn-general btn-white" type="button" data-dismiss="modal">
-										<i class="fa fa-times"></i> Close
-									</button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="close-modal" data-dismiss="modal">
-					<div class="lr">
-						<div class="rl"></div>
-					</div>
-				</div>
-				<div class="container">
-					<div class="row">
-						<div class="modal-body">
-							<div class="title-bar">
-								<div class="col-md-12">
-									<h2 class="text-center">Deccan Herald Clone</h2>
-									<div class="heading-border"></div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-6">
-									<img class="img-fluid img-centered" src="img/portfolio/p-5.jpg" alt="">
-								</div>
-								<div class="col-md-6">
-									<p>Indian English e-Newspaper. Having different sections of Sports, Trending,
-										Politics, etc. Easily
-										Navigate through categories.</p>
-									<ul class="list-inline item-details">
-
-										<li>GitHub:
-
-											<strong>
-												<a href="https://github.com/nileshs23/Deccan-Herald-Clone"
-													target="_blank">Collaborative
-													Project</a>
-											</strong>
-										</li>
-										<li>Live Demo:
-
-											<strong>
-												<a href="https://zippy-biscochitos-543e9f.netlify.app/"
-													target="_blank">Deccan Herald</a>
-											</strong>
-										</li>
-										<li>Date:
-											<strong>
-												<a href="#">June 2022</a>
-											</strong>
-										</li>
-										<li>Tech Stack:
-											<strong>
-												<a href="#">Javascript | HTML | CSS</a>
-											</strong>
-										</li>
-									</ul>
-									<button class="btn btn-general btn-white" type="button" data-dismiss="modal">
-										<i class="fa fa-times"></i> Close
-									</button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl"></div>
                     </div>
                 </div>
-                <div class="container">
-                <div class="row">
-                        <div class="modal-body">
-                            <div class="title-bar">
-                              <div class="col-md-12">
-                                <h2 class="text-center">Our Project</h2>
-                                <div class="heading-border"></div>
-                              </div>
+            </div>
+
+            <!-- final year Engineer project -->
+            <div class="col-md-6 col-lg-4 ml">
+                <div class="portfolio-item">
+                    <img src="resources/imgs/ml-1.jpg" class="projectImg">
+                    <div class="projectContent">
+                        <a class="img-popup" href="resources/imgs/ml-1.jpg"></a>
+                        <div class="text-holder">
+                            <h6 class="title">Covid Analysis and Prediction</h6>
+                            <p class="subtitle"></p>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                Analysis of Covid19 with future predictions. This Project
+                                is widely based upon some of the Machine learning algorithms.
+                                We used Javascript to show data on website.
                             </div>
-                            <div class="row">
-                              <div class="col-md-6">
-                                <img class="img-fluid img-centered" src="img/portfolio/p-6.jpg" alt="">
-                              </div>
-                              <div class="col-md-6">
-                                <p>Our new Project every processes had become fragmented; meaning quality and service were inconsistent. This lack of standardization was adversely impacting operating costs, productivity and customer satisfaction. For several years now Payfast has worked strategically with innovations as a means of developing new solutions, products and services. In line with this vision, Success was approached to find new payments solutions to offer Payfast customers on their website, including open invoice and partial payments options.</p>
-                                <ul class="list-inline item-details">
-                                    <li>Client:
-                                        <strong>
-                                          <a href="#">Techs Soft</a>
-                                        </strong>
-                                    </li>
-                                    <li>Date:
-                                        <strong>
-                                          <a href="#">April 2018</a>
-                                        </strong>
-                                    </li>
-                                    <li>Service:
-                                        <strong>
-                                          <a href="#">Web Development</a>
-                                        </strong>
-                                    </li>
-                                </ul>
-                                <button class="btn btn-general btn-white" type="button" data-dismiss="modal">
-                                    <i class="fa fa-times"></i> Close
-                                </button>
+                            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                                Tech Stack : Python | Machine learning | Javascript | CSS
                             </div>
-                          </div>
+                            <button type="button" class="btn btn-success"><a
+                                    href="https://github.com/nileshs23/Covid19-Analysis_and_Prediction"
+                                    style="color:white">
+                                    GitHub</a></button>
                         </div>
-                </div>
-            </div>
-            </div>
-        </div>
-    </div>    
-    <div class="portfolio-modal modal fade" id="portfolioModal7" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl"></div>
                     </div>
                 </div>
-                <div class="container">
-                <div class="row">
-                        <div class="modal-body">
-                            <div class="title-bar">
-                              <div class="col-md-12">
-                                <h2 class="text-center">Our Project</h2>
-                                <div class="heading-border"></div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-6">
-                                <img class="img-fluid img-centered" src="img/portfolio/p-7.jpg" alt="">
-                              </div>
-                              <div class="col-md-6">
-                                <p>Our new Project every processes had become fragmented; meaning quality and service were inconsistent. This lack of standardization was adversely impacting operating costs, productivity and customer satisfaction. For several years now Payfast has worked strategically with innovations as a means of developing new solutions, products and services. In line with this vision, Success was approached to find new payments solutions to offer Payfast customers on their website, including open invoice and partial payments options.</p>
-                                <ul class="list-inline item-details">
-                                    <li>Client:
-                                        <strong>
-                                          <a href="#">Techs Soft</a>
-                                        </strong>
-                                    </li>
-                                    <li>Date:
-                                        <strong>
-                                          <a href="#">April 2018</a>
-                                        </strong>
-                                    </li>
-                                    <li>Service:
-                                        <strong>
-                                          <a href="#">Web Development</a>
-                                        </strong>
-                                    </li>
-                                </ul>
-                                <button class="btn btn-general btn-white" type="button" data-dismiss="modal">
-                                    <i class="fa fa-times"></i> Close
-                                </button>
-                            </div>
-                          </div>
-                        </div>
-                </div>
             </div>
-            </div>
+
         </div>
-    </div>
-    <div class="portfolio-modal modal fade" id="portfolioModal8" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl"></div>
+        </div>
+    </section>
+    <!-- End of portfolio section -->
+
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+        <div class="container">
+            <h6 class="section-title mb-0 text-center">Skills</h6>
+
+            <div class="row justify-content-between">
+                <div class="col-md-5">
+                    <h3 class="components-section-title font-weight-normal mt-5">Lanquages and frameworks :</h3>
+                    <hr>
+                    <small>Java: </small>
+                    <div class="progress mt-2 mb-3">
+                        <div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="25"
+                            aria-valuemin="0" aria-valuemax="100"><span>70%</span></div>
+                    </div>
+                    <small>Javascript:</small>
+                    <div class="progress mt-2 mb-3">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="25"
+                            aria-valuemin="0" aria-valuemax="100"><span>75%</span></div>
+                    </div>
+                    <small>Springboot:</small>
+                    <div class="progress mt-2 mb-3">
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: 50%" aria-valuenow="25"
+                            aria-valuemin="0" aria-valuemax="100"><span>50%</span></div>
+                    </div>
+                    <small>HTML & CSS:</small>
+                    <div class="progress mt-2 mb-3">
+                        <div class="progress-bar bg-info" role="progressbar" style="width: 90%" aria-valuenow="25"
+                            aria-valuemin="0" aria-valuemax="100"><span>90%</span></div>
+                    </div>
+                    <small>Git:</small>
+                    <div class="progress mt-2 mb-3">
+                        <div class="progress-bar bg-dark" role="progressbar" style="width: 90%" aria-valuenow="25"
+                            aria-valuemin="0" aria-valuemax="100"><span>90%</span></div>
                     </div>
                 </div>
-                <div class="container">
-                <div class="row">
-                        <div class="modal-body">
-                            <div class="title-bar">
-                              <div class="col-md-12">
-                                <h2 class="text-center">Our Project</h2>
-                                <div class="heading-border"></div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-6">
-                                <img class="img-fluid img-centered" src="img/portfolio/p-8.jpg" alt="">
-                              </div>
-                              <div class="col-md-6">
-                                <p>Our new Project every processes had become fragmented; meaning quality and service were inconsistent. This lack of standardization was adversely impacting operating costs, productivity and customer satisfaction. For several years now Payfast has worked strategically with innovations as a means of developing new solutions, products and services. In line with this vision, Success was approached to find new payments solutions to offer Payfast customers on their website, including open invoice and partial payments options.</p>
-                                <ul class="list-inline item-details">
-                                    <li>Client:
-                                        <strong>
-                                          <a href="#">Techs Soft</a>
-                                        </strong>
-                                    </li>
-                                    <li>Date:
-                                        <strong>
-                                          <a href="#">April 2018</a>
-                                        </strong>
-                                    </li>
-                                    <li>Service:
-                                        <strong>
-                                          <a href="#">Web Development</a>
-                                        </strong>
-                                    </li>
-                                </ul>
-                                <button class="btn btn-general btn-white" type="button" data-dismiss="modal">
-                                    <i class="fa fa-times"></i> Close
-                                </button>
-                            </div>
-                          </div>
-                        </div>
+
+                <div class="col-md-6">
+                    <h1 class="components-section-title font-weight-normal mt-5">Tech Skills</h1>
+                    <hr>
+                    <div>
+                        <h6>Designing Desktop First, Responsive Design</h6>
+                        <h6>Data Structures and algorithm</h6>
+                        <h6>RESTfull API Developmen</h6>
+                        <h6>Java Development</h6>
+                    </div>
+
+                    <!-- Badges -->
+                    <h3 class="components-section-title font-weight-normal mt-5">Soft Skills :</h3>
+                    <hr>
+                    <div>
+                        <h6>Adaptive In Nature</h6>
+                        <h6>Problem Solving</h6>
+                        <h6>Teamwork</h6>
+                        <h6>Proactivet</h6>
+                    </div>
+
+                </div>
+            </div> <!-- End of Progress bars -->
+
+        </div>
+    </section>
+    <!-- End of skills Section -->
+
+    <!-- Statistics Section -->
+    <section class="section" id="statistics">
+        <div class="container">
+            <h6 class="section-title mb-0 text-center">Statistics</h6>
+            <h6 class="section-subtitle mb-5 text-center">GITHUB STATS</h6>
+
+            <div class="calendar">
+                <!-- Loading stuff -->
+                Loading the data just for you.
+            </div>
+
+            <div id="statsMasai">
+                <div>
+                    <p>1200+ Hrs Of Coding</p>
+                </div>
+                <div>
+                    <p>300+ DSA Questions</p>
+                </div>
+                <div>
+                    <p>10+ Mini Projects</p>
+                </div>
+                <div>
+                    <p>5+ Major Projects</p>
                 </div>
             </div>
-            </div>
+
         </div>
-    </div>
-    <div class="portfolio-modal modal fade" id="portfolioModal9" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl"></div>
+    </section>
+    <!-- End of statistics Section -->
+
+
+    <!-- Education Section -->
+    <section class="section" id="education">
+        <div class="container">
+            <div class="justify-content-center">
+                <div class="col-md-6 pr-md-5 mb-4 mb-md-0">
+                    <h6 class="section-title mb-0">Education</h6>
+                    <h6 class="section-subtitle mb-4">Degrees & Certificates</h6>
+
+                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                        <h2 style="color:red">Masai School</h2>
+                        <h5>Full Stack Web Development</h5>
+                        <h6>Java Backend Developer</h6>
+                    </div>
+
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        <h2 style="color: rgb(95, 95, 136);">Computer Engineering</h2>
+                        <h6>Sinhgad College Of Engineering, Pune (SPPU)</h6>
+                    </div>
+
+                    <div>
+
                     </div>
                 </div>
-                <div class="container">
-                <div class="row">
-                        <div class="modal-body">
-                            <div class="title-bar">
-                              <div class="col-md-12">
-                                <h2 class="text-center">Our Project</h2>
-                                <div class="heading-border"></div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-6">
-                                <img class="img-fluid img-centered" src="img/portfolio/p-9.jpg" alt="">
-                              </div>
-                              <div class="col-md-6">
-                                <p>Our new Project every processes had become fragmented; meaning quality and service were inconsistent. This lack of standardization was adversely impacting operating costs, productivity and customer satisfaction. For several years now Payfast has worked strategically with innovations as a means of developing new solutions, products and services. In line with this vision, Success was approached to find new payments solutions to offer Payfast customers on their website, including open invoice and partial payments options.</p>
-                                <ul class="list-inline item-details">
-                                    <li>Client:
-                                        <strong>
-                                          <a href="#">Techs Soft</a>
-                                        </strong>
-                                    </li>
-                                    <li>Date:
-                                        <strong>
-                                          <a href="#">April 2018</a>
-                                        </strong>
-                                    </li>
-                                    <li>Service:
-                                        <strong>
-                                          <a href="#">Web Development</a>
-                                        </strong>
-                                    </li>
-                                </ul>
-                                <button class="btn btn-general btn-white" type="button" data-dismiss="modal">
-                                    <i class="fa fa-times"></i> Close
-                                </button>
-                            </div>
-                          </div>
-                        </div>
-                </div>
-            </div>
+
+
             </div>
         </div>
-    </div> -->
+    </section>
+    <!-- End OF Education Section -->
 
 
+    <!-- Contact Section -->
+    <section id="contact" class="section has-img-bg pb-0">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-5 my-3">
+                    <h6 class="mb-1">Phone</h6>
+                    <p class="mb-4">+91 8446578717</p>
 
-	<!-- Global javascript -->
-	<script src="js/jquery/jquery.min.js"></script>
-	<script src="js/bootstrap/bootstrap.bundle.min.js"></script>
-	<script src="js/jquery-easing/jquery.easing.min.js"></script>
-	<script src="js/counter/jquery.waypoints.min.js"></script>
-	<script src="js/counter/jquery.counterup.min.js"></script>
-	<script src="js/custom.js"></script>
-	<script src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js">
-	</script>
-	<script>
-		$(document).ready(function
-			$(".filter-b").click(functio				       var value = $(this).attr('data-fil				       if (value == "a					       $('.filter').show('1				  				       					       $(".filter").not('.' + value).hide('3					       $('.filter').filter('.' + value).show('3				  			
-    			
-      if ($(".filter-b").removeClass("activ				       $(this).removeClass("act			
- 			
-      $(this).addClass("act		);
-  		;
+                    <h6 class="mb-1">Address</h6>
+                    <p class="mb-4">Shirpur, Maharashtra </p>
 
-		// 		LS
-		$(functio			
-      $('.counter').count				       dela				       time			
-    		;
+                    <h6 class="mb-1">Email</h6>
+                    <p class="mb-1">nileshs2398@gmail.com</p>
 
-  });
-	</script>
+                </div>
+
+                <div id="socialMedia overlay">
+                    <a href="https://twitter.com/Nilesh8446" class="ml-4 nav-link btn btn-secondary btn-sm">Twitter</a>
+
+                    <a href="https://www.linkedin.com/in/nilesh2398/"
+                        class="ml-4 nav-link btn btn-light btn-sm">LinkedIn</a>
+
+                    <a href="https://github.com/nileshs23/" class="ml-4 nav-link btn btn-success btn-sm">Github</a>
+
+                    <a href="/resources/resume/Resume.pdf" class="ml-4 nav-link btn btn-primary btn-sm"
+                        download="Nilesh_Solanki_Resume">Resume</a>
+
+                    <hr>
+                    <!-- Page Footer -->
+                    <footer class="py-4 border-top border-secondary">
+                        <p class="mb-0">&copy;
+                            <script>document.write(new Date().getFullYear())</script>,Created By <a
+                                href="https://github.com/nileshs23" target="_blank">Nilesh Solanki</a>
+                        </p>
+                    </footer>
+                </div>
 
 
+            </div>
+    </section>
 
-	<script>
-		GitHubCalendar(".calendar", "nileshs23");
+    <!-- core  -->
+    <script src="scripts/vendors/jquery/jquery-3.4.1.js"></script>
+    <script src="scripts/vendors/bootstrap/bootstrap.bundle.js"></script>
 
-		// or enable responsive functionality:
-		GitHubCalendar(".calendar", "nileshs23", { responsive: true });
+    <!-- bootstrap 3 affix -->
+    <script src="scripts/vendors/bootstrap/bootstrap.affix.js"></script>
 
-		// Use a proxy
-		GitHubCalendar(".calendar", "nileshs23", {
-			proxy(nileshs23) {
-				return fetch(`https://your-proxy.com/github?user=${nileshs23}`)
-			}
-		}).then(r => r.text())
-	</script>
+    <!-- Isotope -->
+    <script src="scripts/vendors/isotope/isotope.pkgd.js"></script>
+
+    <!-- main js -->
+    <script src="/scripts/index.js"></script>
+
+    <!-- Include the library. -->
+    <script src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js">
+    </script>
+
+    <script>
+        GitHubCalendar(".calendar", "nileshs23");
+
+        // or enable responsive functionality:
+        GitHubCalendar(".calendar", "nileshs23", { responsive: true });
+
+        // Use a proxy
+        GitHubCalendar(".calendar", "nileshs23", {
+            proxy(username) {
+                return fetch(`https://your-proxy.com/github?user=${nileshs23}`)
+            }
+        }).then(r => r.text())
+    </script>
+
 </body>
 
 </html>
