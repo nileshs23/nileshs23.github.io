@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="styles/css/socialMedia.css">
     <link rel="stylesheet" href="styles/css/statsMasai.css">
     <link rel="stylesheet" href="styles/css/project.css">
+    <link rel="stylesheet" href="styles/css/education.css">
 
 
     <!-- Optionally, include the theme (if you don't want to struggle to write the CSS) -->
@@ -57,12 +58,9 @@
                     </li>
                     <li class="nav-item">
                         <a href="/resources/resume/Resume.pdf" class="ml-4 nav-link btn btn-primary btn-sm rounded"
-                            download="Nilesh_Solanki_Resume">Resume</a>
+                            download="Nilesh_Solanki_Resume" style="color: white;">Resume</a>
                     </li>
 
-                    <!-- <li class="nav-item">
-                        <a href="components.html" class="ml-4 nav-link btn btn-primary btn-sm rounded">Components</a>
-                    </li> -->
                 </ul>
             </div>
         </div>
@@ -130,11 +128,13 @@
                     <h6 class="section-title mb-0">About Me</h6>
                     <h6 class="section-subtitle mb-4">Full Stack Java Developer</h6>
                     <h5>I am Computer Engineer Graduated from SPPU in 2021.
-                        So far, I have Java, Javascript, HTML, CSS, and Git/GitHub under my portfolio.
+                        So far, I have <span style="color: red;">Java, Javascript, HTML, CSS,</span> and
+                        <span style="color: red;"> Git/GitHub </span> under my portfolio.
                         In addition, I've started learning SQL, Springboot, and AWS.
                         I'm still enthusiastically grabbing onto other programming
                         languages, frameworks, or principles I can integrate into the
-                        Development.</h5>
+                        Development.
+                    </h5>
                 </div>
                 <div class="col-md-6 pl-md-5">
                     <div class="row">
@@ -173,7 +173,7 @@
         <div class="container">
             <h6 class="section-title text-center">My Projects</h6>
             <h6 class="section-subtitle mb-5 text-center">Projects That I have Developed So Far !</h6>
-            <div class="filters">
+            <!-- <div class="filters">
                 <a href="#" data-filter=".new" class="active">
                     New
                 </a>
@@ -186,7 +186,7 @@
                 <a href="#" data-filter=".ml">
                     ML
                 </a>
-            </div>
+            </div> -->
             <div class="portfolio-container">
 
                 <!-- memeory ai pop up style-->
@@ -269,54 +269,54 @@
                 </div>
 
                 <!-- java student mgmt sys -->
-                <div class="col-md-6 col-lg-4 java new>
+                <div class="col-md-6 col-lg-4 new java">
                     <div class=" portfolio-item">
-                    <img src="resources/imgs/java-1.jpg" class="projectImg">
-                    <div class="projectContent">
-                        <a class="img-popup" href="resources/imgs/java-1.jpg"></a>
-                        <div class="text-holder">
-                            <h6 class="title">Student Management System</h6>
-                            <p class="subtitle">Student Management System uses database technology To
-                                insert Students into the database. Basic CRUD operations are implemented.</p>
-                            <div class="alert alert-info alert-dismissible fade show" role="alert">
-                                Tech Stack : Java | JDBC | Maven
-                            </div>
+                        <img src="resources/imgs/java-1.jpg" class="projectImg">
+                        <div class="projectContent">
+                            <a class="img-popup" href="resources/imgs/java-1.jpg"></a>
+                            <div class="text-holder">
+                                <h6 class="title">Student Management System</h6>
+                                <p class="subtitle">Student Management System uses database technology To
+                                    insert Students into the database. Basic CRUD operations are implemented.</p>
+                                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                                    Tech Stack : Java | JDBC | Maven
+                                </div>
 
-                            <button type="button" class="btn btn-success"><a
-                                    href="https://github.com/nileshs23/divine-society-1574"
-                                    style="color:white">GitHub</a></button>
+                                <button type="button" class="btn btn-success"><a
+                                        href="https://github.com/nileshs23/divine-society-1574"
+                                        style="color:white">GitHub</a></button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- final year Engineer project -->
-            <div class="col-md-6 col-lg-4 ml">
-                <div class="portfolio-item">
-                    <img src="resources/imgs/ml-1.jpg" class="projectImg">
-                    <div class="projectContent">
-                        <a class="img-popup" href="resources/imgs/ml-1.jpg"></a>
-                        <div class="text-holder">
-                            <h6 class="title">Covid Analysis and Prediction</h6>
-                            <p class="subtitle"></p>
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                Analysis of Covid19 with future predictions. This Project
-                                is widely based upon some of the Machine learning algorithms.
-                                We used Javascript to show data on website.
+                <!-- final year Engineer project -->
+                <div class="col-md-6 col-lg-4 new ml">
+                    <div class="portfolio-item ">
+                        <img src="resources/imgs/ml-1.jpg" class="projectImg">
+                        <div class="projectContent">
+                            <a class="img-popup" href="resources/imgs/ml-1.jpg"></a>
+                            <div class="text-holder">
+                                <h6 class="title">Covid Analysis and Prediction</h6>
+                                <p class="subtitle"></p>
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    Analysis of Covid19 with future predictions. This Project
+                                    is widely based upon some of the Machine learning algorithms.
+                                    We used Javascript to show data on website.
+                                </div>
+                                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                                    Tech Stack : Python | ML | Javascript
+                                </div>
+                                <button type="button" class="btn btn-success"><a
+                                        href="https://github.com/nileshs23/Covid19-Analysis_and_Prediction"
+                                        style="color:white">
+                                        GitHub</a></button>
                             </div>
-                            <div class="alert alert-info alert-dismissible fade show" role="alert">
-                                Tech Stack : Python | Machine learning | Javascript | CSS
-                            </div>
-                            <button type="button" class="btn btn-success"><a
-                                    href="https://github.com/nileshs23/Covid19-Analysis_and_Prediction"
-                                    style="color:white">
-                                    GitHub</a></button>
                         </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
+            </div>
         </div>
     </section>
     <!-- End of portfolio section -->
@@ -396,6 +396,15 @@
             </div>
 
             <div id="statsMasai">
+                <img height="160em"
+                    src="https://github-readme-stats.vercel.app/api?username=nileshs23&show_icons=true&&count_private=true&include_all_commits=true&theme=vue" />
+                <img height="160em"
+                    src="https://github-readme-stats.vercel.app/api/top-langs/?username=nileshs23&exclude_repo=KNN-Image-Classification&show_icons=true&layout=compact&langs_count=8" />
+                <img src="https://github-readme-streak-stats.herokuapp.com/?user=nileshs23" width="400em"
+                    height="160em" />
+            </div>
+
+            <div id="statsMasai">
                 <div>
                     <p>1200+ Hrs Of Coding</p>
                 </div>
@@ -423,15 +432,15 @@
                     <h6 class="section-title mb-0">Education</h6>
                     <h6 class="section-subtitle mb-4">Degrees & Certificates</h6>
 
-                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                    <div class="alert alert-secondary alert-dismissible fade show edu" role="alert">
                         <h2 style="color:red">Masai School</h2>
                         <h5>Full Stack Web Development</h5>
                         <h6>Java Backend Developer</h6>
                     </div>
 
-                    <div class="alert alert-info alert-dismissible fade show" role="alert">
-                        <h2 style="color: rgb(95, 95, 136);">Computer Engineering</h2>
-                        <h6>Sinhgad College Of Engineering, Pune (SPPU)</h6>
+                    <div class="alert alert-info alert-dismissible fade show edu" role="alert">
+                        <h2 style="color: rgb(95, 95, 136);">Sinhgad College Of Engineering, Pune (SPPU)</h2>
+                        <h6>Computer Engineering</h6>
                     </div>
 
                     <div>
