@@ -33,13 +33,18 @@
     font-weight: bold;
 }
 
-@media screen and (min-width: 350px) and (max-width: 844px){
+@media screen and (min-width: 350px) and (max-width: 768px){
 
     #statsMasai{
+        /* background-color: red; */
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+
+    #statsMasai img{
+        height:120px;
     }
 
 }
