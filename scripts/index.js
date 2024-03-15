@@ -41,3 +41,13 @@ $(window).on("load", function() {
         }), !1
     })
 })
+
+//hambergur menu disapper when click
+$(document).on('click', function () {
+    $('#navbarSupportedContent').collapse('hide');
+});
+
+//resume download and open in new tab
+function fileOpener() {
+  window.open("/resources/resume/Resume.pdf");
+}
