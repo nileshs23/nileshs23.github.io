@@ -1,7 +1,7 @@
 {
   "version": "2.0",
   "repository": "nileshs23/nileshs23.github.io",
-  "lastUpdated": "2026-11-22T01:25:00Z",
+  "lastUpdated": "2026-11-21T20:31:31.984Z",
   "education": [
     {
       "id": "edu-masai-school",
@@ -33,7 +33,7 @@
       "id": "exp-greythr",
       "company": "greytHR (Greytip Software)",
       "role": "Java Backend Engineer",
-      "type": "Cloud HRMS & Payroll \u2022 Full-Time",
+      "type": "Cloud HRMS & Payroll • Full-Time",
       "location": "Bengaluru / Pune, India",
       "duration": "2022 - Present (2+ Years)",
       "isCurrent": true,
@@ -50,7 +50,7 @@
       "id": "exp-pwc",
       "company": "PricewaterhouseCoopers Pvt Ltd (PwC)",
       "role": "Cybersecurity Specialist",
-      "type": "Enterprise Tech Consulting \u2022 Full-Time",
+      "type": "Enterprise Tech Consulting • Full-Time",
       "location": "Pune, India",
       "duration": "Former Company",
       "isCurrent": false,
@@ -230,7 +230,7 @@
       "id": "skill-html-css",
       "name": "HTML5 & Modern CSS3",
       "category": "Frontend",
-      "percent": 95
+      "percent": 93
     },
     {
       "id": "skill-react",
