@@ -1,0 +1,1917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nilesh Solanki | Portfolio Admin Control Panel</title>
+    <link rel="icon" type="image/svg+xml" href="./resources/imgs/logo.svg">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles/css/modern.css">
+    <link rel="stylesheet" href="styles/css/admin.css">
+</head>
+<body class="admin-body">
+
+    <!-- Toast Notification Element -->
+    <div id="admin-toast" class="toast-notice"></div>
+
+    <!-- ====================================================================
+         1. SECURE LOGIN SCREEN (Level 1: Salted SHA-256 & Brute Force Lockout)
+         ==================================================================== -->
+    <div id="login-container" class="login-screen-wrapper">
+        <div class="login-card">
+            <div class="login-header-icon">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <h1 class="login-title">Portfolio Manager</h1>
+            <p class="login-subtitle">Sign in with master credentials to manage your portfolio</p>
+
+            <!-- Brute-Force Lockout Notice Banner -->
+            <div id="lockout-notice" class="lockout-notice">
+                <i class="fas fa-exclamation-triangle"></i>
+                <div>
+                    <strong>Access Temporarily Locked</strong><br>
+                    <span id="lockout-countdown">Too many invalid attempts. Try again in 15m 00s.</span>
+                </div>
+            </div>
+
+            <form id="login-form">
+                <div class="form-group">
+                    <label class="form-label" for="login-username">Username</label>
+                    <input type="text" id="login-username" class="form-input" placeholder="Enter username" autocomplete="username" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="login-password">Master Password</label>
+                    <input type="password" id="login-password" class="form-input" placeholder="Enter master password" autocomplete="current-password" required>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; font-size: 13px; color: #94a3b8;">
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                        <input type="checkbox" id="remember-me" checked> Remember me
+                    </label>
+                    <a href="index.html" style="color: var(--brand-primary); text-decoration: none;">&larr; Back to Portfolio</a>
+                </div>
+
+                <button type="submit" id="btn-login-submit" class="btn-primary-glow" style="width: 100%; justify-content: center; padding: 12px;">
+                    <i class="fas fa-sign-in-alt"></i> Access Control Panel
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ====================================================================
+         2. ADMIN DASHBOARD (Visible when authenticated)
+         ==================================================================== -->
+    <div id="admin-dashboard" style="display: none;">
+        
+        <!-- Top Navbar -->
+        <header class="admin-navbar">
+            <div class="container-modern">
+                <div class="admin-nav-inner">
+                    <div class="admin-brand-group">
+                        <a href="index.html" class="nav-brand">
+                            <img src="resources/imgs/logo.svg" alt="Nilesh Solanki Logo">
+                            <span>Nilesh<span class="brand-highlight">.Admin</span></span>
+                        </a>
+                        <span class="admin-badge-online">
+                            <i class="fas fa-check-circle"></i> Authenticated (SHA-256)
+                        </span>
+                    </div>
+
+                    <div class="admin-actions-group">
+                        <a href="index.html" target="_blank" class="btn-admin-nav" title="Open public portfolio in new tab">
+                            <i class="fas fa-external-link-alt"></i> Public Site
+                        </a>
+                        <a href="recruiter.html" target="_blank" class="btn-admin-nav" title="Open recruiter page in new tab">
+                            <i class="fas fa-briefcase"></i> Recruiter Page
+                        </a>
+                        <button id="logout-btn" class="btn-admin-nav btn-logout">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Dashboard Content -->
+        <main class="container-modern" style="padding-top: 20px; padding-bottom: 60px;">
+
+            <!-- ================================================================
+                 LEVEL 3: GITHUB NATIVE CLOUD SYNC & DEPLOYMENT BAR
+                 ================================================================ -->
+            <div class="github-sync-card">
+                <div class="github-sync-header">
+                    <div class="github-title-group">
+                        <i class="fab fa-github"></i>
+                        <div>
+                            <h3>GitHub Direct Repository Sync (Level 3)</h3>
+                            <p>Direct integration with <code>nileshs23/nileshs23.github.io</code> (Branch: <strong>main</strong>) &mdash; Zero third-party servers.</p>
+                        </div>
+                    </div>
+                    <div id="github-status-pill" class="github-status-pill">
+                        <span class="github-status-dot"></span>
+                        <span id="github-status-text">Local Storage Mode</span>
+                    </div>
+                </div>
+
+                <div class="github-sync-body">
+                    <div class="github-token-input-wrapper">
+                        <input type="password" id="github-pat-token" placeholder="Paste GitHub Personal Access Token (PAT)..." autocomplete="off">
+                        <button type="button" id="btn-toggle-pat" class="github-token-toggle" title="Show/Hide Token">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+
+                    <button type="button" id="btn-verify-github" class="btn-github-action" title="Verify Token with GitHub API">
+                        <i class="fas fa-plug"></i> Verify Connection
+                    </button>
+
+                    <button type="button" id="btn-pull-github" class="btn-github-action" title="Fetch latest data from GitHub repository">
+                        <i class="fas fa-cloud-download-alt"></i> Pull Latest
+                    </button>
+
+                    <button type="button" id="btn-deploy-github" class="btn-github-action btn-github-deploy" title="Commit all changes directly to main branch and deploy">
+                        <i class="fas fa-rocket"></i> Commit & Deploy to GitHub
+                    </button>
+
+                    <button type="button" id="btn-token-guide" class="btn-admin-nav" style="border: none; background: transparent; color: #94a3b8; font-size: 12px; text-decoration: underline; cursor: pointer;">
+                        How to get a free GitHub Token?
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Section Tabs -->
+            <div class="admin-tabs">
+                <button class="admin-tab-btn active" data-tab="tab-education">
+                    <i class="fas fa-graduation-cap"></i> Education (<span id="tab-edu-count">0</span>)
+                </button>
+                <button class="admin-tab-btn" data-tab="tab-experience">
+                    <i class="fas fa-briefcase"></i> Work Experience (<span id="tab-exp-count">0</span>)
+                </button>
+                <button class="admin-tab-btn" data-tab="tab-projects">
+                    <i class="fas fa-code"></i> Featured Projects (<span id="tab-proj-count">0</span>)
+                </button>
+                <button class="admin-tab-btn" data-tab="tab-skills">
+                    <i class="fas fa-tools"></i> Skills & Tech Stack (<span id="tab-skills-count">0</span>)
+                </button>
+            </div>
+
+            <!-- ==========================================
+                 TAB 1: EDUCATION MANAGER
+                 ========================================== -->
+            <div id="tab-education" class="tab-pane active">
+                <div class="dashboard-action-bar">
+                    <div class="dashboard-title-group">
+                        <h2>Education & Certifications Manager</h2>
+                        <p>Add, edit, reorder, or remove your academic credentials and degrees. Updates apply instantly.</p>
+                    </div>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <button id="btn-add-edu" class="btn-primary-glow" style="padding: 10px 18px; font-size: 14px;">
+                            <i class="fas fa-plus-circle"></i> Add New Education
+                        </button>
+                        <button id="btn-reset-edu" class="btn-admin-nav" style="background: rgba(248, 113, 113, 0.1); color: #f87171;">
+                            <i class="fas fa-undo"></i> Reset Defaults
+                        </button>
+                    </div>
+                </div>
+
+                <div class="edu-exp-grid" style="grid-template-columns: 1.15fr 0.85fr; gap: 28px;">
+                    <!-- Left: Interactive List -->
+                    <div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                            <h3 style="font-size: 16px; font-weight: 700; color: #cbd5e1;">Active Entries (<span id="entries-count">0</span>)</h3>
+                            <span style="font-size: 12px; color: #94a3b8;">Use arrows to reorder cards</span>
+                        </div>
+                        <div id="admin-edu-list"></div>
+                    </div>
+
+                    <!-- Right: Live Preview -->
+                    <div>
+                        <div class="column-card" style="position: sticky; top: 90px;">
+                            <div class="column-header">
+                                <div class="column-header-title">
+                                    <i class="fas fa-eye" style="color: #06b6d4;"></i>
+                                    <h3 style="font-size: 18px;">Live Website Preview</h3>
+                                </div>
+                                <span class="edu-badge badge-indigo">Instant Preview</span>
+                            </div>
+                            <p style="font-size: 13px; color: #94a3b8; margin-bottom: 16px;">
+                                Previewing exactly how Education cards render for visitors on your live portfolio.
+                            </p>
+                            <div id="admin-live-preview" class="education-list"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 TAB 2: WORK EXPERIENCE MANAGER
+                 ========================================== -->
+            <div id="tab-experience" class="tab-pane">
+                <div class="dashboard-action-bar">
+                    <div class="dashboard-title-group">
+                        <h2>Work Experience & Career Manager</h2>
+                        <p>Manage your professional roles (greytHR, PwC, etc.), responsibilities, and technical impacts.</p>
+                    </div>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <button id="btn-add-exp" class="btn-primary-glow" style="padding: 10px 18px; font-size: 14px;">
+                            <i class="fas fa-plus-circle"></i> Add New Role
+                        </button>
+                        <button id="btn-reset-exp" class="btn-admin-nav" style="background: rgba(248, 113, 113, 0.1); color: #f87171;">
+                            <i class="fas fa-undo"></i> Reset Defaults
+                        </button>
+                    </div>
+                </div>
+
+                <div class="edu-exp-grid" style="grid-template-columns: 1.15fr 0.85fr; gap: 28px;">
+                    <!-- Left: Interactive List -->
+                    <div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                            <h3 style="font-size: 16px; font-weight: 700; color: #cbd5e1;">Career Positions (<span id="exp-count">0</span>)</h3>
+                            <span style="font-size: 12px; color: #94a3b8;">Use arrows to adjust hierarchy</span>
+                        </div>
+                        <div id="admin-exp-list"></div>
+                    </div>
+
+                    <!-- Right: Live Preview -->
+                    <div>
+                        <div class="column-card" style="position: sticky; top: 90px;">
+                            <div class="column-header">
+                                <div class="column-header-title">
+                                    <i class="fas fa-eye" style="color: #10b981;"></i>
+                                    <h3 style="font-size: 18px;">Live Experience Preview</h3>
+                                </div>
+                                <span class="edu-badge badge-brand">Instant Preview</span>
+                            </div>
+                            <p style="font-size: 13px; color: #94a3b8; margin-bottom: 16px;">
+                                Previewing hover-expansion, bullets, and role details as rendered on the home page.
+                            </p>
+                            <div id="admin-exp-preview" class="experience-list"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 TAB 3: FEATURED PROJECTS MANAGER
+                 ========================================== -->
+            <div id="tab-projects" class="tab-pane">
+                <div class="dashboard-action-bar">
+                    <div class="dashboard-title-group">
+                        <h2>Featured Projects Manager</h2>
+                        <p>Curate your engineering portfolio projects, tech stacks, GitHub repositories, and live demos.</p>
+                    </div>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <button id="btn-add-proj" class="btn-primary-glow" style="padding: 10px 18px; font-size: 14px;">
+                            <i class="fas fa-plus-circle"></i> Add New Project
+                        </button>
+                        <button id="btn-reset-proj" class="btn-admin-nav" style="background: rgba(248, 113, 113, 0.1); color: #f87171;">
+                            <i class="fas fa-undo"></i> Reset Defaults
+                        </button>
+                    </div>
+                </div>
+
+                <div class="edu-exp-grid" style="grid-template-columns: 1.15fr 0.85fr; gap: 28px;">
+                    <!-- Left: Interactive List -->
+                    <div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                            <h3 style="font-size: 16px; font-weight: 700; color: #cbd5e1;">Active Projects (<span id="proj-count">0</span>)</h3>
+                            <span style="font-size: 12px; color: #94a3b8;">Continuous Carousel items</span>
+                        </div>
+                        <div id="admin-proj-list"></div>
+                    </div>
+
+                    <!-- Right: Live Preview -->
+                    <div>
+                        <div class="column-card" style="position: sticky; top: 90px;">
+                            <div class="column-header">
+                                <div class="column-header-title">
+                                    <i class="fas fa-eye" style="color: #ec4899;"></i>
+                                    <h3 style="font-size: 18px;">Featured Projects Cards</h3>
+                                </div>
+                                <span class="edu-badge badge-indigo">Carousel Card Preview</span>
+                            </div>
+                            <p style="font-size: 13px; color: #94a3b8; margin-bottom: 16px;">
+                                Previewing cards and spotlight hover effects.
+                            </p>
+                            <div id="admin-proj-preview"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 TAB 4: SKILLS & TECH STACK MANAGER
+                 ========================================== -->
+            <div id="tab-skills" class="tab-pane">
+                <div class="dashboard-action-bar">
+                    <div class="dashboard-title-group">
+                        <h2>Skills & Tech Stack Manager</h2>
+                        <p>Manage your backend competencies, frontend proficiency ratings, and developer tools.</p>
+                    </div>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <button id="btn-add-skill" class="btn-primary-glow" style="padding: 10px 18px; font-size: 14px;">
+                            <i class="fas fa-plus-circle"></i> Add New Skill
+                        </button>
+                        <button id="btn-reset-skills" class="btn-admin-nav" style="background: rgba(248, 113, 113, 0.1); color: #f87171;">
+                            <i class="fas fa-undo"></i> Reset Defaults
+                        </button>
+                    </div>
+                </div>
+
+                <div id="admin-skills-container">
+                    <!-- Rendered by category -->
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 DATA PERSISTENCE, BACKUP & SECURITY STRIP
+                 ========================================== -->
+            <div class="data-tools-card">
+                <div class="data-tools-header">
+                    <i class="fas fa-database"></i>
+                    <h4>Data Persistence, Backup & Security Tools</h4>
+                </div>
+                <p style="font-size: 13px; color: #94a3b8; margin-bottom: 16px;">
+                    All edits are saved in your browser's local storage. Export full backups as JSON, pull/commit directly to GitHub, or update your salted admin password.
+                </p>
+
+                <div class="data-tools-grid">
+                    <button id="btn-export-json" class="btn-admin-nav">
+                        <i class="fas fa-file-download"></i> Export Full JSON Backup
+                    </button>
+                    <button id="btn-import-trigger" class="btn-admin-nav">
+                        <i class="fas fa-file-upload"></i> Import JSON Backup
+                    </button>
+                    <input type="file" id="import-file-input" class="hidden-file-input" accept=".json">
+                    <button id="btn-change-password" class="btn-admin-nav" style="border-color: rgba(99, 102, 241, 0.4);">
+                        <i class="fas fa-key"></i> Change Admin Password (SHA-256)
+                    </button>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- ====================================================================
+         3. MODALS
+         ==================================================================== -->
+
+    <!-- Modal 1: Education Modal -->
+    <div id="edu-modal" class="admin-modal-overlay">
+        <div class="admin-modal-box">
+            <div class="modal-header-bar">
+                <h3 id="modal-title">Add Education Entry</h3>
+                <button type="button" id="btn-close-modal" class="btn-close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <form id="edu-form">
+                <input type="hidden" id="entry-id" value="">
+
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label class="form-label" for="entry-institution">Institution / University *</label>
+                        <input type="text" id="entry-institution" class="form-input" placeholder="e.g. Masai School" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="entry-degree">Degree / Program Title *</label>
+                        <input type="text" id="entry-degree" class="form-input" placeholder="e.g. Full Stack Web Development" required>
+                    </div>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label class="form-label" for="entry-subtitle">Specialization / Track</label>
+                        <input type="text" id="entry-subtitle" class="form-input" placeholder="e.g. Java Backend Developer Track">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="entry-duration">Duration / Years *</label>
+                        <input type="text" id="entry-duration" class="form-input" placeholder="e.g. 2022 - 2023" required>
+                    </div>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label class="form-label" for="entry-location">Location</label>
+                        <input type="text" id="entry-location" class="form-input" placeholder="e.g. Bengaluru (Remote)">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="entry-badge">Badge Label</label>
+                        <input type="text" id="entry-badge" class="form-input" placeholder="e.g. Full Stack Certification">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="entry-description">Description & Key Learnings</label>
+                    <textarea id="entry-description" class="form-textarea" placeholder="Detail core subjects, technologies mastered, projects built..."></textarea>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label class="form-label" for="entry-link">Certificate / Credential Link (URL)</label>
+                        <input type="url" id="entry-link" class="form-input" placeholder="https://drive.google.com/...">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="entry-accent">Card Accent Color</label>
+                        <select id="entry-accent" class="form-input" style="cursor: pointer;">
+                            <option value="brand">Brand Coral (#ff6e42)</option>
+                            <option value="accent">Indigo Violet (#6366f1)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="modal-footer-bar">
+                    <button type="button" id="btn-cancel-modal" class="btn-admin-nav">Cancel</button>
+                    <button type="submit" class="btn-primary-glow" style="padding: 10px 24px;">
+                        <i class="fas fa-save"></i> Save Entry
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal 2: Experience Modal -->
+    <div id="exp-modal" class="admin-modal-overlay">
+        <div class="admin-modal-box">
+            <div class="modal-header-bar">
+                <h3 id="exp-modal-title">Add Work Experience</h3>
+                <button type="button" id="btn-close-exp-modal" class="btn-close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <form id="exp-form">
+                <input type="hidden" id="entry-exp-id" value="">
+
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label class="form-label" for="entry-exp-company">Company / Organization *</label>
+                        <input type="text" id="entry-exp-company" class="form-input" placeholder="e.g. greytHR (Greytip Software)" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="entry-exp-role">Job Title / Role *</label>
+                        <input type="text" id="entry-exp-role" class="form-input" placeholder="e.g. Java Backend Engineer" required>
+                    </div>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label class="form-label" for="entry-exp-type">Department / Business Domain</label>
+                        <input type="text" id="entry-exp-type" class="form-input" placeholder="e.g. Cloud HRMS & Payroll">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="entry-exp-duration">Duration *</label>
+                        <input type="text" id="entry-exp-duration" class="form-input" placeholder="e.g. 2022 - Present (2+ Years)" required>
+                    </div>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label class="form-label" for="entry-exp-location">Location</label>
+                        <input type="text" id="entry-exp-location" class="form-input" placeholder="e.g. Bengaluru / Pune, India">
+                    </div>
+
+                    <div class="form-group" style="display: flex; align-items: center; padding-top: 24px;">
+                        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: #f8fafc; font-size: 14px;">
+                            <input type="checkbox" id="entry-exp-current" style="width: 18px; height: 18px;">
+                            <strong>This is my Current Role</strong>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="entry-exp-summary">Role Overview / Executive Summary</label>
+                    <textarea id="entry-exp-summary" class="form-textarea" style="min-height: 70px;" placeholder="Brief high-level overview of your responsibilities and platform scale..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="entry-exp-bullets">Responsibilities & Technical Impacts (One per line) *</label>
+                    <textarea id="entry-exp-bullets" class="form-textarea" style="min-height: 120px; font-family: monospace; font-size: 13px;" placeholder="Architected microservices using Java 21, Spring Boot 3&#10;Built Apache Kafka real-time event streaming pipeline&#10;Containerized microservices with Docker"></textarea>
+                </div>
+
+                <div class="modal-footer-bar">
+                    <button type="button" id="btn-cancel-exp-modal" class="btn-admin-nav">Cancel</button>
+                    <button type="submit" class="btn-primary-glow" style="padding: 10px 24px;">
+                        <i class="fas fa-save"></i> Save Experience
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal 3: Projects Modal -->
+    <div id="proj-modal" class="admin-modal-overlay">
+        <div class="admin-modal-box">
+            <div class="modal-header-bar">
+                <h3 id="proj-modal-title">Add Featured Project</h3>
+                <button type="button" id="btn-close-proj-modal" class="btn-close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <form id="proj-form">
+                <input type="hidden" id="entry-proj-id" value="">
+
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label class="form-label" for="entry-proj-title">Project Title *</label>
+                        <input type="text" id="entry-proj-title" class="form-input" placeholder="e.g. Distributed Task & Event Pipeline" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="entry-proj-badge">Category Badge</label>
+                        <input type="text" id="entry-proj-badge" class="form-input" placeholder="e.g. Microservices / Java 21">
+                    </div>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label class="form-label" for="entry-proj-image">Thumbnail Image Path *</label>
+                        <input type="text" id="entry-proj-image" class="form-input" placeholder="resources/imgs/java-1.jpg" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="entry-proj-stack">Tech Stack Pills (Comma-separated) *</label>
+                        <input type="text" id="entry-proj-stack" class="form-input" placeholder="Java 21, Spring Boot 3, Kafka, Docker, Redis" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="entry-proj-short-desc">Short Description (Visible on Card) *</label>
+                    <textarea id="entry-proj-short-desc" class="form-textarea" style="min-height: 60px;" placeholder="High-throughput event-driven microservices architecture..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="entry-proj-bullets">Detailed Features / Impact (One per line) *</label>
+                    <textarea id="entry-proj-bullets" class="form-textarea" style="min-height: 100px; font-family: monospace; font-size: 13px;" placeholder="Architected decoupled microservices with Java 21 and Spring Boot 3&#10;Integrated Apache Kafka for real-time order & event streaming&#10;Packaged with Docker for seamless containerized deployment"></textarea>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label class="form-label" for="entry-proj-demo">Live App / Demo URL</label>
+                        <input type="url" id="entry-proj-demo" class="form-input" placeholder="https://demo.example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="entry-proj-github">GitHub Repository URL</label>
+                        <input type="url" id="entry-proj-github" class="form-input" placeholder="https://github.com/nileshs23/...">
+                    </div>
+                </div>
+
+                <div class="modal-footer-bar">
+                    <button type="button" id="btn-cancel-proj-modal" class="btn-admin-nav">Cancel</button>
+                    <button type="submit" class="btn-primary-glow" style="padding: 10px 24px;">
+                        <i class="fas fa-save"></i> Save Project
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal 4: Skills Modal -->
+    <div id="skill-modal" class="admin-modal-overlay">
+        <div class="admin-modal-box" style="max-width: 480px;">
+            <div class="modal-header-bar">
+                <h3 id="skill-modal-title">Add Skill / Technology</h3>
+                <button type="button" id="btn-close-skill-modal" class="btn-close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <form id="skill-form">
+                <input type="hidden" id="entry-skill-id" value="">
+
+                <div class="form-group">
+                    <label class="form-label" for="entry-skill-name">Skill / Technology Name *</label>
+                    <input type="text" id="entry-skill-name" class="form-input" placeholder="e.g. Apache Kafka" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="entry-skill-category">Category *</label>
+                    <select id="entry-skill-category" class="form-input" style="cursor: pointer;">
+                        <option value="Backend">Backend Engineering</option>
+                        <option value="Frontend">Frontend Development</option>
+                        <option value="DevOps & Tools">DevOps & Tools</option>
+                        <option value="Databases">Databases & Storage</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="entry-skill-percent">Proficiency Percentage: <strong id="skill-percent-val" style="color: var(--brand-primary);">100%</strong></label>
+                    <input type="range" id="entry-skill-percent" min="20" max="100" value="100" class="form-input" style="padding: 0;">
+                </div>
+
+                <div class="modal-footer-bar">
+                    <button type="button" id="btn-cancel-skill-modal" class="btn-admin-nav">Cancel</button>
+                    <button type="submit" class="btn-primary-glow" style="padding: 10px 24px;">
+                        <i class="fas fa-save"></i> Save Skill
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal 5: Change Password Modal (SHA-256) -->
+    <div id="password-modal" class="admin-modal-overlay">
+        <div class="admin-modal-box" style="max-width: 440px;">
+            <div class="modal-header-bar">
+                <h3>Change Admin Password</h3>
+                <button type="button" id="btn-close-pass-modal" class="btn-close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <form id="password-form">
+                <p style="font-size: 13px; color: #94a3b8; margin-bottom: 14px;">
+                    Your new password will be hashed with <strong>SHA-256 and client salt</strong> before saving. It is never stored in plaintext.
+                </p>
+
+                <div class="form-group">
+                    <label class="form-label" for="current-password">Current Password</label>
+                    <input type="password" id="current-password" class="form-input" placeholder="Enter current password" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="new-password">New Password</label>
+                    <input type="password" id="new-password" class="form-input" placeholder="Enter new password (min 6 chars)" required minlength="6">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="confirm-password">Confirm New Password</label>
+                    <input type="password" id="confirm-password" class="form-input" placeholder="Re-enter new password" required minlength="6">
+                </div>
+
+                <div class="modal-footer-bar">
+                    <button type="button" id="btn-cancel-pass-modal" class="btn-admin-nav">Cancel</button>
+                    <button type="submit" class="btn-primary-glow" style="padding: 10px 24px;">
+                        <i class="fas fa-lock"></i> Update Salted Hash
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal 6: GitHub Token Guide Modal -->
+    <div id="github-guide-modal" class="admin-modal-overlay">
+        <div class="admin-modal-box" style="max-width: 540px;">
+            <div class="modal-header-bar">
+                <h3><i class="fab fa-github" style="color: #fff; margin-right: 8px;"></i> How to Create Your GitHub Token</h3>
+                <button type="button" id="btn-close-guide-modal" class="btn-close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div style="font-size: 13px; color: #cbd5e1; line-height: 1.6;">
+                <p style="margin-bottom: 12px;">To commit and deploy directly from this webpage into your GitHub repository (<code>nileshs23.github.io</code>), generate a free Personal Access Token:</p>
+                <ol style="padding-left: 20px; display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px;">
+                    <li>Open <a href="https://github.com/settings/tokens?type=beta" target="_blank" rel="noopener noreferrer" style="color: var(--brand-primary); font-weight: 600;">GitHub Settings &rarr; Personal Access Tokens (Fine-grained)</a>.</li>
+                    <li>Click <strong>"Generate new token"</strong>.</li>
+                    <li>Set Token name: <code>Portfolio CMS Token</code> and Expiration (e.g. 90 days or 1 year).</li>
+                    <li>Under <strong>"Repository access"</strong>, select <strong>"Only select repositories"</strong> &rarr; pick <code>nileshs23.github.io</code>.</li>
+                    <li>Under <strong>"Permissions" &rarr; "Repository permissions"</strong>, grant:
+                        <br>&bull; <strong>Contents</strong>: <code>Access: Read and write</code>.
+                    </li>
+                    <li>Click <strong>Generate token</strong>, copy it, and paste it into the GitHub Sync input above.</li>
+                </ol>
+                <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 8px; padding: 12px; font-size: 12px; color: #6ee7b7;">
+                    <i class="fas fa-lock"></i> <strong>100% Client-Side Privacy:</strong> Your token is stored only in your browser's private session memory. It connects strictly to <code>api.github.com</code> with no middleman.
+                </div>
+            </div>
+
+            <div class="modal-footer-bar" style="margin-top: 20px;">
+                <button type="button" id="btn-close-guide-action" class="btn-primary-glow" style="padding: 8px 20px;">Got It</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 7: Deploy Progress Log Modal -->
+    <div id="deploy-modal" class="admin-modal-overlay">
+        <div class="admin-modal-box" style="max-width: 480px;">
+            <div class="modal-header-bar">
+                <h3 id="deploy-modal-title"><i class="fas fa-spinner fa-spin" style="color: #38bdf8; margin-right: 8px;"></i> Committing to GitHub...</h3>
+            </div>
+
+            <div class="deploy-steps-list" id="deploy-steps-container">
+                <div class="deploy-step-item running" id="step-auth">
+                    <i class="fas fa-circle-notch fa-spin"></i> Authenticating with GitHub API...
+                </div>
+                <div class="deploy-step-item" id="step-tree">
+                    <i class="far fa-circle"></i> Fetching repository tree and file SHA...
+                </div>
+                <div class="deploy-step-item" id="step-commit">
+                    <i class="far fa-circle"></i> Creating commit on main branch...
+                </div>
+                <div class="deploy-step-item" id="step-deploy">
+                    <i class="far fa-circle"></i> Triggering GitHub Pages live deployment...
+                </div>
+            </div>
+
+            <div id="deploy-result-box" style="display: none; padding: 12px; border-radius: 8px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); font-size: 13px; color: #6ee7b7; margin-bottom: 16px;">
+                <i class="fas fa-check-circle"></i> <strong>Commit successfully pushed!</strong><br>
+                <span id="deploy-commit-link"></span>
+            </div>
+
+            <div class="modal-footer-bar">
+                <button type="button" id="btn-close-deploy-modal" class="btn-primary-glow" style="display: none; padding: 8px 22px;">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="scripts/portfolio-data.js"></script>
+    <script>
+        (function () {
+            'use strict';
+
+            // ================================================================
+            // LEVEL 1 SECURITY: SALTED SHA-256 HASHING & BRUTE FORCE LOCKOUT
+            // ================================================================
+            const AUTH_KEY = 'nilesh_admin_auth_v1';
+            const CUSTOM_HASH_KEY = 'nilesh_custom_admin_hash';
+            const FAILED_ATTEMPTS_KEY = 'nilesh_login_failed_attempts';
+            const LOCKOUT_UNTIL_KEY = 'nilesh_login_lockout_until';
+            const GITHUB_PAT_KEY = 'nilesh_github_pat_v1';
+
+            const AUTH_SALT = 'nilesh_dev_2026_salt_!@#';
+            // Salted SHA-256 hash
+            const DEFAULT_SALTED_HASH = '05c7d57ee1627a5ac1f62fd355828f99ff7a1c759ab1ded029aa623a82afe6a8';
+            const DEFAULT_USER = 'desibatman';
+            const ALT_USER = 'nilesh';
+
+            const MAX_FAILED_ATTEMPTS = 5;
+            const LOCKOUT_DURATION_MS = 15 * 60 * 1000; // 15 minutes
+
+            // UI Elements
+            const loginContainer = document.getElementById('login-container');
+            const adminDashboard = document.getElementById('admin-dashboard');
+            const loginForm = document.getElementById('login-form');
+            const logoutBtn = document.getElementById('logout-btn');
+            const toastEl = document.getElementById('admin-toast');
+            const lockoutNotice = document.getElementById('lockout-notice');
+            const lockoutCountdown = document.getElementById('lockout-countdown');
+            const btnLoginSubmit = document.getElementById('btn-login-submit');
+
+            // Tabs elements
+            const tabButtons = document.querySelectorAll('.admin-tab-btn');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+
+            // Education elements
+            const eduModal = document.getElementById('edu-modal');
+            const eduForm = document.getElementById('edu-form');
+            const btnAddEdu = document.getElementById('btn-add-edu');
+            const btnResetEdu = document.getElementById('btn-reset-edu');
+            const btnCloseModal = document.getElementById('btn-close-modal');
+            const btnCancelModal = document.getElementById('btn-cancel-modal');
+
+            // Experience elements
+            const expModal = document.getElementById('exp-modal');
+            const expForm = document.getElementById('exp-form');
+            const btnAddExp = document.getElementById('btn-add-exp');
+            const btnResetExp = document.getElementById('btn-reset-exp');
+            const btnCloseExpModal = document.getElementById('btn-close-exp-modal');
+            const btnCancelExpModal = document.getElementById('btn-cancel-exp-modal');
+
+            // Project elements
+            const projModal = document.getElementById('proj-modal');
+            const projForm = document.getElementById('proj-form');
+            const btnAddProj = document.getElementById('btn-add-proj');
+            const btnResetProj = document.getElementById('btn-reset-proj');
+            const btnCloseProjModal = document.getElementById('btn-close-proj-modal');
+            const btnCancelProjModal = document.getElementById('btn-cancel-proj-modal');
+
+            // Skills elements
+            const skillModal = document.getElementById('skill-modal');
+            const skillForm = document.getElementById('skill-form');
+            const btnAddSkill = document.getElementById('btn-add-skill');
+            const btnResetSkills = document.getElementById('btn-reset-skills');
+            const btnCloseSkillModal = document.getElementById('btn-close-skill-modal');
+            const btnCancelSkillModal = document.getElementById('btn-cancel-skill-modal');
+            const skillPercentInput = document.getElementById('entry-skill-percent');
+            const skillPercentVal = document.getElementById('skill-percent-val');
+
+            // Password modal elements
+            const passModal = document.getElementById('password-modal');
+            const passForm = document.getElementById('password-form');
+            const btnChangePass = document.getElementById('btn-change-password');
+            const btnClosePassModal = document.getElementById('btn-close-pass-modal');
+            const btnCancelPassModal = document.getElementById('btn-cancel-pass-modal');
+
+            // GitHub elements
+            const githubPatInput = document.getElementById('github-pat-token');
+            const btnTogglePat = document.getElementById('btn-toggle-pat');
+            const btnVerifyGithub = document.getElementById('btn-verify-github');
+            const btnPullGithub = document.getElementById('btn-pull-github');
+            const btnDeployGithub = document.getElementById('btn-deploy-github');
+            const btnTokenGuide = document.getElementById('btn-token-guide');
+            const githubGuideModal = document.getElementById('github-guide-modal');
+            const btnCloseGuideModal = document.getElementById('btn-close-guide-modal');
+            const btnCloseGuideAction = document.getElementById('btn-close-guide-action');
+            const githubStatusPill = document.getElementById('github-status-pill');
+            const githubStatusText = document.getElementById('github-status-text');
+
+            // Deploy progress modal elements
+            const deployModal = document.getElementById('deploy-modal');
+            const deployModalTitle = document.getElementById('deploy-modal-title');
+            const stepAuth = document.getElementById('step-auth');
+            const stepTree = document.getElementById('step-tree');
+            const stepCommit = document.getElementById('step-commit');
+            const stepDeploy = document.getElementById('step-deploy');
+            const deployResultBox = document.getElementById('deploy-result-box');
+            const deployCommitLink = document.getElementById('deploy-commit-link');
+            const btnCloseDeployModal = document.getElementById('btn-close-deploy-modal');
+
+            // Data backup elements
+            const btnExportJson = document.getElementById('btn-export-json');
+            const btnImportTrigger = document.getElementById('btn-import-trigger');
+            const importFileInput = document.getElementById('import-file-input');
+
+            // Toast helper
+            function showToast(message, type = 'toast-success') {
+                toastEl.className = 'toast-notice ' + type;
+                toastEl.innerHTML = `<i class="fas fa-check-circle"></i> <span>${message}</span>`;
+                toastEl.classList.add('show');
+                setTimeout(() => {
+                    toastEl.classList.remove('show');
+                }, 3500);
+            }
+
+            // Async SHA-256 Hashing with Salt
+            async function hashPassword(salt, password) {
+                const encoder = new TextEncoder();
+                const data = encoder.encode(salt + ':' + password);
+                const buffer = await crypto.subtle.digest('SHA-256', data);
+                return Array.from(new Uint8Array(buffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+            }
+
+            // Check brute force lockout state
+            let lockoutTimerInterval = null;
+            function checkLockout() {
+                const lockoutUntil = parseInt(localStorage.getItem(LOCKOUT_UNTIL_KEY) || '0', 10);
+                const now = Date.now();
+                if (lockoutUntil > now) {
+                    lockoutNotice.classList.add('active');
+                    btnLoginSubmit.disabled = true;
+                    btnLoginSubmit.style.opacity = '0.5';
+
+                    if (lockoutTimerInterval) clearInterval(lockoutTimerInterval);
+                    lockoutTimerInterval = setInterval(() => {
+                        const remaining = Math.max(0, lockoutUntil - Date.now());
+                        if (remaining <= 0) {
+                            clearInterval(lockoutTimerInterval);
+                            localStorage.removeItem(LOCKOUT_UNTIL_KEY);
+                            localStorage.removeItem(FAILED_ATTEMPTS_KEY);
+                            lockoutNotice.classList.remove('active');
+                            btnLoginSubmit.disabled = false;
+                            btnLoginSubmit.style.opacity = '1';
+                        } else {
+                            const minutes = Math.floor(remaining / 60000);
+                            const seconds = Math.floor((remaining % 60000) / 1000);
+                            lockoutCountdown.textContent = `Too many invalid attempts. Try again in ${minutes}m ${seconds.toString().padStart(2, '0')}s.`;
+                        }
+                    }, 1000);
+                    return true;
+                } else {
+                    lockoutNotice.classList.remove('active');
+                    btnLoginSubmit.disabled = false;
+                    btnLoginSubmit.style.opacity = '1';
+                    return false;
+                }
+            }
+
+            // Check Auth on load
+            function checkAuth() {
+                const isAuth = localStorage.getItem(AUTH_KEY) === 'true' || sessionStorage.getItem(AUTH_KEY) === 'true';
+                if (isAuth) {
+                    loginContainer.style.display = 'none';
+                    adminDashboard.style.display = 'block';
+                    loadAllTabs();
+                    initGitHubIntegration();
+                } else {
+                    loginContainer.style.display = 'flex';
+                    adminDashboard.style.display = 'none';
+                    checkLockout();
+                }
+            }
+
+            // Login Handler with Salted SHA-256 and Rate-Limiting
+            loginForm.addEventListener('submit', async function (e) {
+                e.preventDefault();
+                if (checkLockout()) return;
+
+                const username = document.getElementById('login-username').value.trim();
+                const password = document.getElementById('login-password').value.trim();
+                const rememberMe = document.getElementById('remember-me').checked;
+
+                const storedHash = localStorage.getItem(CUSTOM_HASH_KEY) || DEFAULT_SALTED_HASH;
+                const isUserValid = username.toLowerCase() === DEFAULT_USER || username.toLowerCase() === ALT_USER;
+
+                const computedHash = await hashPassword(AUTH_SALT, password);
+
+                if (isUserValid && computedHash === storedHash) {
+                    // Reset failed attempts
+                    localStorage.removeItem(FAILED_ATTEMPTS_KEY);
+                    localStorage.removeItem(LOCKOUT_UNTIL_KEY);
+
+                    if (rememberMe) {
+                        localStorage.setItem(AUTH_KEY, 'true');
+                    } else {
+                        sessionStorage.setItem(AUTH_KEY, 'true');
+                    }
+                    showToast('Welcome back, Nilesh!');
+                    checkAuth();
+                } else {
+                    let attempts = parseInt(localStorage.getItem(FAILED_ATTEMPTS_KEY) || '0', 10) + 1;
+                    localStorage.setItem(FAILED_ATTEMPTS_KEY, attempts.toString());
+
+                    if (attempts >= MAX_FAILED_ATTEMPTS) {
+                        localStorage.setItem(LOCKOUT_UNTIL_KEY, (Date.now() + LOCKOUT_DURATION_MS).toString());
+                        checkLockout();
+                        showToast('Maximum attempts exceeded. Locked out for 15 minutes.', 'toast-error');
+                    } else {
+                        const remaining = MAX_FAILED_ATTEMPTS - attempts;
+                        showToast(`Invalid credentials. ${remaining} attempt${remaining === 1 ? '' : 's'} remaining.`, 'toast-error');
+                    }
+                }
+            });
+
+            // Logout
+            logoutBtn.addEventListener('click', function () {
+                localStorage.removeItem(AUTH_KEY);
+                sessionStorage.removeItem(AUTH_KEY);
+                showToast('Logged out successfully.');
+                checkAuth();
+            });
+
+            // Tab Switching
+            tabButtons.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const targetTab = this.getAttribute('data-tab');
+                    tabButtons.forEach(b => b.classList.remove('active'));
+                    tabPanes.forEach(p => p.classList.remove('active'));
+
+                    this.classList.add('active');
+                    const targetEl = document.getElementById(targetTab);
+                    if (targetEl) targetEl.classList.add('active');
+                });
+            });
+
+            // ================================================================
+            // LEVEL 3: GITHUB REST API DIRECT SYNC & DEPLOYMENT
+            // ================================================================
+            const GITHUB_OWNER = 'nileshs23';
+            const GITHUB_REPO = 'nileshs23.github.io';
+            const GITHUB_BRANCH = 'main';
+
+            function getGitHubToken() {
+                return sessionStorage.getItem(GITHUB_PAT_KEY) || localStorage.getItem(GITHUB_PAT_KEY) || '';
+            }
+
+            function setGitHubToken(token) {
+                sessionStorage.setItem(GITHUB_PAT_KEY, token);
+                localStorage.setItem(GITHUB_PAT_KEY, token);
+            }
+
+            function initGitHubIntegration() {
+                const savedToken = getGitHubToken();
+                if (savedToken) {
+                    githubPatInput.value = savedToken;
+                    verifyGitHubConnection(savedToken, false);
+                }
+            }
+
+            // Toggle PAT Visibility
+            btnTogglePat.addEventListener('click', function () {
+                const isPass = githubPatInput.type === 'password';
+                githubPatInput.type = isPass ? 'text' : 'password';
+                this.innerHTML = isPass ? '<i class="fas fa-eye-slash"></i>' : '<i class="fas fa-eye"></i>';
+            });
+
+            // Open Guide Modal
+            btnTokenGuide.addEventListener('click', () => githubGuideModal.classList.add('active'));
+            btnCloseGuideModal.addEventListener('click', () => githubGuideModal.classList.remove('active'));
+            btnCloseGuideAction.addEventListener('click', () => githubGuideModal.classList.remove('active'));
+
+            // Verify GitHub Token
+            async function verifyGitHubConnection(token, showSuccessToast = true) {
+                if (!token) {
+                    showToast('Please enter your GitHub Personal Access Token.', 'toast-error');
+                    return false;
+                }
+
+                try {
+                    const res = await fetch('https://api.github.com/user', {
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'Accept': 'application/vnd.github.v3+json'
+                        }
+                    });
+
+                    if (res.ok) {
+                        const user = await res.json();
+                        setGitHubToken(token);
+                        githubStatusPill.className = 'github-status-pill connected';
+                        githubStatusText.innerHTML = `Connected as <strong>${user.login}</strong> (Repo: ${GITHUB_REPO})`;
+                        if (showSuccessToast) showToast(`Connected to GitHub as @${user.login}!`);
+                        return true;
+                    } else {
+                        githubStatusPill.className = 'github-status-pill';
+                        githubStatusText.textContent = 'Token Invalid or Expired';
+                        if (showSuccessToast) showToast('GitHub token invalid or unauthorized.', 'toast-error');
+                        return false;
+                    }
+                } catch (e) {
+                    githubStatusPill.className = 'github-status-pill';
+                    githubStatusText.textContent = 'Connection Error';
+                    if (showSuccessToast) showToast('Network error connecting to api.github.com', 'toast-error');
+                    return false;
+                }
+            }
+
+            btnVerifyGithub.addEventListener('click', function () {
+                const token = githubPatInput.value.trim();
+                verifyGitHubConnection(token, true);
+            });
+
+            // Pull Latest from GitHub
+            btnPullGithub.addEventListener('click', async function () {
+                const token = getGitHubToken() || githubPatInput.value.trim();
+                showToast('Fetching latest portfolio data from GitHub...');
+
+                try {
+                    const headers = { 'Accept': 'application/vnd.github.v3+json' };
+                    if (token) headers['Authorization'] = `Bearer ${token}`;
+
+                    const res = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/data/portfolio.json?ref=${GITHUB_BRANCH}&t=${Date.now()}`, { headers });
+                    if (!res.ok) throw new Error('Status: ' + res.status);
+
+                    const fileData = await res.json();
+                    const contentStr = decodeURIComponent(escape(atob(fileData.content)));
+                    const parsed = JSON.parse(contentStr);
+
+                    if (window.PortfolioData && parsed) {
+                        window.PortfolioData.setAllData(parsed);
+                        loadAllTabs();
+                        showToast('Successfully synchronized latest data from GitHub repository!');
+                    }
+                } catch (err) {
+                    // Try direct raw fetch as fallback
+                    try {
+                        const rawRes = await fetch(`./data/portfolio.json?t=${Date.now()}`);
+                        if (rawRes.ok) {
+                            const rawData = await rawRes.json();
+                            window.PortfolioData.setAllData(rawData);
+                            loadAllTabs();
+                            showToast('Synchronized with local portfolio.json');
+                            return;
+                        }
+                    } catch (e) {}
+                    showToast('Could not fetch from GitHub: ' + err.message, 'toast-error');
+                }
+            });
+
+            // Helper: UTF-8 safe Base64 encoding
+            function utf8ToBase64(str) {
+                return btoa(unescape(encodeURIComponent(str)));
+            }
+
+            // Commit & Deploy directly to GitHub Pages
+            btnDeployGithub.addEventListener('click', async function () {
+                const token = getGitHubToken() || githubPatInput.value.trim();
+                if (!token) {
+                    showToast('Please enter and verify your GitHub token first.', 'toast-error');
+                    githubGuideModal.classList.add('active');
+                    return;
+                }
+
+                // Open deploy modal
+                deployModal.classList.add('active');
+                deployModalTitle.innerHTML = '<i class="fas fa-spinner fa-spin" style="color: #38bdf8; margin-right: 8px;"></i> Committing to GitHub...';
+                stepAuth.className = 'deploy-step-item running';
+                stepAuth.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Authenticating with GitHub API...';
+                stepTree.className = 'deploy-step-item';
+                stepTree.innerHTML = '<i class="far fa-circle"></i> Fetching repository tree and file SHA...';
+                stepCommit.className = 'deploy-step-item';
+                stepCommit.innerHTML = '<i class="far fa-circle"></i> Creating commit on main branch...';
+                stepDeploy.className = 'deploy-step-item';
+                stepDeploy.innerHTML = '<i class="far fa-circle"></i> Triggering GitHub Pages live deployment...';
+                deployResultBox.style.display = 'none';
+                btnCloseDeployModal.style.display = 'none';
+
+                try {
+                    // 1. Verify User
+                    const userRes = await fetch('https://api.github.com/user', {
+                        headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+                    });
+                    if (!userRes.ok) throw new Error('GitHub authentication failed. Check your token.');
+                    stepAuth.className = 'deploy-step-item success';
+                    stepAuth.innerHTML = '<i class="fas fa-check-circle"></i> Authenticated successfully';
+
+                    // 2. Fetch existing data/portfolio.json SHA
+                    stepTree.className = 'deploy-step-item running';
+                    stepTree.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Fetching file SHA for data/portfolio.json...';
+
+                    let existingSha = null;
+                    const getFileRes = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/data/portfolio.json?ref=${GITHUB_BRANCH}`, {
+                        headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+                    });
+                    if (getFileRes.ok) {
+                        const fileJson = await getFileRes.json();
+                        existingSha = fileJson.sha;
+                    }
+                    stepTree.className = 'deploy-step-item success';
+                    stepTree.innerHTML = '<i class="fas fa-check-circle"></i> Repository tree & SHA resolved';
+
+                    // 3. Prepare payload and commit
+                    stepCommit.className = 'deploy-step-item running';
+                    stepCommit.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Pushing commit directly to main branch...';
+
+                    const currentData = window.PortfolioData.getAllData();
+                    const jsonString = JSON.stringify(currentData, null, 2);
+                    const base64Content = utf8ToBase64(jsonString);
+
+                    const commitPayload = {
+                        message: `chore(portfolio): update content via admin CMS [${new Date().toISOString().slice(0, 16)}]`,
+                        content: base64Content,
+                        branch: GITHUB_BRANCH
+                    };
+                    if (existingSha) commitPayload.sha = existingSha;
+
+                    const putRes = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/data/portfolio.json`, {
+                        method: 'PUT',
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'Accept': 'application/vnd.github.v3+json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(commitPayload)
+                    });
+
+                    if (!putRes.ok) {
+                        const errData = await putRes.json();
+                        throw new Error(errData.message || 'GitHub commit failed');
+                    }
+
+                    const commitResult = await putRes.json();
+                    const commitSha = commitResult.commit.sha.substring(0, 7);
+                    const commitHtmlUrl = commitResult.commit.html_url;
+
+                    stepCommit.className = 'deploy-step-item success';
+                    stepCommit.innerHTML = `<i class="fas fa-check-circle"></i> Commit created: <code>${commitSha}</code>`;
+
+                    // 4. Deployment Triggered
+                    stepDeploy.className = 'deploy-step-item success';
+                    stepDeploy.innerHTML = '<i class="fas fa-check-circle"></i> GitHub Pages auto-build triggered';
+
+                    deployModalTitle.innerHTML = '<i class="fas fa-check-circle" style="color: #10b981; margin-right: 8px;"></i> Deployed Successfully!';
+                    deployResultBox.style.display = 'block';
+                    deployCommitLink.innerHTML = `<a href="${commitHtmlUrl}" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; text-decoration: underline;"><i class="fab fa-github"></i> View Commit on GitHub (${commitSha})</a><br><small style="color: #94a3b8;">GitHub Pages will publish your changes in ~30 seconds.</small>`;
+                    btnCloseDeployModal.style.display = 'inline-block';
+                    showToast('Changes committed and deployed to GitHub!');
+                } catch (err) {
+                    deployModalTitle.innerHTML = '<i class="fas fa-times-circle" style="color: #ef4444; margin-right: 8px;"></i> Commit Failed';
+                    stepCommit.className = 'deploy-step-item failed';
+                    stepCommit.innerHTML = `<i class="fas fa-times-circle"></i> Error: ${err.message}`;
+                    btnCloseDeployModal.style.display = 'inline-block';
+                    showToast('Deployment failed: ' + err.message, 'toast-error');
+                }
+            });
+
+            btnCloseDeployModal.addEventListener('click', function () {
+                deployModal.classList.remove('active');
+            });
+
+            // ================================================================
+            // 1. EDUCATION LOGIC
+            // ================================================================
+            function loadEducation() {
+                if (!window.PortfolioData) return;
+                const list = window.PortfolioData.getEducation();
+                const container = document.getElementById('admin-edu-list');
+                const countEl = document.getElementById('entries-count');
+                const tabCountEl = document.getElementById('tab-edu-count');
+
+                if (countEl) countEl.textContent = list.length;
+                if (tabCountEl) tabCountEl.textContent = list.length;
+
+                if (!list.length) {
+                    container.innerHTML = '<div class="empty-state-card" style="padding: 30px; text-align: center; background: #111827; border-radius: 12px;"><p style="color: #94a3b8;">No education entries found.</p></div>';
+                    refreshEduPreview();
+                    return;
+                }
+
+                let html = '';
+                list.forEach((item, index) => {
+                    const badgeClass = item.accent === 'brand' || index === 0 ? 'badge-brand' : 'badge-indigo';
+                    html += `
+                    <div class="admin-item-card" data-id="${item.id}">
+                        <div class="admin-item-content">
+                            <div class="admin-item-header">
+                                <span class="edu-badge ${badgeClass}">${window.PortfolioData.escapeHtml(item.badge || 'Education')}</span>
+                                <span class="admin-item-institution">${window.PortfolioData.escapeHtml(item.institution)}</span>
+                            </div>
+                            <div class="admin-item-degree">${window.PortfolioData.escapeHtml(item.degree)}</div>
+                            <div class="admin-item-meta">
+                                ${item.subtitle ? `<span><i class="fas fa-tag"></i> ${window.PortfolioData.escapeHtml(item.subtitle)}</span>` : ''}
+                                <span><i class="far fa-calendar-alt"></i> ${window.PortfolioData.escapeHtml(item.duration)}</span>
+                                ${item.location ? `<span><i class="fas fa-map-marker-alt"></i> ${window.PortfolioData.escapeHtml(item.location)}</span>` : ''}
+                            </div>
+                            ${item.description ? `<p class="admin-item-desc">${window.PortfolioData.escapeHtml(item.description)}</p>` : ''}
+                        </div>
+                        <div class="admin-item-controls">
+                            <div class="admin-btn-group">
+                                <button class="btn-ctrl btn-edu-up" data-id="${item.id}" title="Move Up" ${index === 0 ? 'disabled style="opacity: 0.3;"' : ''}>
+                                    <i class="fas fa-arrow-up"></i>
+                                </button>
+                                <button class="btn-ctrl btn-edu-down" data-id="${item.id}" title="Move Down" ${index === list.length - 1 ? 'disabled style="opacity: 0.3;"' : ''}>
+                                    <i class="fas fa-arrow-down"></i>
+                                </button>
+                            </div>
+                            <div class="admin-btn-group">
+                                <button class="btn-ctrl btn-ctrl-edit btn-edu-edit" data-id="${item.id}">
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+                                <button class="btn-ctrl btn-ctrl-delete btn-edu-del" data-id="${item.id}">
+                                    <i class="fas fa-trash"></i> Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>`;
+                });
+
+                container.innerHTML = html;
+                attachEduListeners();
+                refreshEduPreview();
+            }
+
+            function refreshEduPreview() {
+                if (window.PortfolioData) {
+                    window.PortfolioData.renderEducation('#admin-live-preview', { showAdminHint: false, collapsible: true });
+                }
+            }
+
+            function attachEduListeners() {
+                document.querySelectorAll('.btn-edu-edit').forEach(b => b.addEventListener('click', function () {
+                    openEditEduModal(this.getAttribute('data-id'));
+                }));
+                document.querySelectorAll('.btn-edu-del').forEach(b => b.addEventListener('click', function () {
+                    const id = this.getAttribute('data-id');
+                    if (confirm('Delete this education entry?')) {
+                        window.PortfolioData.deleteEducation(id);
+                        showToast('Education entry deleted.');
+                        loadEducation();
+                    }
+                }));
+                document.querySelectorAll('.btn-edu-up').forEach(b => b.addEventListener('click', function () {
+                    window.PortfolioData.reorderEducation(this.getAttribute('data-id'), 'up');
+                    loadEducation();
+                }));
+                document.querySelectorAll('.btn-edu-down').forEach(b => b.addEventListener('click', function () {
+                    window.PortfolioData.reorderEducation(this.getAttribute('data-id'), 'down');
+                    loadEducation();
+                }));
+            }
+
+            function openEditEduModal(id) {
+                const list = window.PortfolioData.getEducation();
+                const item = list.find(e => e.id === id);
+                if (!item) return;
+
+                document.getElementById('modal-title').textContent = 'Edit Education Entry';
+                document.getElementById('entry-id').value = item.id;
+                document.getElementById('entry-institution').value = item.institution || '';
+                document.getElementById('entry-degree').value = item.degree || '';
+                document.getElementById('entry-subtitle').value = item.subtitle || '';
+                document.getElementById('entry-duration').value = item.duration || '';
+                document.getElementById('entry-location').value = item.location || '';
+                document.getElementById('entry-badge').value = item.badge || '';
+                document.getElementById('entry-description').value = item.description || '';
+                document.getElementById('entry-link').value = item.link || '';
+                document.getElementById('entry-accent').value = item.accent || 'brand';
+                eduModal.classList.add('active');
+            }
+
+            btnAddEdu.addEventListener('click', function () {
+                document.getElementById('modal-title').textContent = 'Add Education Entry';
+                document.getElementById('entry-id').value = '';
+                eduForm.reset();
+                eduModal.classList.add('active');
+            });
+
+            btnResetEdu.addEventListener('click', function () {
+                if (confirm('Reset education entries to original defaults?')) {
+                    window.PortfolioData.resetEducation();
+                    showToast('Education reset to defaults.');
+                    loadEducation();
+                }
+            });
+
+            function closeModals() {
+                document.querySelectorAll('.admin-modal-overlay').forEach(m => m.classList.remove('active'));
+            }
+
+            btnCloseModal.addEventListener('click', closeModals);
+            btnCancelModal.addEventListener('click', closeModals);
+
+            eduForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const id = document.getElementById('entry-id').value;
+                const data = {
+                    institution: document.getElementById('entry-institution').value.trim(),
+                    degree: document.getElementById('entry-degree').value.trim(),
+                    subtitle: document.getElementById('entry-subtitle').value.trim(),
+                    duration: document.getElementById('entry-duration').value.trim(),
+                    location: document.getElementById('entry-location').value.trim(),
+                    badge: document.getElementById('entry-badge').value.trim() || 'Education',
+                    description: document.getElementById('entry-description').value.trim(),
+                    link: document.getElementById('entry-link').value.trim(),
+                    accent: document.getElementById('entry-accent').value
+                };
+
+                if (id) {
+                    window.PortfolioData.updateEducation(id, data);
+                    showToast('Education updated successfully.');
+                } else {
+                    window.PortfolioData.addEducation(data);
+                    showToast('New education added successfully.');
+                }
+                closeModals();
+                loadEducation();
+            });
+
+            // ================================================================
+            // 2. EXPERIENCE LOGIC
+            // ================================================================
+            function loadExperience() {
+                if (!window.PortfolioData) return;
+                const list = window.PortfolioData.getExperience();
+                const container = document.getElementById('admin-exp-list');
+                const countEl = document.getElementById('exp-count');
+                const tabCountEl = document.getElementById('tab-exp-count');
+
+                if (countEl) countEl.textContent = list.length;
+                if (tabCountEl) tabCountEl.textContent = list.length;
+
+                if (!list.length) {
+                    container.innerHTML = '<div class="empty-state-card" style="padding: 30px; text-align: center; background: #111827; border-radius: 12px;"><p style="color: #94a3b8;">No experience entries found.</p></div>';
+                    refreshExpPreview();
+                    return;
+                }
+
+                let html = '';
+                list.forEach((item, index) => {
+                    const badgeClass = item.isCurrent ? 'badge-brand' : 'badge-indigo';
+                    const statusText = item.isCurrent ? 'Current Role' : 'Former Role';
+                    html += `
+                    <div class="admin-item-card" data-id="${item.id}">
+                        <div class="admin-item-content">
+                            <div class="admin-item-header">
+                                <span class="edu-badge ${badgeClass}">${statusText}</span>
+                                <span class="admin-item-institution">${window.PortfolioData.escapeHtml(item.company)}</span>
+                            </div>
+                            <div class="admin-item-degree">${window.PortfolioData.escapeHtml(item.role)}</div>
+                            <div class="admin-item-meta">
+                                ${item.type ? `<span><i class="fas fa-layer-group"></i> ${window.PortfolioData.escapeHtml(item.type)}</span>` : ''}
+                                <span><i class="far fa-calendar-alt"></i> ${window.PortfolioData.escapeHtml(item.duration)}</span>
+                                ${item.location ? `<span><i class="fas fa-map-marker-alt"></i> ${window.PortfolioData.escapeHtml(item.location)}</span>` : ''}
+                            </div>
+                            ${item.summary ? `<p class="admin-item-desc">${window.PortfolioData.escapeHtml(item.summary)}</p>` : ''}
+                        </div>
+                        <div class="admin-item-controls">
+                            <div class="admin-btn-group">
+                                <button class="btn-ctrl btn-exp-up" data-id="${item.id}" title="Move Up" ${index === 0 ? 'disabled style="opacity: 0.3;"' : ''}>
+                                    <i class="fas fa-arrow-up"></i>
+                                </button>
+                                <button class="btn-ctrl btn-exp-down" data-id="${item.id}" title="Move Down" ${index === list.length - 1 ? 'disabled style="opacity: 0.3;"' : ''}>
+                                    <i class="fas fa-arrow-down"></i>
+                                </button>
+                            </div>
+                            <div class="admin-btn-group">
+                                <button class="btn-ctrl btn-ctrl-edit btn-exp-edit" data-id="${item.id}">
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+                                <button class="btn-ctrl btn-ctrl-delete btn-exp-del" data-id="${item.id}">
+                                    <i class="fas fa-trash"></i> Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>`;
+                });
+
+                container.innerHTML = html;
+                attachExpListeners();
+                refreshExpPreview();
+            }
+
+            function refreshExpPreview() {
+                if (window.PortfolioData) {
+                    window.PortfolioData.renderExperience('#admin-exp-preview', { collapsible: true });
+                }
+            }
+
+            function attachExpListeners() {
+                document.querySelectorAll('.btn-exp-edit').forEach(b => b.addEventListener('click', function () {
+                    openEditExpModal(this.getAttribute('data-id'));
+                }));
+                document.querySelectorAll('.btn-exp-del').forEach(b => b.addEventListener('click', function () {
+                    const id = this.getAttribute('data-id');
+                    if (confirm('Delete this experience entry?')) {
+                        window.PortfolioData.deleteExperience(id);
+                        showToast('Experience entry deleted.');
+                        loadExperience();
+                    }
+                }));
+                document.querySelectorAll('.btn-exp-up').forEach(b => b.addEventListener('click', function () {
+                    window.PortfolioData.reorderExperience(this.getAttribute('data-id'), 'up');
+                    loadExperience();
+                }));
+                document.querySelectorAll('.btn-exp-down').forEach(b => b.addEventListener('click', function () {
+                    window.PortfolioData.reorderExperience(this.getAttribute('data-id'), 'down');
+                    loadExperience();
+                }));
+            }
+
+            function openEditExpModal(id) {
+                const list = window.PortfolioData.getExperience();
+                const item = list.find(e => e.id === id);
+                if (!item) return;
+
+                document.getElementById('exp-modal-title').textContent = 'Edit Work Experience';
+                document.getElementById('entry-exp-id').value = item.id;
+                document.getElementById('entry-exp-company').value = item.company || '';
+                document.getElementById('entry-exp-role').value = item.role || '';
+                document.getElementById('entry-exp-type').value = item.type || '';
+                document.getElementById('entry-exp-duration').value = item.duration || '';
+                document.getElementById('entry-exp-location').value = item.location || '';
+                document.getElementById('entry-exp-current').checked = !!item.isCurrent;
+                document.getElementById('entry-exp-summary').value = item.summary || '';
+                document.getElementById('entry-exp-bullets').value = (item.bullets || []).join('\n');
+                expModal.classList.add('active');
+            }
+
+            btnAddExp.addEventListener('click', function () {
+                document.getElementById('exp-modal-title').textContent = 'Add Work Experience';
+                document.getElementById('entry-exp-id').value = '';
+                expForm.reset();
+                expModal.classList.add('active');
+            });
+
+            btnResetExp.addEventListener('click', function () {
+                if (confirm('Reset experience entries to defaults (greytHR + PwC)?')) {
+                    window.PortfolioData.resetExperience();
+                    showToast('Experience reset to defaults.');
+                    loadExperience();
+                }
+            });
+
+            btnCloseExpModal.addEventListener('click', closeModals);
+            btnCancelExpModal.addEventListener('click', closeModals);
+
+            expForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const id = document.getElementById('entry-exp-id').value;
+                const bullets = document.getElementById('entry-exp-bullets').value
+                    .split('\n')
+                    .map(b => b.trim())
+                    .filter(b => b.length > 0);
+
+                const data = {
+                    company: document.getElementById('entry-exp-company').value.trim(),
+                    role: document.getElementById('entry-exp-role').value.trim(),
+                    type: document.getElementById('entry-exp-type').value.trim(),
+                    duration: document.getElementById('entry-exp-duration').value.trim(),
+                    location: document.getElementById('entry-exp-location').value.trim(),
+                    isCurrent: document.getElementById('entry-exp-current').checked,
+                    summary: document.getElementById('entry-exp-summary').value.trim(),
+                    bullets: bullets
+                };
+
+                if (id) {
+                    window.PortfolioData.updateExperience(id, data);
+                    showToast('Experience updated successfully.');
+                } else {
+                    window.PortfolioData.addExperience(data);
+                    showToast('New role added successfully.');
+                }
+                closeModals();
+                loadExperience();
+            });
+
+            // ================================================================
+            // 3. FEATURED PROJECTS LOGIC
+            // ================================================================
+            function loadProjects() {
+                if (!window.PortfolioData) return;
+                const list = window.PortfolioData.getProjects();
+                const container = document.getElementById('admin-proj-list');
+                const countEl = document.getElementById('proj-count');
+                const tabCountEl = document.getElementById('tab-proj-count');
+
+                if (countEl) countEl.textContent = list.length;
+                if (tabCountEl) tabCountEl.textContent = list.length;
+
+                if (!list.length) {
+                    container.innerHTML = '<div class="empty-state-card" style="padding: 30px; text-align: center; background: #111827; border-radius: 12px;"><p style="color: #94a3b8;">No projects found.</p></div>';
+                    refreshProjPreview();
+                    return;
+                }
+
+                let html = '';
+                list.forEach((item, index) => {
+                    const stackPills = (item.stack || []).map(s => `<span class="stack-pill" style="font-size: 11px; padding: 2px 8px;">${window.PortfolioData.escapeHtml(s)}</span>`).join(' ');
+                    html += `
+                    <div class="admin-item-card" data-id="${item.id}">
+                        <div class="admin-item-content">
+                            <div class="admin-proj-header">
+                                <img src="${item.image || 'resources/imgs/web-1.jpg'}" class="admin-proj-thumb" alt="${window.PortfolioData.escapeHtml(item.title)}" onerror="this.src='resources/imgs/web-1.jpg'">
+                                <div>
+                                    <span class="edu-badge badge-brand">${window.PortfolioData.escapeHtml(item.badge || 'Engineering')}</span>
+                                    <div class="admin-item-degree" style="margin-top: 4px;">${window.PortfolioData.escapeHtml(item.title)}</div>
+                                </div>
+                            </div>
+                            <p class="admin-item-desc">${window.PortfolioData.escapeHtml(item.shortDesc)}</p>
+                            <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px;">
+                                ${stackPills}
+                            </div>
+                        </div>
+                        <div class="admin-item-controls">
+                            <div class="admin-btn-group">
+                                <button class="btn-ctrl btn-proj-up" data-id="${item.id}" title="Move Up" ${index === 0 ? 'disabled style="opacity: 0.3;"' : ''}>
+                                    <i class="fas fa-arrow-up"></i>
+                                </button>
+                                <button class="btn-ctrl btn-proj-down" data-id="${item.id}" title="Move Down" ${index === list.length - 1 ? 'disabled style="opacity: 0.3;"' : ''}>
+                                    <i class="fas fa-arrow-down"></i>
+                                </button>
+                            </div>
+                            <div class="admin-btn-group">
+                                <button class="btn-ctrl btn-ctrl-edit btn-proj-edit" data-id="${item.id}">
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+                                <button class="btn-ctrl btn-ctrl-delete btn-proj-del" data-id="${item.id}">
+                                    <i class="fas fa-trash"></i> Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>`;
+                });
+
+                container.innerHTML = html;
+                attachProjListeners();
+                refreshProjPreview();
+            }
+
+            function refreshProjPreview() {
+                const previewEl = document.getElementById('admin-proj-preview');
+                if (!previewEl || !window.PortfolioData) return;
+                const list = window.PortfolioData.getProjects();
+                if (!list.length) {
+                    previewEl.innerHTML = '<p style="color: #94a3b8;">No projects available to preview.</p>';
+                    return;
+                }
+                const firstTwo = list.slice(0, 2);
+                let html = '<div style="display: flex; flex-direction: column; gap: 16px;">';
+                firstTwo.forEach(item => {
+                    html += `
+                    <div class="project-card-carousel" style="width: 100%; max-width: 100%; border: 1px solid var(--border-subtle);">
+                        <div class="project-thumbnail-carousel">
+                            <img src="${item.image || 'resources/imgs/web-1.jpg'}" alt="${window.PortfolioData.escapeHtml(item.title)}">
+                            <span class="project-badge-pill">${window.PortfolioData.escapeHtml(item.badge || 'Project')}</span>
+                        </div>
+                        <div class="project-content-carousel">
+                            <h4 style="font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 6px;">${window.PortfolioData.escapeHtml(item.title)}</h4>
+                            <p style="font-size: 12px; color: #94a3b8; line-height: 1.5;">${window.PortfolioData.escapeHtml(item.shortDesc)}</p>
+                        </div>
+                    </div>`;
+                });
+                html += '</div>';
+                previewEl.innerHTML = html;
+            }
+
+            function attachProjListeners() {
+                document.querySelectorAll('.btn-proj-edit').forEach(b => b.addEventListener('click', function () {
+                    openEditProjModal(this.getAttribute('data-id'));
+                }));
+                document.querySelectorAll('.btn-proj-del').forEach(b => b.addEventListener('click', function () {
+                    const id = this.getAttribute('data-id');
+                    if (confirm('Delete this project?')) {
+                        window.PortfolioData.deleteProject(id);
+                        showToast('Project deleted successfully.');
+                        loadProjects();
+                    }
+                }));
+                document.querySelectorAll('.btn-proj-up').forEach(b => b.addEventListener('click', function () {
+                    window.PortfolioData.reorderProject(this.getAttribute('data-id'), 'up');
+                    loadProjects();
+                }));
+                document.querySelectorAll('.btn-proj-down').forEach(b => b.addEventListener('click', function () {
+                    window.PortfolioData.reorderProject(this.getAttribute('data-id'), 'down');
+                    loadProjects();
+                }));
+            }
+
+            function openEditProjModal(id) {
+                const list = window.PortfolioData.getProjects();
+                const item = list.find(e => e.id === id);
+                if (!item) return;
+
+                document.getElementById('proj-modal-title').textContent = 'Edit Featured Project';
+                document.getElementById('entry-proj-id').value = item.id;
+                document.getElementById('entry-proj-title').value = item.title || '';
+                document.getElementById('entry-proj-badge').value = item.badge || '';
+                document.getElementById('entry-proj-image').value = item.image || '';
+                document.getElementById('entry-proj-short-desc').value = item.shortDesc || '';
+                document.getElementById('entry-proj-bullets').value = (item.bullets || []).join('\n');
+                document.getElementById('entry-proj-stack').value = (item.stack || []).join(', ');
+                document.getElementById('entry-proj-demo').value = item.demoUrl || '';
+                document.getElementById('entry-proj-github').value = item.githubUrl || '';
+                projModal.classList.add('active');
+            }
+
+            btnAddProj.addEventListener('click', function () {
+                document.getElementById('proj-modal-title').textContent = 'Add Featured Project';
+                document.getElementById('entry-proj-id').value = '';
+                projForm.reset();
+                projModal.classList.add('active');
+            });
+
+            btnResetProj.addEventListener('click', function () {
+                if (confirm('Reset projects to default list?')) {
+                    window.PortfolioData.resetProjects();
+                    showToast('Projects reset to defaults.');
+                    loadProjects();
+                }
+            });
+
+            btnCloseProjModal.addEventListener('click', closeModals);
+            btnCancelProjModal.addEventListener('click', closeModals);
+
+            projForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const id = document.getElementById('entry-proj-id').value;
+                const bullets = document.getElementById('entry-proj-bullets').value
+                    .split('\n')
+                    .map(b => b.trim())
+                    .filter(b => b.length > 0);
+                const stack = document.getElementById('entry-proj-stack').value
+                    .split(',')
+                    .map(s => s.trim())
+                    .filter(s => s.length > 0);
+
+                const data = {
+                    title: document.getElementById('entry-proj-title').value.trim(),
+                    badge: document.getElementById('entry-proj-badge').value.trim() || 'Software Project',
+                    image: document.getElementById('entry-proj-image').value.trim() || 'resources/imgs/web-1.jpg',
+                    shortDesc: document.getElementById('entry-proj-short-desc').value.trim(),
+                    bullets: bullets,
+                    stack: stack,
+                    demoUrl: document.getElementById('entry-proj-demo').value.trim(),
+                    githubUrl: document.getElementById('entry-proj-github').value.trim()
+                };
+
+                if (id) {
+                    window.PortfolioData.updateProject(id, data);
+                    showToast('Project updated successfully.');
+                } else {
+                    window.PortfolioData.addProject(data);
+                    showToast('New project added successfully.');
+                }
+                closeModals();
+                loadProjects();
+            });
+
+            // ================================================================
+            // 4. SKILLS & TECH STACK LOGIC
+            // ================================================================
+            function loadSkills() {
+                if (!window.PortfolioData) return;
+                const skills = window.PortfolioData.getSkills();
+                const container = document.getElementById('admin-skills-container');
+                const tabCountEl = document.getElementById('tab-skills-count');
+
+                if (tabCountEl) tabCountEl.textContent = skills.length;
+
+                // Group by category
+                const categories = {};
+                skills.forEach(s => {
+                    const cat = s.category || 'Backend';
+                    if (!categories[cat]) categories[cat] = [];
+                    categories[cat].push(s);
+                });
+
+                let html = '';
+                Object.keys(categories).forEach(catName => {
+                    const items = categories[catName];
+                    html += `
+                    <div class="admin-skills-category">
+                        <h4><i class="fas fa-layer-group" style="color: var(--brand-primary);"></i> ${window.PortfolioData.escapeHtml(catName)} (${items.length})</h4>
+                        <div class="skills-manager-grid">`;
+
+                    items.forEach(item => {
+                        html += `
+                        <div class="skill-manage-card" data-id="${item.id}">
+                            <div class="skill-manage-info">
+                                <div class="skill-manage-name">
+                                    ${window.PortfolioData.escapeHtml(item.name)}
+                                    <span style="color: var(--brand-primary); font-size: 12px; float: right;">${item.percent}%</span>
+                                </div>
+                                <div class="skill-manage-bar">
+                                    <div class="skill-manage-fill" style="width: ${item.percent}%;"></div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 4px;">
+                                <button class="btn-ctrl btn-skill-edit" data-id="${item.id}" title="Edit">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </button>
+                                <button class="btn-ctrl btn-ctrl-delete btn-skill-del" data-id="${item.id}" title="Delete">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>`;
+                    });
+
+                    html += `
+                        </div>
+                    </div>`;
+                });
+
+                container.innerHTML = html;
+                attachSkillsListeners();
+            }
+
+            function attachSkillsListeners() {
+                document.querySelectorAll('.btn-skill-edit').forEach(b => b.addEventListener('click', function () {
+                    openEditSkillModal(this.getAttribute('data-id'));
+                }));
+                document.querySelectorAll('.btn-skill-del').forEach(b => b.addEventListener('click', function () {
+                    const id = this.getAttribute('data-id');
+                    if (confirm('Delete this skill?')) {
+                        window.PortfolioData.deleteSkill(id);
+                        showToast('Skill deleted.');
+                        loadSkills();
+                    }
+                }));
+            }
+
+            if (skillPercentInput && skillPercentVal) {
+                skillPercentInput.addEventListener('input', function () {
+                    skillPercentVal.textContent = this.value + '%';
+                });
+            }
+
+            function openEditSkillModal(id) {
+                const skills = window.PortfolioData.getSkills();
+                const item = skills.find(s => s.id === id);
+                if (!item) return;
+
+                document.getElementById('skill-modal-title').textContent = 'Edit Skill / Technology';
+                document.getElementById('entry-skill-id').value = item.id;
+                document.getElementById('entry-skill-name').value = item.name || '';
+                document.getElementById('entry-skill-category').value = item.category || 'Backend';
+                document.getElementById('entry-skill-percent').value = item.percent || 100;
+                document.getElementById('skill-percent-val').textContent = (item.percent || 100) + '%';
+                skillModal.classList.add('active');
+            }
+
+            btnAddSkill.addEventListener('click', function () {
+                document.getElementById('skill-modal-title').textContent = 'Add Skill / Technology';
+                document.getElementById('entry-skill-id').value = '';
+                skillForm.reset();
+                document.getElementById('entry-skill-percent').value = 100;
+                document.getElementById('skill-percent-val').textContent = '100%';
+                skillModal.classList.add('active');
+            });
+
+            btnResetSkills.addEventListener('click', function () {
+                if (confirm('Reset skills to defaults?')) {
+                    window.PortfolioData.resetSkills();
+                    showToast('Skills reset to defaults.');
+                    loadSkills();
+                }
+            });
+
+            btnCloseSkillModal.addEventListener('click', closeModals);
+            btnCancelSkillModal.addEventListener('click', closeModals);
+
+            skillForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const id = document.getElementById('entry-skill-id').value;
+                const data = {
+                    name: document.getElementById('entry-skill-name').value.trim(),
+                    category: document.getElementById('entry-skill-category').value,
+                    percent: parseInt(document.getElementById('entry-skill-percent').value, 10) || 100
+                };
+
+                if (id) {
+                    window.PortfolioData.updateSkill(id, data);
+                    showToast('Skill updated successfully.');
+                } else {
+                    window.PortfolioData.addSkill(data);
+                    showToast('New skill added successfully.');
+                }
+                closeModals();
+                loadSkills();
+            });
+
+            // ================================================================
+            // 5. CHANGE PASSWORD (SHA-256 HASHED)
+            // ================================================================
+            btnChangePass.addEventListener('click', function () {
+                passForm.reset();
+                passModal.classList.add('active');
+            });
+
+            btnClosePassModal.addEventListener('click', closeModals);
+            btnCancelPassModal.addEventListener('click', closeModals);
+
+            passForm.addEventListener('submit', async function (e) {
+                e.preventDefault();
+                const cur = document.getElementById('current-password').value.trim();
+                const newP = document.getElementById('new-password').value.trim();
+                const conf = document.getElementById('confirm-password').value.trim();
+
+                const storedHash = localStorage.getItem(CUSTOM_HASH_KEY) || DEFAULT_SALTED_HASH;
+                const curHash = await hashPassword(AUTH_SALT, cur);
+
+                if (curHash !== storedHash) {
+                    showToast('Current password does not match.', 'toast-error');
+                    return;
+                }
+                if (newP !== conf) {
+                    showToast('New passwords do not match.', 'toast-error');
+                    return;
+                }
+
+                const newHash = await hashPassword(AUTH_SALT, newP);
+                localStorage.setItem(CUSTOM_HASH_KEY, newHash);
+                showToast('Admin password updated and salted with SHA-256!');
+                closeModals();
+            });
+
+            // ================================================================
+            // 6. FULL BACKUP EXPORT & IMPORT
+            // ================================================================
+            btnExportJson.addEventListener('click', function () {
+                const bundle = window.PortfolioData.getAllData();
+                const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(bundle, null, 2));
+                const downloadAnchor = document.createElement('a');
+                downloadAnchor.setAttribute('href', dataStr);
+                downloadAnchor.setAttribute('download', `nilesh_portfolio_backup_${new Date().toISOString().slice(0, 10)}.json`);
+                document.body.appendChild(downloadAnchor);
+                downloadAnchor.click();
+                downloadAnchor.remove();
+                showToast('Portfolio backup JSON downloaded.');
+            });
+
+            btnImportTrigger.addEventListener('click', function () {
+                importFileInput.click();
+            });
+
+            importFileInput.addEventListener('change', function (e) {
+                const file = e.target.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    try {
+                        const parsed = JSON.parse(event.target.result);
+                        window.PortfolioData.setAllData(parsed);
+                        showToast('Backup imported successfully!');
+                        loadAllTabs();
+                    } catch (err) {
+                        showToast('Invalid JSON file format.', 'toast-error');
+                    }
+                    importFileInput.value = '';
+                };
+                reader.readAsText(file);
+            });
+
+            // Load all tabs
+            function loadAllTabs() {
+                loadEducation();
+                loadExperience();
+                loadProjects();
+                loadSkills();
+            }
+
+            // Init auth check
+            checkAuth();
+        })();
+    </script>
+</body>
+</html>

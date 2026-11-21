@@ -1,624 +1,1409 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Nilesh Solanki</title>
-    <link rel="icon" href="./resources/imgs/logo.png">
-    <!--main styles -->
-    <link rel="stylesheet" href="styles/css/index.css">
-    <link rel="stylesheet" href="styles/css/socialMedia.css">
-    <link rel="stylesheet" href="styles/css/statsMasai.css">
-    <link rel="stylesheet" href="styles/css/project.css">
-    <!-- <link rel="stylesheet" href="styles/css/education.css"> -->
+    <title>Nilesh Solanki | Java Backend Engineer at greytHR</title>
+    <link rel="icon" href="./resources/imgs/logo.svg">
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
-    <!-- Optionally, include the theme (if you don't want to struggle to write the CSS) -->
-    <link rel="stylesheet" href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Modern Stylesheet -->
+    <link rel="stylesheet" href="styles/css/modern.css">
 </head>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+<body id="home">
 
-    <!-- page Navigation -->
-    <nav class="navbar custom-navbar navbar-expand-md navbar-light fixed-top" data-spy="affix" data-offset-top="10">
-        <div class="container">
-            <a class="navbar-brand" href="#home">
-                <img src="resources/imgs/logo.png" alt="">
-            </a>
-            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
-                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About Me</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#skills">Skills</a>
-                    </li>
+    <!-- Toast Notification -->
+    <div id="main-toast" class="toast-notice"></div>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#statistics">Statistics</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#education">Education/Experience</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/resources/resume/Resume.pdf" class="ml-4 nav-link btn btn-primary btn-sm rounded"
-                            download="Nilesh_Solanki_Resume "  onclick="fileOpener()">Resume</a>
-                    </li>
+    <!-- Modern Glassmorphism Navigation -->
+    <nav class="modern-nav" id="main-navbar">
+        <div class="container-modern">
+            <div class="nav-inner">
+                <a href="#home" class="nav-brand">
+                    <img src="resources/imgs/logo.svg" alt="Nilesh Solanki Logo">
+                    <span>Nilesh<span class="brand-highlight">.dev</span></span>
+                </a>
+
+                <ul class="nav-links" id="nav-menu">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#education">Education & Experience</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
+
+                <div class="nav-actions">
+                    <!-- Recruiter Portal Link Button -->
+                    <a href="recruiter.html" class="btn-recruiter-pill" title="Dedicated Recruiter & Hiring Manager Page">
+                        <i class="fas fa-briefcase"></i> Recruiter View
+                    </a>
+
+                    <!-- Resume Download CTA -->
+                    <a href="resources/resume/Resume.pdf" download="Nilesh_Solanki_Resume" class="btn-resume">
+                        <i class="fas fa-file-download"></i> Resume
+                    </a>
+
+                    <!-- Theme Switcher Dropdown -->
+                    <div class="theme-picker-wrapper">
+                        <button class="btn-theme-toggle" id="theme-toggle-btn" aria-label="Toggle Color Theme" title="Switch Theme">
+                            <i class="fas fa-palette"></i>
+                            <span>Theme</span>
+                        </button>
+                        <div class="theme-dropdown-menu" id="theme-dropdown">
+                            <button class="theme-opt-btn active" data-theme="obsidian"><span class="theme-swatch" style="background:#ff6e42"></span> Obsidian</button>
+                            <button class="theme-opt-btn" data-theme="emerald"><span class="theme-swatch" style="background:#10b981"></span> Emerald</button>
+                            <button class="theme-opt-btn" data-theme="cyberpunk"><span class="theme-swatch" style="background:#ec4899"></span> Cyberpunk</button>
+                            <button class="theme-opt-btn" data-theme="sapphire"><span class="theme-swatch" style="background:#38bdf8"></span> Sapphire</button>
+                            <button class="theme-opt-btn" data-theme="amber"><span class="theme-swatch" style="background:#f59e0b"></span> Amber</button>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Hamburger Button -->
+                    <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
-    <!-- End Of Second Navigation -->
 
+    <!-- ====================================================================
+         HERO SECTION (greytHR Current Role + PwC Former)
+         ==================================================================== -->
+    <header class="hero-section">
+        <div class="container-modern">
+            <div class="hero-grid">
+                
+                <!-- Hero Left: Content -->
+                <div>
+                    <div class="hero-status-pill">
+                        <span class="status-dot"></span>
+                        Java Backend Engineer @ greytHR (2+ Years)
+                    </div>
 
-    <!-- Page Header -->
+                    <h1 class="hero-title">
+                        <span class="text-gradient">Architecting Resilient Backends.</span><br>
+                        <span class="text-accent">Java 21 • Kafka • Docker • Cloud</span>
+                    </h1>
 
-    <header class="header">
-        
-        <div class="overlay section has-img-bg" id="black">
-            
-            <h1 class="subtitle">Full Stack Developer</h1>
-            <h1 class="title">Nilesh Solanki</h1>
-            <div id="socialMedia">
-                <!--                 <a href="https://twitter.com/Nilesh8446" class="ml-4 nav-link btn btn-primary btn-sm">Twitter</a> -->
+                    <p class="hero-bio">
+                        Hi, I'm <strong>Nilesh Solanki</strong> — a <strong>Java Backend Engineer at greytHR</strong> with <strong>2+ years</strong> of experience building high-concurrency enterprise payroll and cloud HRMS microservices. Proficient in <strong>Java 21, Spring Boot 3, Apache Kafka, Docker, and AWS</strong>, with an enterprise foundation as a former <strong>Cybersecurity Specialist at PricewaterhouseCoopers (PwC)</strong>.
+                    </p>
 
-                <a href="https://www.linkedin.com/in/nilesh2398/" class="ml-4 nav-link btn btn-primary btn-sm"
-                    target="_blank">LinkedIn</a>
+                    <div class="hero-cta-group">
+                        <a href="#projects" class="btn-primary-glow">
+                            <i class="fas fa-laptop-code"></i> Explore Projects
+                        </a>
+                        <a href="recruiter.html" class="btn-secondary-modern">
+                            <i class="fas fa-user-tie"></i> Recruiter Brief
+                        </a>
+                        <a href="resources/resume/Resume.pdf" download="Nilesh_Solanki_Resume" class="btn-secondary-modern">
+                            <i class="fas fa-file-pdf"></i> Download CV
+                        </a>
+                    </div>
 
-                <a href="https://github.com/nileshs23/" target="_blank"
-                    class="ml-4 nav-link btn btn-primary btn-sm">Github</a>
+                    <div class="hero-socials">
+                        <a href="https://www.linkedin.com/in/nilesh2398/" target="_blank" rel="noopener noreferrer" class="social-pill">
+                            <i class="fab fa-linkedin" style="color: #0077b5;"></i> LinkedIn
+                        </a>
+                        <a href="https://github.com/nileshs23/" target="_blank" rel="noopener noreferrer" class="social-pill">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        <a href="https://x.com/nileshs23" target="_blank" rel="noopener noreferrer" class="social-pill">
+                            <i class="fab fa-x-twitter" style="color: #cbd5e1;"></i> X / Twitter
+                        </a>
+                        <a href="mailto:nileshs2398@gmail.com" class="social-pill">
+                            <i class="fas fa-envelope" style="color: var(--brand-primary);"></i> Email
+                        </a>
+                    </div>
+                </div>
 
-                <a href="/resources/resume/Resume.pdf" class="ml-4 nav-link btn btn-primary btn-sm"
-                    download="Nilesh_Solanki_Resume" onclick="fileOpener()">Resume</a>
+                <!-- Hero Right: Avatar Card -->
+                <div>
+                    <div class="hero-visual-card">
+                        <div class="avatar-wrapper">
+                            <img src="resources/imgs/about-1.jpg" alt="Nilesh Solanki">
+                            <div class="code-badge-floating">
+                                <i class="fas fa-terminal"></i> Java 21 • Kafka • Docker • Spring Boot 3
+                            </div>
+                        </div>
+
+                        <div class="hero-card-tags">
+                            <span class="tech-tag-sm">🏢 greytHR (Current)</span>
+                            <span class="tech-tag-sm">☕ Java 21</span>
+                            <span class="tech-tag-sm">🍃 Spring Boot 3</span>
+                            <span class="tech-tag-sm">📨 Apache Kafka</span>
+                            <span class="tech-tag-sm">🐳 Docker</span>
+                            <span class="tech-tag-sm">🛡️ Ex-PwC Security</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <!-- <img src="/resources/imgs/section.jpg" class="overlay"> -->
 
-            
-        </div>
-                <!-- <div class="shape">
-            <svg viewBox="0 0 1500 200">
-                <path
-                    d="m 0,240 h 1500.4828 v -71.92164 c 0,0 -286.2763,-81.79324 -743.19024,-81.79324 C 300.37862,86.28512 0,168.07836 0,168.07836 Z" />
-            </svg>
-        </div> -->
+            <!-- Metrics Strip -->
+            <div class="metrics-strip">
+                <div class="metric-card">
+                    <div class="metric-number">2+ Years</div>
+                    <div class="metric-label">Java Backend @ greytHR</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-number">100%</div>
+                    <div class="metric-label">Java 21 & Backend Mastery</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-number">300+</div>
+                    <div class="metric-label">DSA Problems Solved</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-number">Ex-PwC</div>
+                    <div class="metric-label">Enterprise Security Alum</div>
+                </div>
+            </div>
 
-
-
-        <div class="mouse-icon">
-            <div class="wheel"></div>
         </div>
     </header>
 
-    <section id="home" class="section pt-0">
-    </section>
-    <!-- End Of Page Header -->
-
-
-    <!-- About Section -->
-    <section class="section" id="about">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-6 pr-md-5 mb-4 mb-md-0">
-                    <h6 class="section-title mb-0">About Me</h6>
-                    <h6 class="section-subtitle mb-4">Full Stack Java Developer</h6>
-                    <p>
-                    <h5>
-                    As a <span style="color: #ff6e42;">Cybersecurity specialist</span> at <span style="color: #ff6e42;">PricewaterhouseCoopers Pvt Ltd (PwC)</span>, 
-                        he has honed his skills in safeguarding digital assets and navigating the complex landscape of cyber threats. 
-                    </h5>
-
-                    <h5>
-                        Now, transitioning into <span style="color: #ff6e42;">Full stack development</span>,
-                         he brings a unique perspective that blends security-conscious design with robust, scalable code. 
-                    </h5>
-
-                    <h5>
-                        In his Tech toolbox, you'll find <span style="color: #ff6e42;">Java</span> brews,<span style="color: #ff6e42;">SQL </span>spells, <span style="color: #ff6e42;">Spring Boot</span> scoots, and a dash of JavaScript jazz.
-                        He juggle's HTML and CSS like a circus pro and commit
-                        to Git/GitHub like it's his diary. Currently, He's on a quest to conquer React.js and AWS—no dragons too big to slay!
-                    </h5>
-                    </h5>                        
-                    <span style="color: #ff6e42;"></span>
-                </div>
-                <div class="col-md-6 pl-md-5">
-                    <div class="row">
-                        <div class="md-9 ">
-                            <img style="border-radius: 1em;" src="resources/imgs/about-1.jpg" alt=""
-                                class="w-100">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End OF About Section -->
-
-    <!-- projects Section -->
-    <section id="projects" class="section portfolio-section">
-        <div class="container">
-            <h6 class="section-title text-center">My Projects</h6>
-            <h6 class="section-subtitle mb-5 text-center">Projects That I have Developed So Far !</h6>
-            <!-- <div class="filters">
-                <a href="#" data-filter=".new" class="active">
-                    New
-                </a>
-                <a href="#" data-filter=".java">
-                    Java
-                </a>
-                <a href="#" data-filter=".web">
-                    Web
-                </a>
-                <a href="#" data-filter=".ml">
-                    ML
-                </a>
-            </div> -->
-            <div class="portfolio-container">
-
-                <!-- memeory ai pop up style-->
-                <!-- <div class="col-md-6 col-lg-4 web new">
-                    <div class="portfolio-item">
-                        <img src="assets/imgs/web-1.jpg" class="img-fluid">
-                        <div class="content-holder">
-                            <a class="img-popup" href="assets/imgs/web-1.jpg"></a>
-                            <div class="text-holder">
-                                <h6 class="title">Memory.Ai clone</h6>
-                                <p class="subtitle"></p>
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    Timely automates company time tracking, so you and your team
-                                    can focus on the work that matters. Easily Navigate through
-                                    categories And Calculate Wages.
-                                </div>
-                                <div class="alert alert-info alert-dismissible fade show" role="alert">
-                                    Tech Stack : Javascript | HTML | CSS
-                                </div>
-                                <button type="button" class="btn btn-secondary">Live Demo</button>
-                                <button type="button" class="btn btn-success">GitHub</button>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-
-
-                <div class="col-md-6 col-lg-4 web new">
-                    <div class="portfolio-item">
-                        <img src="resources/imgs/web-1.jpg" class="projectImg">
-                        <div class="projectContent">
-                            <a class="img-popup" href="resources/imgs/web-1.jpg"></a>
-                            <div class="text-holder">
-                                <h6 class="title">Memory.Ai clone</h6>
-                                <p class="subtitle"></p>
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    Timely automates company time tracking, so you and your team
-                                    can focus on the work that matters..
-                                </div>
-                                <div class="alert alert-info alert-dismissible fade show" role="alert">
-                                    Tech Stack : Javascript | HTML | CSS
-                                </div>
-                                <button type="button" class="btn btn-secondary"><a
-                                        href="https://fantastic-queijadas-e98c0f.netlify.app/" target="_blank"
-                                        style="color:white">Live
-                                        Demo</a></button>
-                                <button type="button" class="btn btn-success"><a
-                                        href="https://github.com/nileshs23/dear-shade-414" target="_blank"
-                                        style="color:white">GitHub</a></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4 web new">
-                    <div class="portfolio-item">
-                        <img src="resources/imgs/web-2.jpg" class="projectImg">
-                        <div class="projectContent">
-                            <a class="img-popup" href="resources/imgs/web-2.jpg"></a>
-                            <div class="text-holder">
-                                <h6 class="title">Deccan Herald clone</h6>
-                                <p class="subtitle"></p>
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    Indian English e-Newspaper. Having different sections of Sports,
-                                    Trending,Politics,etc.
-                                </div>
-                                <div class="alert alert-info alert-dismissible fade show" role="alert">
-                                    Tech Stack : Javascript | HTML | CSS
-                                </div>
-                                <button type="button" class="btn btn-secondary"><a
-                                        href="https://zippy-biscochitos-543e9f.netlify.app/" target="_blank"
-                                        style="color:white">Live
-                                        Demo</a></button>
-                                <button type="button" class="btn btn-success"><a
-                                        href="https://github.com/nileshs23/Deccan-Herald-Clone" target="_blank"
-                                        style="color:white">GitHub</a></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- covid 19 rest project -->
-                <div class="col-md-6 col-lg-4 new ml">
-                    <div class="portfolio-item">
-                        <img src="resources/imgs/java-2.png" class="projectImg">
-                        <div class="projectContent">
-                            <a class="img-popup" href="resources/imgs/ml-1.jpg"></a>
-                            <div class="text-holder">
-                                <h6 class="title">Sanjivani : A-Covid19-Registration-App</h6>
-                                <p class="subtitle"></p>
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    This application will facilitate the citizen with an option to register and schedule
-                                    the vaccination session online in
-                                    Centers of their choice.
-                                </div>
-
-                                <div class="alert alert-info alert-dismissible fade show" role="alert">
-                                    Tech Stack : Springboot | Java | Maven
-                                </div>
-                                <button type="button" class="btn btn-secondary"><a
-                                        href="https://drive.google.com/file/d/1kTk_M4sugF2KYPzCSktIjT6CH8PrCP8X/view?usp=drive_link"
-                                        target="_blank" style="color:white">Live
-                                        Demo</a></button>
-                                <button type="button" class="btn btn-success"><a
-                                        href="https://github.com/nileshs23/Sanjivani-A-Covid19-Registration-App"
-                                        target="_blank" style="color:white">
-                                        GitHub</a></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- techy town rest project -->
-                <div class="col-md-6 col-lg-4 new ml">
-                    <div class="portfolio-item ">
-                        <img src="resources/imgs/java-3.png" class="projectImg">
-                        <div class="projectContent">
-                            <a class="img-popup" href="resources/imgs/ml-1.jpg"></a>
-                            <div class="text-holder">
-                                <h6 class="title">Techy Town</h6>
-                                <p class="subtitle"></p>
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    RESTfull API Developed using Spring Boot. Admin and User System where user can
-                                    buy products while admin can manage them.
-                                    Back-End App Only !
-                                </div>
-                                <div class="alert alert-info alert-dismissible fade show" role="alert">
-                                    Tech Stack : Springboot | Java | Maven | AWS
-                                </div>
-
-                                <button type="button" class="btn btn-secondary"><a
-                                        href="http://techytown-env.eba-cmzrmcwr.ap-south-1.elasticbeanstalk.com"
-                                        target="_blank" style="color:white">Live
-                                        Demo</a></button>
-                                <button type="button" class="btn btn-success"><a
-                                        href="https://github.com/nileshs23/Techy-Town" target="_blank"
-                                        style="color:white">
-                                        GitHub</a></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- java student mgmt sys -->
-                <div class="col-md-6 col-lg-4 new java">
-                    <div class=" portfolio-item">
-                        <img src="resources/imgs/java-1.jpg" class="projectImg">
-                        <div class="projectContent">
-                            <a class="img-popup" href="resources/imgs/java-1.jpg"></a>
-                            <div class="text-holder">
-                                <h6 class="title">Student Management System</h6>
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    Student Management System uses database technology To
-                                    insert Students into the database. Basic CRUD operations are implemented.
-                                </div>
-                                <div class="alert alert-info alert-dismissible fade show" role="alert">
-                                    Tech Stack : Java | JDBC | Maven
-                                </div>
-
-                                <button type="button" class="btn btn-secondary"><a
-                                        href="https://drive.google.com/file/d/1ePEc9uJ6fWVfM3Z_e4nk2KmzBGO6dy6-/view?usp=drive_link"
-                                        target="_blank" style="color:white">Live
-                                        Demo</a></button>
-                                <button type="button" class="btn btn-success"><a
-                                        href="https://github.com/nileshs23/divine-society-1574" target="_blank"
-                                        style="color:white">GitHub</a></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- final year Engineer project -->
-                <!-- <div class="col-md-6 col-lg-4 new ml">
-                    <div class="portfolio-item ">
-                        <img src="resources/imgs/ml-1.jpg" class="projectImg">
-                        <div class="projectContent">
-                            <a class="img-popup" href="resources/imgs/ml-1.jpg"></a>
-                            <div class="text-holder">
-                                <h6 class="title">Covid Analysis and Prediction</h6>
-                                <p class="subtitle"></p>
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    Analysis of Covid19 with future predictions. This Project
-                                    is widely based upon some of the Machine learning algorithms.
-                                    We used Javascript to show data on website.
-                                </div>
-                                <div class="alert alert-info alert-dismissible fade show" role="alert">
-                                    Tech Stack : Python | ML | Javascript
-                                </div>
-                                <button type="button" class="btn btn-success"><a
-                                        href="https://github.com/nileshs23/Covid19-Analysis_and_Prediction"
-                                        target="_blank" style="color:white">
-                                        GitHub</a></button>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-
-            </div>
-        </div>
-    </section>
-    <!-- End of portfolio section -->
-
-    <!-- Skills Section -->
-    <section class="section" id="skills">
-        <div class="container">
-            <h6 class="section-title mb-0 text-center">Skills</h6>
-
-            <div class="row justify-content-between">
-                <div class="col-md-5">
-                    <h3 class="components-section-title font-weight-normal mt-5">Lanquages and frameworks :</h3>
-                    <hr>
-                    <small>Java: </small>
-                    <div class="progress mt-2 mb-3">
-                        <div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="25"
-                            aria-valuemin="0" aria-valuemax="100"><span>70%</span></div>
-                    </div>
-                    <small>Javascript:</small>
-                    <div class="progress mt-2 mb-3">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="25"
-                            aria-valuemin="0" aria-valuemax="100"><span>75%</span></div>
-                    </div>
-                    <small>Springboot:</small>
-                    <div class="progress mt-2 mb-3">
-                        <div class="progress-bar bg-warning" role="progressbar" style="width: 50%" aria-valuenow="25"
-                            aria-valuemin="0" aria-valuemax="100"><span>50%</span></div>
-                    </div>
-                    <small>HTML & CSS:</small>
-                    <div class="progress mt-2 mb-3">
-                        <div class="progress-bar bg-info" role="progressbar" style="width: 90%" aria-valuenow="25"
-                            aria-valuemin="0" aria-valuemax="100"><span>90%</span></div>
-                    </div>
-                    <small>Git:</small>
-                    <div class="progress mt-2 mb-3">
-                        <div class="progress-bar bg-dark" role="progressbar" style="width: 90%" aria-valuenow="25"
-                            aria-valuemin="0" aria-valuemax="100"><span>90%</span></div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <h1 class="components-section-title font-weight-normal mt-5">Tech Skills</h1>
-                    <hr>
-                    <div>
-                        <h6>RESTfull API Development.</h6>
-                        <h6>Java Development.</h6>
-                        <h6>Designing Desktop First, Responsive Design.</h6>
-                        <h6>Data Structures and algorithm.</h6>
-                    </div>
-
-                    <hr>
-                    <!-- Badges -->
-                    <p align="center">
-                        <!-- java f/w -->
-                          <img src="https://skillicons.dev/icons?i=java,spring,maven,mysql,postman"> 
-                    </p>
-
-                    <p align="center">
-                        <img src="https://skillicons.dev/icons?i=js,html,css,netlify,aws" />
-                    </p>
-
-                    <p align="center">
-                        <img src="https://skillicons.dev/icons?i=c,cpp,python,git,github"
-                    </p>
-                </div>
-            </div> <!-- End of Progress bars -->
-
-        </div>
-    </section>
-    <!-- End of skills Section -->
-
-    <!-- Statistics Section -->
-    <section class="section" id="statistics">
-        <div class="container">
-            <h6 class="section-title mb-0 text-center">Statistics</h6>
-            <h6 class="section-subtitle mb-5 text-center">GITHUB STATS</h6>
-
-            <div class="calendar">
-                <!-- Loading stuff -->
-                Loading the data just for you.
-            </div>
-
-<!--             <div id="statsMasai">
-                <img height="150em"
-                    src="https://github-readme-stats.vercel.app/api?username=nileshs23&show_icons=true&&count_private=true&include_all_commits=true&theme=vue" />
-                <img height="150em"
-                    src="https://github-readme-stats.vercel.app/api/top-langs?username=nileshs23&exclude_repo=KNN-Image-Classification&show_icons=true&layout=compact&langs_count=6" />
-                <img src="https://github-readme-streak-stats.herokuapp.com/?user=nileshs23" width="415em"
-                    height="160em" />
-            </div> -->
-
-            <div id="statsMasai">
-                <div>
-                    <p>1200+ Hrs Of Coding</p>
-                </div>
-                <div>
-                    <p>300+ DSA Questions</p>
-                </div>
-                <div>
-                    <p>10+ Mini Projects</p>
-                </div>
-                <div>
-                    <p>5+ Major Projects</p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-    <!-- End of statistics Section -->
-
-
-    <!-- Education Section -->
-    <!-- <section class="section" id="education">
-        <div class="container">
-            <div class="justify-content-center">
-                <div class="col-md-6 pr-md-5 mb-4 mb-md-0">
-                    <h6 class="section-title mb-0">Education / Experience</h6>
-                    <h6 class="section-subtitle mb-4">Degrees & Certificates</h6>
-                    <a href="https://drive.google.com/file/d/1fp4WsAePDUVZlBeuyXX0CdMT9savQry8/view?usp=sharing" class="" target="_blank" >
-                        <div class="alert alert-secondary alert-dismissible fade show edu" role="alert">
-                            <h2 style="color:red">Masai School</h2>
-                            <h5>Full Stack Web Development</h5>
-                            <h6>Java Backend Developer</h6>
-                        </div>
-                    </a>
-
-                    <a >
-                        <div class="alert alert-info alert-dismissible fade show edu" role="alert">
-                            <h2 style="color: rgb(95, 95, 136);">Sinhgad College Of Engineering, Pune (SPPU)</h2>
-                            <h6>Computer Engineering</h6>
-                        </div>
-                    </a>
-
-                <div>
-            </div>
-            
-        </div>
-
-            
-            </div>
-        </div>
-    </section> -->
-    <!-- End OF Education Section -->
-
-     <!-- Skills Section -->
-     <section class="section" id="education">
-        <div class="container">
-            <h6 class="section-title mb-0 text-center">Education/Experience</h6>
-
-            <div class="row justify-content-between">
-                <div class="col-md-5">
-                    <h3 class="components-section-title font-weight-normal mt-5">Education:</h3>
-                    <hr>
-                    <div class="alert alert-secondary alert-dismissible fade show edu" role="alert">
-                        <h2 style="color:red">Masai School</h2>
-                        <h5>Full Stack Web Development</h5>
-                        <h6>Java Backend Developer</h6>
-                    </div>
+    <!-- ====================================================================
+         ABOUT SECTION
+         ==================================================================== -->
+    <section class="section-modern" id="about">
+        <div class="container-modern">
+            <div class="about-grid">
+                
+                <div class="about-text">
+                    <span class="section-tag"><i class="fas fa-user"></i> About Me</span>
+                    <h2 class="section-title">Enterprise Backend Velocity with High-Security DNA</h2>
                     
-                    <!-- Second Edu -->
-                    <div class="alert alert-info alert-dismissible fade show edu" role="alert">
-                        <h2 style="color: rgb(95, 95, 136);">Sinhgad College Of Engineering, Pune (SPPU)</h2>
-                        <h6>Computer Engineering</h6>
+                    <p>
+                        Currently working as a <span class="pwc-highlight">Java Backend Engineer at greytHR</span> (Greytip Software) for over <strong>2 years</strong>, where I develop scalable microservices powering cloud HRMS and payroll calculation engines handling massive daily employee transaction volumes.
+                    </p>
+
+                    <p>
+                        My day-to-day engineering focuses on <span class="pwc-highlight">Java 21, Spring Boot 3, and Apache Kafka</span> for distributed event streaming (attendance regularisation, shift scheduling, payroll cycles), containerized with <span class="pwc-highlight">Docker</span>, backed by PostgreSQL/MySQL and Redis caching.
+                    </p>
+
+                    <p>
+                        Previously, I served as a <span style="color: #64748b; font-weight: 600;">Cybersecurity Specialist at PricewaterhouseCoopers Pvt Ltd (PwC)</span>, safeguarding digital assets and auditing enterprise software vulnerabilities. This background gives me a distinct advantage: writing performant backend code that is <strong>secure by design from day one</strong>.
+                    </p>
+
+                    <div class="about-features">
+                        <div class="feature-box">
+                            <div class="feature-icon"><i class="fas fa-cubes"></i></div>
+                            <h4>greytHR Cloud HRMS</h4>
+                            <p>High-throughput backend systems processing complex payroll calculation and statutory compliance workloads.</p>
+                        </div>
+                        <div class="feature-box">
+                            <div class="feature-icon"><i class="fas fa-stream"></i></div>
+                            <h4>Event-Driven Kafka</h4>
+                            <p>Real-time event streaming pipelines, consumer groups, and asynchronous message broker architectures.</p>
+                        </div>
+                        <div class="feature-box">
+                            <div class="feature-icon"><i class="fas fa-server"></i></div>
+                            <h4>Java 21 & Spring Boot 3</h4>
+                            <p>Modern virtual threads, microservices design patterns, Docker containers, and low-latency RESTful APIs.</p>
+                        </div>
+                        <div class="feature-box">
+                            <div class="feature-icon"><i class="fas fa-shield-virus"></i></div>
+                            <h4>Security-First (Ex-PwC)</h4>
+                            <p>Enterprise threat defense, OWASP Top 10 compliance, and multi-tenant data isolation.</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="col-md-6">
-                    <h1 class="components-section-title font-weight-normal mt-5">Experience</h1>
-                    <hr>
-                    <div class="alert alert-info alert-dismissible fade show edu" role="alert">
-                        <h2 style="color: rgb(95, 95, 136);">PricewaterhouseCoopers Pvt Ltd (PwC)</h2>
-                        <h6>Cybersecurity Specialist</h6>
+                <div>
+                    <div class="hero-visual-card" style="padding: 24px;">
+                        <h4 style="font-size: 18px; margin-bottom: 16px; color: #ffffff;">
+                            <i class="fas fa-quote-left" style="color: var(--brand-primary); margin-right: 8px;"></i>
+                            Engineering Philosophy
+                        </h4>
+                        <p style="font-size: 15px; color: #cbd5e1; line-height: 1.7; font-style: italic; margin-bottom: 24px;">
+                            "In mission-critical enterprise systems like HRMS and payroll, precision and uptime are non-negotiable. Combining Java 21 concurrent processing, Kafka event streams, and enterprise security guarantees systems that scale reliably under heavy corporate workloads."
+                        </p>
+
+                        <div style="background: rgba(255,255,255,0.03); border-radius: 12px; padding: 18px; border: 1px solid var(--border-subtle);">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                <span style="font-size: 13px; color: #94a3b8;">Current Role:</span>
+                                <span style="font-size: 13px; font-weight: 600; color: #10b981;">Java Backend Engineer @ greytHR</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                <span style="font-size: 13px; color: #94a3b8;">Primary Location:</span>
+                                <span style="font-size: 13px; font-weight: 600; color: #ffffff;">Pune / Bengaluru, India</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                <span style="font-size: 13px; color: #94a3b8;">Work Preference:</span>
+                                <span style="font-size: 13px; font-weight: 600; color: #38bdf8;">Remote / Hybrid / Relocation</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span style="font-size: 13px; color: #94a3b8;">Direct Contact:</span>
+                                <a href="mailto:nileshs2398@gmail.com" style="font-size: 13px; font-weight: 600; color: var(--brand-primary);">nileshs2398@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 20px; text-align: center;">
+                            <a href="recruiter.html" class="btn-recruiter-pill" style="width: 100%; justify-content: center;">
+                                <i class="fas fa-clipboard-check"></i> Read Full Recruiter Executive Summary
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div> <!-- End of Progress bars -->
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================================================
+         SKILLS SECTION (100% Backend & Enhanced Frontend)
+         ==================================================================== -->
+    <section class="section-modern" id="skills" style="background: rgba(17, 24, 39, 0.4);">
+        <div class="container-modern">
+            <div class="section-header">
+                <span class="section-tag"><i class="fas fa-cogs"></i> Technical Arsenal</span>
+                <h2 class="section-title">Skills & Technologies</h2>
+                <p class="section-subtitle">Deep specialization in Java enterprise backends, event streaming, cloud infrastructure, and defensive security engineering.</p>
+            </div>
+
+            <div class="skills-container">
+                
+                <!-- Category 1: Backend & Enterprise (100% Across All) -->
+                <div class="skill-category-card">
+                    <div class="category-header">
+                        <i class="fas fa-cubes category-icon"></i>
+                        <h3>Backend & Enterprise (100%)</h3>
+                    </div>
+
+                    <div class="skill-items-list">
+                        <div class="skill-bar-item">
+                            <div class="skill-info">
+                                <span>Java 21 (Concurrency & Virtual Threads)</span>
+                                <span>100%</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-fill full"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-bar-item">
+                            <div class="skill-info">
+                                <span>Spring Boot 3 & Microservices</span>
+                                <span>100%</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-fill full"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-bar-item">
+                            <div class="skill-info">
+                                <span>Apache Kafka & Event-Driven Architecture</span>
+                                <span>100%</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-fill full"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-bar-item">
+                            <div class="skill-info">
+                                <span>RESTful APIs, Hibernate/JPA & JDBC</span>
+                                <span>100%</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-fill full"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-bar-item">
+                            <div class="skill-info">
+                                <span>Docker Containerization & Deployment</span>
+                                <span>100%</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-fill full"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="badges-grid">
+                        <span class="skill-chip">Kafka</span>
+                        <span class="skill-chip">Docker</span>
+                        <span class="skill-chip">Spring Boot 3</span>
+                        <span class="skill-chip">Java 21</span>
+                        <span class="skill-chip">Maven</span>
+                    </div>
+                </div>
+
+                <!-- Category 2: Frontend & Languages -->
+                <div class="skill-category-card">
+                    <div class="category-header">
+                        <i class="fas fa-code category-icon" style="color: var(--cyan-primary);"></i>
+                        <h3>Frontend & Languages</h3>
+                    </div>
+
+                    <div class="skill-items-list">
+                        <div class="skill-bar-item">
+                            <div class="skill-info">
+                                <span>JavaScript (ES6+ & Modern Web)</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-fill cyan" style="width: 90%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-bar-item">
+                            <div class="skill-info">
+                                <span>HTML5 & CSS3 / Modern Flexbox</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-fill cyan" style="width: 95%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-bar-item">
+                            <div class="skill-info">
+                                <span>React.js Fundamentals</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-fill cyan" style="width: 80%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-bar-item">
+                            <div class="skill-info">
+                                <span>Python & C/C++</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-fill cyan" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="badges-grid">
+                        <span class="skill-chip">React.js</span>
+                        <span class="skill-chip">Responsive Web</span>
+                        <span class="skill-chip">DOM API</span>
+                        <span class="skill-chip">Async JS</span>
+                    </div>
+                </div>
+
+                <!-- Category 3: Cloud, Database & Security -->
+                <div class="skill-category-card">
+                    <div class="category-header">
+                        <i class="fas fa-shield-alt category-icon" style="color: var(--emerald-primary);"></i>
+                        <h3>Databases, Cloud & Security</h3>
+                    </div>
+
+                    <div class="skill-items-list">
+                        <div class="skill-bar-item">
+                            <div class="skill-info">
+                                <span>MySQL, PostgreSQL & Redis</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-fill emerald" style="width: 95%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-bar-item">
+                            <div class="skill-info">
+                                <span>Git & GitHub Workflows</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-fill emerald" style="width: 95%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-bar-item">
+                            <div class="skill-info">
+                                <span>Cybersecurity Auditing (Ex-PwC)</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-fill emerald" style="width: 90%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-bar-item">
+                            <div class="skill-info">
+                                <span>AWS & Cloud Infrastructure</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-fill emerald" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="badges-grid">
+                        <span class="skill-chip">PostgreSQL</span>
+                        <span class="skill-chip">Redis</span>
+                        <span class="skill-chip">AWS</span>
+                        <span class="skill-chip">OWASP</span>
+                        <span class="skill-chip">Postman</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ================================================================
+                 CORE TECHNOLOGIES & TOOLS: INFINITE CAROUSEL (LEFT TO RIGHT)
+                 ================================================================ -->
+            <div class="tech-marquee-wrapper">
+                <div class="tech-marquee-title">
+                    <i class="fas fa-layer-group" style="color: var(--brand-primary); margin-right: 8px;"></i>
+                    Core Technologies & Production Stack
+                </div>
+                <div class="tech-marquee-track">
+                    <!-- Set 1 -->
+                    <div class="marquee-tech-pill"><i class="fab fa-java" style="color: #f89820;"></i><span>Java 21</span></div>
+                    <div class="marquee-tech-pill"><i class="fas fa-leaf" style="color: #6db33f;"></i><span>Spring Boot 3</span></div>
+                    <div class="marquee-tech-pill"><i class="fas fa-stream" style="color: #e02424;"></i><span>Apache Kafka</span></div>
+                    <div class="marquee-tech-pill"><i class="fab fa-docker" style="color: #2496ed;"></i><span>Docker</span></div>
+                    <div class="marquee-tech-pill"><i class="fas fa-dharmachakra" style="color: #326ce5;"></i><span>Kubernetes</span></div>
+                    <div class="marquee-tech-pill"><i class="fab fa-aws" style="color: #ff9900;"></i><span>AWS</span></div>
+                    <div class="marquee-tech-pill"><i class="fas fa-database" style="color: #336791;"></i><span>PostgreSQL</span></div>
+                    <div class="marquee-tech-pill"><i class="fas fa-database" style="color: #00758f;"></i><span>MySQL</span></div>
+                    <div class="marquee-tech-pill"><i class="fas fa-memory" style="color: #d82c20;"></i><span>Redis</span></div>
+                    <div class="marquee-tech-pill"><i class="fas fa-network-wired" style="color: #6366f1;"></i><span>Microservices</span></div>
+                    <div class="marquee-tech-pill"><i class="fas fa-code-branch" style="color: #c71a36;"></i><span>Maven</span></div>
+                    <div class="marquee-tech-pill"><i class="fab fa-js" style="color: #f7df1e;"></i><span>JavaScript ES6+</span></div>
+                    <div class="marquee-tech-pill"><i class="fab fa-react" style="color: #61dafb;"></i><span>React.js</span></div>
+                    <div class="marquee-tech-pill"><i class="fab fa-git-alt" style="color: #f05032;"></i><span>Git & GitHub</span></div>
+                    <div class="marquee-tech-pill"><i class="fas fa-terminal" style="color: #ff6e42;"></i><span>Postman</span></div>
+                    <div class="marquee-tech-pill"><i class="fas fa-user-shield" style="color: #10b981;"></i><span>OWASP Security</span></div>
+                    <div class="marquee-tech-pill"><i class="fab fa-linux" style="color: #fcc624;"></i><span>Linux</span></div>
+
+                    <!-- Set 2 (Seamless infinite duplicate for left-to-right flow) -->
+                    <div class="marquee-tech-pill"><i class="fab fa-java" style="color: #f89820;"></i><span>Java 21</span></div>
+                    <div class="marquee-tech-pill"><i class="fas fa-leaf" style="color: #6db33f;"></i><span>Spring Boot 3</span></div>
+                    <div class="marquee-tech-pill"><i class="fas fa-stream" style="color: #e02424;"></i><span>Apache Kafka</span></div>
+                    <div class="marquee-tech-pill"><i class="fab fa-docker" style="color: #2496ed;"></i><span>Docker</span></div>
+                    <div class="marquee-tech-pill"><i class="fas fa-dharmachakra" style="color: #326ce5;"></i><span>Kubernetes</span></div>
+                    <div class="marquee-tech-pill"><i class="fab fa-aws" style="color: #ff9900;"></i><span>AWS</span></div>
+                    <div class="marquee-tech-pill"><i class="fas fa-database" style="color: #336791;"></i><span>PostgreSQL</span></div>
+                    <div class="marquee-tech-pill"><i class="fas fa-database" style="color: #00758f;"></i><span>MySQL</span></div>
+                    <div class="marquee-tech-pill"><i class="fas fa-memory" style="color: #d82c20;"></i><span>Redis</span></div>
+                    <div class="marquee-tech-pill"><i class="fas fa-network-wired" style="color: #6366f1;"></i><span>Microservices</span></div>
+                    <div class="marquee-tech-pill"><i class="fas fa-code-branch" style="color: #c71a36;"></i><span>Maven</span></div>
+                    <div class="marquee-tech-pill"><i class="fab fa-js" style="color: #f7df1e;"></i><span>JavaScript ES6+</span></div>
+                    <div class="marquee-tech-pill"><i class="fab fa-react" style="color: #61dafb;"></i><span>React.js</span></div>
+                    <div class="marquee-tech-pill"><i class="fab fa-git-alt" style="color: #f05032;"></i><span>Git & GitHub</span></div>
+                    <div class="marquee-tech-pill"><i class="fas fa-terminal" style="color: #ff6e42;"></i><span>Postman</span></div>
+                    <div class="marquee-tech-pill"><i class="fas fa-user-shield" style="color: #10b981;"></i><span>OWASP Security</span></div>
+                    <div class="marquee-tech-pill"><i class="fab fa-linux" style="color: #fcc624;"></i><span>Linux</span></div>
+                </div>
+            </div>
 
         </div>
     </section>
 
+    <!-- ====================================================================
+         FEATURED PROJECTS: CAROUSEL (LEFT TO RIGHT + HOVER FULL INFO)
+         ==================================================================== -->
+    <section class="section-modern" id="projects">
+        <div class="container-modern">
+            <div class="section-header">
+                <span class="section-tag"><i class="fas fa-folder-open"></i> Portfolio</span>
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Glide through production applications and APIs. Hover over any project to inspect full architectural specifications, features, and live links.</p>
+            </div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section has-img-bg pb-0">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-5 my-3">
-                    <h6 class="mb-1">Phone</h6>
-                    <p class="mb-4">+91 8446578717</p>
-
-                    <h6 class="mb-1">Address</h6>
-                    <p class="mb-4">Shirpur, Maharashtra </p>
-
-                    <h6 class="mb-1">Email</h6>
-                    <p class="mb-1">nileshs2398@gmail.com</p>
-
+            <div class="projects-carousel-container">
+                
+                <!-- Controls & Hint -->
+                <div class="projects-carousel-top-bar">
+                    <div class="projects-carousel-hint">
+                        <i class="fas fa-info-circle" style="color: var(--brand-primary);"></i>
+                        <span>Hover over any card to pause & view complete architecture details</span>
+                    </div>
+                    <div class="projects-carousel-controls">
+                        <button class="carousel-nav-btn" id="proj-prev-btn" title="Scroll Left" aria-label="Previous Project">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-nav-btn" id="proj-next-btn" title="Scroll Right" aria-label="Next Project">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
                 </div>
 
-                <div id="socialMedia overlay">
-                    <a href="https://twitter.com/Nilesh8446" target="_blank"
-                        class="ml-4 nav-link btn btn-secondary btn-sm">Twitter</a>
+                <!-- Scrollable Track -->
+                <div class="projects-scroll-wrapper" id="projects-scroll-wrapper">
+                    <div class="projects-scroll-track" id="projects-track">
+                        
+                        <!-- Project 1: Sanjivani -->
+                        <div class="project-card-carousel">
+                            <div class="project-thumbnail-carousel">
+                                <img src="resources/imgs/java-2.png" alt="Sanjivani Covid19 App">
+                                <span class="project-badge-pill">Spring Boot REST</span>
+                            </div>
+                            <div class="project-content-carousel">
+                                <h3 class="project-title-carousel">Sanjivani : Covid19 Registration App</h3>
+                                <p class="project-short-desc">
+                                    High-concurrency vaccination booking engine facilitating citizen slot scheduling across regional health centers.
+                                </p>
+                                
+                                <div class="project-hover-cue">
+                                    <i class="fas fa-expand-alt"></i> Hover for full specs & live demo
+                                </div>
 
-                    <a href="https://www.linkedin.com/in/nilesh2398/" class="ml-4 nav-link btn btn-light btn-sm"
-                        target="_blank">LinkedIn</a>
+                                <!-- Expanded Information on Hover -->
+                                <div class="project-expanded-info">
+                                    <ul class="project-features-list">
+                                        <li>Engineered transactional RESTful APIs handling simultaneous center booking slots.</li>
+                                        <li>Implemented relational data modeling with ACID transaction guarantees in MySQL.</li>
+                                        <li>Built modular Maven architecture with robust exception handling and validation.</li>
+                                    </ul>
+                                    <div class="project-stack-row">
+                                        <span class="stack-pill">Java 21</span>
+                                        <span class="stack-pill">Spring Boot 3</span>
+                                        <span class="stack-pill">Maven</span>
+                                        <span class="stack-pill">MySQL</span>
+                                    </div>
+                                    <div class="project-card-actions">
+                                        <a href="https://drive.google.com/file/d/1kTk_M4sugF2KYPzCSktIjT6CH8PrCP8X/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-card-primary">
+                                            <i class="fas fa-play"></i> Live Demo
+                                        </a>
+                                        <a href="https://github.com/nileshs23/Sanjivani-A-Covid19-Registration-App" target="_blank" rel="noopener noreferrer" class="btn-card-secondary">
+                                            <i class="fab fa-github"></i> GitHub
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                    <a href="https://github.com/nileshs23/" target="_blank"
-                        class="ml-4 nav-link btn btn-success btn-sm">Github</a>
+                        <!-- Project 2: Techy Town -->
+                        <div class="project-card-carousel">
+                            <div class="project-thumbnail-carousel">
+                                <img src="resources/imgs/java-3.png" alt="Techy Town REST API">
+                                <span class="project-badge-pill">AWS Deployed</span>
+                            </div>
+                            <div class="project-content-carousel">
+                                <h3 class="project-title-carousel">Techy Town E-Commerce API</h3>
+                                <p class="project-short-desc">
+                                    Scalable enterprise RESTful API with dual Admin & Customer authentication, product catalog CRUD, and cloud hosting.
+                                </p>
 
-                    <a href="/resources/resume/Resume.pdf" class="ml-4 nav-link btn btn-primary btn-sm"
-                        download="Nilesh_Solanki_Resume">Resume</a>
+                                <div class="project-hover-cue">
+                                    <i class="fas fa-expand-alt"></i> Hover for full specs & live demo
+                                </div>
 
-                    <hr>
-                    <!-- Page Footer -->
-                    <footer class="py-4 border-top border-secondary">
-                        <p class="mb-0">&copy;
-                            <script>document.write(new Date().getFullYear())</script>,Created By <a
-                                href="https://github.com/nileshs23" target="_blank">Nilesh Solanki</a>
-                        </p>
-                    </footer>
+                                <!-- Expanded Information on Hover -->
+                                <div class="project-expanded-info">
+                                    <ul class="project-features-list">
+                                        <li>Designed role-based access control (RBAC) separating admin inventory and customer orders.</li>
+                                        <li>Deployed on AWS Elastic Beanstalk for automated provisioning and cloud scalability.</li>
+                                        <li>Optimized database queries and response payloads for sub-100ms API response times.</li>
+                                    </ul>
+                                    <div class="project-stack-row">
+                                        <span class="stack-pill">Java 21</span>
+                                        <span class="stack-pill">Spring Boot 3</span>
+                                        <span class="stack-pill">AWS Elastic Beanstalk</span>
+                                        <span class="stack-pill">REST API</span>
+                                    </div>
+                                    <div class="project-card-actions">
+                                        <a href="http://techytown-env.eba-cmzrmcwr.ap-south-1.elasticbeanstalk.com" target="_blank" rel="noopener noreferrer" class="btn-card-primary">
+                                            <i class="fas fa-cloud"></i> AWS Live
+                                        </a>
+                                        <a href="https://github.com/nileshs23/Techy-Town" target="_blank" rel="noopener noreferrer" class="btn-card-secondary">
+                                            <i class="fab fa-github"></i> GitHub
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 3: Student Management System -->
+                        <div class="project-card-carousel">
+                            <div class="project-thumbnail-carousel">
+                                <img src="resources/imgs/java-1.jpg" alt="Student Management System">
+                                <span class="project-badge-pill">Database & JDBC</span>
+                            </div>
+                            <div class="project-content-carousel">
+                                <h3 class="project-title-carousel">Student Management System</h3>
+                                <p class="project-short-desc">
+                                    Database-driven management application implementing ACID transactions and parameterized queries.
+                                </p>
+
+                                <div class="project-hover-cue">
+                                    <i class="fas fa-expand-alt"></i> Hover for full specs & live demo
+                                </div>
+
+                                <!-- Expanded Information on Hover -->
+                                <div class="project-expanded-info">
+                                    <ul class="project-features-list">
+                                        <li>Implemented direct JDBC connectivity with prepared statements to prevent SQL injection.</li>
+                                        <li>Structured transaction rollback protocols for academic enrollment and fee records.</li>
+                                        <li>Built modular DAO design pattern separating business logic from persistence.</li>
+                                    </ul>
+                                    <div class="project-stack-row">
+                                        <span class="stack-pill">Java 21</span>
+                                        <span class="stack-pill">JDBC</span>
+                                        <span class="stack-pill">MySQL</span>
+                                        <span class="stack-pill">Maven</span>
+                                    </div>
+                                    <div class="project-card-actions">
+                                        <a href="https://drive.google.com/file/d/1ePEc9uJ6fWVfM3Z_e4nk2KmzBGO6dy6-/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-card-primary">
+                                            <i class="fas fa-play"></i> Walkthrough
+                                        </a>
+                                        <a href="https://github.com/nileshs23/divine-society-1574" target="_blank" rel="noopener noreferrer" class="btn-card-secondary">
+                                            <i class="fab fa-github"></i> GitHub
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 4: Memory.Ai Clone -->
+                        <div class="project-card-carousel">
+                            <div class="project-thumbnail-carousel">
+                                <img src="resources/imgs/web-1.jpg" alt="Memory.Ai Clone">
+                                <span class="project-badge-pill">Frontend Web</span>
+                            </div>
+                            <div class="project-content-carousel">
+                                <h3 class="project-title-carousel">Memory.Ai Clone (Timely)</h3>
+                                <p class="project-short-desc">
+                                    Time-tracking productivity web application with category management and automated wage calculation.
+                                </p>
+
+                                <div class="project-hover-cue">
+                                    <i class="fas fa-expand-alt"></i> Hover for full specs & live demo
+                                </div>
+
+                                <!-- Expanded Information on Hover -->
+                                <div class="project-expanded-info">
+                                    <ul class="project-features-list">
+                                        <li>Built reactive UI with modular vanilla JavaScript handling asynchronous wage math.</li>
+                                        <li>Implemented dynamic DOM manipulation and real-time category hours breakdown.</li>
+                                        <li>Deployed on Netlify with automated CI/CD continuous delivery.</li>
+                                    </ul>
+                                    <div class="project-stack-row">
+                                        <span class="stack-pill">JavaScript ES6+</span>
+                                        <span class="stack-pill">HTML5</span>
+                                        <span class="stack-pill">CSS3</span>
+                                        <span class="stack-pill">Netlify</span>
+                                    </div>
+                                    <div class="project-card-actions">
+                                        <a href="https://fantastic-queijadas-e98c0f.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn-card-primary">
+                                            <i class="fas fa-external-link-alt"></i> Live App
+                                        </a>
+                                        <a href="https://github.com/nileshs23/dear-shade-414" target="_blank" rel="noopener noreferrer" class="btn-card-secondary">
+                                            <i class="fab fa-github"></i> GitHub
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 5: Deccan Herald Clone -->
+                        <div class="project-card-carousel">
+                            <div class="project-thumbnail-carousel">
+                                <img src="resources/imgs/web-2.jpg" alt="Deccan Herald Clone">
+                                <span class="project-badge-pill">Media Platform</span>
+                            </div>
+                            <div class="project-content-carousel">
+                                <h3 class="project-title-carousel">Deccan Herald e-Newspaper</h3>
+                                <p class="project-short-desc">
+                                    Digital news platform clone with responsive editorial layouts, categorized sports, trending, and political feeds.
+                                </p>
+
+                                <div class="project-hover-cue">
+                                    <i class="fas fa-expand-alt"></i> Hover for full specs & live demo
+                                </div>
+
+                                <!-- Expanded Information on Hover -->
+                                <div class="project-expanded-info">
+                                    <ul class="project-features-list">
+                                        <li>Implemented responsive multi-column layouts adapting seamlessly across mobile and desktop.</li>
+                                        <li>Custom category filtering for trending, sports, and political news feeds.</li>
+                                        <li>Optimized page asset delivery and responsive typography for fast load times.</li>
+                                    </ul>
+                                    <div class="project-stack-row">
+                                        <span class="stack-pill">JavaScript ES6+</span>
+                                        <span class="stack-pill">HTML5</span>
+                                        <span class="stack-pill">CSS3</span>
+                                        <span class="stack-pill">Netlify</span>
+                                    </div>
+                                    <div class="project-card-actions">
+                                        <a href="https://zippy-biscochitos-543e9f.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn-card-primary">
+                                            <i class="fas fa-external-link-alt"></i> Live App
+                                        </a>
+                                        <a href="https://github.com/nileshs23/Deccan-Herald-Clone" target="_blank" rel="noopener noreferrer" class="btn-card-secondary">
+                                            <i class="fab fa-github"></i> GitHub
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 6: Covid Analysis ML -->
+                        <div class="project-card-carousel">
+                            <div class="project-thumbnail-carousel">
+                                <img src="resources/imgs/ml-1.jpg" alt="Covid Analysis and Prediction">
+                                <span class="project-badge-pill">Data Science & ML</span>
+                            </div>
+                            <div class="project-content-carousel">
+                                <h3 class="project-title-carousel">Covid19 Analysis & Prediction</h3>
+                                <p class="project-short-desc">
+                                    Predictive analytics modeling using Machine Learning algorithms to analyze epidemiological patterns.
+                                </p>
+
+                                <div class="project-hover-cue">
+                                    <i class="fas fa-expand-alt"></i> Hover for full specs & live demo
+                                </div>
+
+                                <!-- Expanded Information on Hover -->
+                                <div class="project-expanded-info">
+                                    <ul class="project-features-list">
+                                        <li>Implemented supervised regression and classification models in Python.</li>
+                                        <li>Conducted data cleaning, exploratory data analysis, and feature engineering.</li>
+                                        <li>Visualized projection curves and infection rate trajectories.</li>
+                                    </ul>
+                                    <div class="project-stack-row">
+                                        <span class="stack-pill">Python</span>
+                                        <span class="stack-pill">Machine Learning</span>
+                                        <span class="stack-pill">JavaScript</span>
+                                    </div>
+                                    <div class="project-card-actions">
+                                        <a href="https://github.com/nileshs23/Covid19-Analysis_and_Prediction" target="_blank" rel="noopener noreferrer" class="btn-card-primary" style="flex: 2;">
+                                            <i class="fab fa-github"></i> View Model & Code
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ====================================================
+                             SET 2 (Seamless duplicate for infinite smooth loop)
+                             ==================================================== -->
+                        <!-- Project 1 Duplicate: Sanjivani -->
+                        <div class="project-card-carousel">
+                            <div class="project-thumbnail-carousel">
+                                <img src="resources/imgs/java-2.png" alt="Sanjivani Covid19 App">
+                                <span class="project-badge-pill">Spring Boot REST</span>
+                            </div>
+                            <div class="project-content-carousel">
+                                <h3 class="project-title-carousel">Sanjivani : Covid19 Registration App</h3>
+                                <p class="project-short-desc">
+                                    High-concurrency vaccination booking engine facilitating citizen slot scheduling across regional health centers.
+                                </p>
+                                
+                                <div class="project-hover-cue">
+                                    <i class="fas fa-expand-alt"></i> Hover for full specs & live demo
+                                </div>
+
+                                <!-- Expanded Information on Hover -->
+                                <div class="project-expanded-info">
+                                    <ul class="project-features-list">
+                                        <li>Engineered transactional RESTful APIs handling simultaneous center booking slots.</li>
+                                        <li>Implemented relational data modeling with ACID transaction guarantees in MySQL.</li>
+                                        <li>Built modular Maven architecture with robust exception handling and validation.</li>
+                                    </ul>
+                                    <div class="project-stack-row">
+                                        <span class="stack-pill">Java 21</span>
+                                        <span class="stack-pill">Spring Boot 3</span>
+                                        <span class="stack-pill">Maven</span>
+                                        <span class="stack-pill">MySQL</span>
+                                    </div>
+                                    <div class="project-card-actions">
+                                        <a href="https://drive.google.com/file/d/1kTk_M4sugF2KYPzCSktIjT6CH8PrCP8X/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-card-primary">
+                                            <i class="fas fa-play"></i> Live Demo
+                                        </a>
+                                        <a href="https://github.com/nileshs23/Sanjivani-A-Covid19-Registration-App" target="_blank" rel="noopener noreferrer" class="btn-card-secondary">
+                                            <i class="fab fa-github"></i> GitHub
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 2 Duplicate: Techy Town -->
+                        <div class="project-card-carousel">
+                            <div class="project-thumbnail-carousel">
+                                <img src="resources/imgs/java-3.png" alt="Techy Town REST API">
+                                <span class="project-badge-pill">AWS Deployed</span>
+                            </div>
+                            <div class="project-content-carousel">
+                                <h3 class="project-title-carousel">Techy Town E-Commerce API</h3>
+                                <p class="project-short-desc">
+                                    Scalable enterprise RESTful API with dual Admin & Customer authentication, product catalog CRUD, and cloud hosting.
+                                </p>
+
+                                <div class="project-hover-cue">
+                                    <i class="fas fa-expand-alt"></i> Hover for full specs & live demo
+                                </div>
+
+                                <!-- Expanded Information on Hover -->
+                                <div class="project-expanded-info">
+                                    <ul class="project-features-list">
+                                        <li>Designed role-based access control (RBAC) separating admin inventory and customer orders.</li>
+                                        <li>Deployed on AWS Elastic Beanstalk for automated provisioning and cloud scalability.</li>
+                                        <li>Optimized database queries and response payloads for sub-100ms API response times.</li>
+                                    </ul>
+                                    <div class="project-stack-row">
+                                        <span class="stack-pill">Java 21</span>
+                                        <span class="stack-pill">Spring Boot 3</span>
+                                        <span class="stack-pill">AWS Elastic Beanstalk</span>
+                                        <span class="stack-pill">REST API</span>
+                                    </div>
+                                    <div class="project-card-actions">
+                                        <a href="http://techytown-env.eba-cmzrmcwr.ap-south-1.elasticbeanstalk.com" target="_blank" rel="noopener noreferrer" class="btn-card-primary">
+                                            <i class="fas fa-cloud"></i> AWS Live
+                                        </a>
+                                        <a href="https://github.com/nileshs23/Techy-Town" target="_blank" rel="noopener noreferrer" class="btn-card-secondary">
+                                            <i class="fab fa-github"></i> GitHub
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 3 Duplicate: Student Management System -->
+                        <div class="project-card-carousel">
+                            <div class="project-thumbnail-carousel">
+                                <img src="resources/imgs/java-1.jpg" alt="Student Management System">
+                                <span class="project-badge-pill">Database & JDBC</span>
+                            </div>
+                            <div class="project-content-carousel">
+                                <h3 class="project-title-carousel">Student Management System</h3>
+                                <p class="project-short-desc">
+                                    Database-driven management application implementing ACID transactions and parameterized queries.
+                                </p>
+
+                                <div class="project-hover-cue">
+                                    <i class="fas fa-expand-alt"></i> Hover for full specs & live demo
+                                </div>
+
+                                <!-- Expanded Information on Hover -->
+                                <div class="project-expanded-info">
+                                    <ul class="project-features-list">
+                                        <li>Implemented direct JDBC connectivity with prepared statements to prevent SQL injection.</li>
+                                        <li>Structured transaction rollback protocols for academic enrollment and fee records.</li>
+                                        <li>Built modular DAO design pattern separating business logic from persistence.</li>
+                                    </ul>
+                                    <div class="project-stack-row">
+                                        <span class="stack-pill">Java 21</span>
+                                        <span class="stack-pill">JDBC</span>
+                                        <span class="stack-pill">MySQL</span>
+                                        <span class="stack-pill">Maven</span>
+                                    </div>
+                                    <div class="project-card-actions">
+                                        <a href="https://drive.google.com/file/d/1ePEc9uJ6fWVfM3Z_e4nk2KmzBGO6dy6-/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-card-primary">
+                                            <i class="fas fa-play"></i> Walkthrough
+                                        </a>
+                                        <a href="https://github.com/nileshs23/divine-society-1574" target="_blank" rel="noopener noreferrer" class="btn-card-secondary">
+                                            <i class="fab fa-github"></i> GitHub
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 4 Duplicate: Memory.Ai Clone -->
+                        <div class="project-card-carousel">
+                            <div class="project-thumbnail-carousel">
+                                <img src="resources/imgs/web-1.jpg" alt="Memory.Ai Clone">
+                                <span class="project-badge-pill">Frontend Web</span>
+                            </div>
+                            <div class="project-content-carousel">
+                                <h3 class="project-title-carousel">Memory.Ai Clone (Timely)</h3>
+                                <p class="project-short-desc">
+                                    Time-tracking productivity web application with category management and automated wage calculation.
+                                </p>
+
+                                <div class="project-hover-cue">
+                                    <i class="fas fa-expand-alt"></i> Hover for full specs & live demo
+                                </div>
+
+                                <!-- Expanded Information on Hover -->
+                                <div class="project-expanded-info">
+                                    <ul class="project-features-list">
+                                        <li>Built reactive UI with modular vanilla JavaScript handling asynchronous wage math.</li>
+                                        <li>Implemented dynamic DOM manipulation and real-time category hours breakdown.</li>
+                                        <li>Deployed on Netlify with automated CI/CD continuous delivery.</li>
+                                    </ul>
+                                    <div class="project-stack-row">
+                                        <span class="stack-pill">JavaScript ES6+</span>
+                                        <span class="stack-pill">HTML5</span>
+                                        <span class="stack-pill">CSS3</span>
+                                        <span class="stack-pill">Netlify</span>
+                                    </div>
+                                    <div class="project-card-actions">
+                                        <a href="https://fantastic-queijadas-e98c0f.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn-card-primary">
+                                            <i class="fas fa-external-link-alt"></i> Live App
+                                        </a>
+                                        <a href="https://github.com/nileshs23/dear-shade-414" target="_blank" rel="noopener noreferrer" class="btn-card-secondary">
+                                            <i class="fab fa-github"></i> GitHub
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 5 Duplicate: Deccan Herald Clone -->
+                        <div class="project-card-carousel">
+                            <div class="project-thumbnail-carousel">
+                                <img src="resources/imgs/web-2.jpg" alt="Deccan Herald Clone">
+                                <span class="project-badge-pill">Media Platform</span>
+                            </div>
+                            <div class="project-content-carousel">
+                                <h3 class="project-title-carousel">Deccan Herald e-Newspaper</h3>
+                                <p class="project-short-desc">
+                                    Digital news platform clone with responsive editorial layouts, categorized sports, trending, and political feeds.
+                                </p>
+
+                                <div class="project-hover-cue">
+                                    <i class="fas fa-expand-alt"></i> Hover for full specs & live demo
+                                </div>
+
+                                <!-- Expanded Information on Hover -->
+                                <div class="project-expanded-info">
+                                    <ul class="project-features-list">
+                                        <li>Implemented responsive multi-column layouts adapting seamlessly across mobile and desktop.</li>
+                                        <li>Custom category filtering for trending, sports, and political news feeds.</li>
+                                        <li>Optimized page asset delivery and responsive typography for fast load times.</li>
+                                    </ul>
+                                    <div class="project-stack-row">
+                                        <span class="stack-pill">JavaScript ES6+</span>
+                                        <span class="stack-pill">HTML5</span>
+                                        <span class="stack-pill">CSS3</span>
+                                        <span class="stack-pill">Netlify</span>
+                                    </div>
+                                    <div class="project-card-actions">
+                                        <a href="https://zippy-biscochitos-543e9f.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn-card-primary">
+                                            <i class="fas fa-external-link-alt"></i> Live App
+                                        </a>
+                                        <a href="https://github.com/nileshs23/Deccan-Herald-Clone" target="_blank" rel="noopener noreferrer" class="btn-card-secondary">
+                                            <i class="fab fa-github"></i> GitHub
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 6 Duplicate: Covid Analysis ML -->
+                        <div class="project-card-carousel">
+                            <div class="project-thumbnail-carousel">
+                                <img src="resources/imgs/ml-1.jpg" alt="Covid Analysis and Prediction">
+                                <span class="project-badge-pill">Data Science & ML</span>
+                            </div>
+                            <div class="project-content-carousel">
+                                <h3 class="project-title-carousel">Covid19 Analysis & Prediction</h3>
+                                <p class="project-short-desc">
+                                    Predictive analytics modeling using Machine Learning algorithms to analyze epidemiological patterns.
+                                </p>
+
+                                <div class="project-hover-cue">
+                                    <i class="fas fa-expand-alt"></i> Hover for full specs & live demo
+                                </div>
+
+                                <!-- Expanded Information on Hover -->
+                                <div class="project-expanded-info">
+                                    <ul class="project-features-list">
+                                        <li>Implemented supervised regression and classification models in Python.</li>
+                                        <li>Conducted data cleaning, exploratory data analysis, and feature engineering.</li>
+                                        <li>Visualized projection curves and infection rate trajectories.</li>
+                                    </ul>
+                                    <div class="project-stack-row">
+                                        <span class="stack-pill">Python</span>
+                                        <span class="stack-pill">Machine Learning</span>
+                                        <span class="stack-pill">JavaScript</span>
+                                    </div>
+                                    <div class="project-card-actions">
+                                        <a href="https://github.com/nileshs23/Covid19-Analysis_and_Prediction" target="_blank" rel="noopener noreferrer" class="btn-card-primary" style="flex: 2;">
+                                            <i class="fab fa-github"></i> View Model & Code
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-
 
             </div>
+        </div>
     </section>
 
-    <!-- core  -->
-    <script src="scripts/vendors/jquery/jquery-3.4.1.js"></script>
-    <script src="scripts/vendors/bootstrap/bootstrap.bundle.js"></script>
+    <!-- ====================================================================
+         CAREER JOURNEY: EXPERIENCE & EDUCATION (HOVER TO EXPAND DETAILS)
+         ==================================================================== -->
+    <section class="section-modern" id="education">
+        <div class="container-modern">
+            <div class="section-header">
+                <span class="section-tag"><i class="fas fa-history"></i> Career Journey</span>
+                <h2 class="section-title">Experience & Education</h2>
+                <p class="section-subtitle">A timeline of enterprise engineering and academic credentials. Hover over any card to reveal in-depth technical achievements and responsibilities.</p>
+            </div>
 
-    <!-- bootstrap 3 affix -->
-    <script src="scripts/vendors/bootstrap/bootstrap.affix.js"></script>
+            <div class="edu-exp-grid">
+                
+                <!-- Left: Professional Experience (greytHR Current + PwC Former) -->
+                <div class="column-card">
+                    <div class="column-header">
+                        <div class="column-header-title">
+                            <i class="fas fa-briefcase"></i>
+                            <h3>Professional Experience</h3>
+                        </div>
+                        <span class="edu-badge badge-brand">Industry Career</span>
+                    </div>
 
-    <!-- Isotope -->
-    <script src="scripts/vendors/isotope/isotope.pkgd.js"></script>
+                    <!-- DYNAMIC EXPERIENCE CARDS CONTAINER -->
+                    <div id="experience-container" class="experience-list">
+                        <!-- Rendered dynamically by portfolio-data.js with smooth hover-expand -->
+                    </div>
+                </div>
 
-    <!-- main js -->
-    <script src="/scripts/index.js"></script>
+                <!-- Right: Dynamic Education Section (Hover-Expand) -->
+                <div class="column-card">
+                    <div class="column-header">
+                        <div class="column-header-title">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h3>Education & Bootcamps</h3>
+                        </div>
+                        <span class="edu-badge badge-indigo">Academic Credentials</span>
+                    </div>
 
-    <!-- Include the library. -->
-    <script src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js">
-    </script>
+                    <!-- DYNAMIC EDUCATION CARDS CONTAINER -->
+                    <div id="education-container" class="education-list">
+                        <!-- Rendered dynamically by portfolio-data.js with hover-expand -->
+                    </div>
+                </div>
 
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================================================
+         CONTACT SECTION
+         ==================================================================== -->
+    <section class="section-modern" id="contact">
+        <div class="container-modern">
+            <div class="section-header">
+                <span class="section-tag"><i class="fas fa-envelope-open-text"></i> Connect</span>
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Interested in discussing a backend engineering opportunity, technical collaboration, or interview? Let's talk.</p>
+            </div>
+
+            <div class="contact-grid">
+                
+                <!-- Contact Channels -->
+                <div class="contact-channels">
+                    <div class="contact-card">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-info">
+                            <div class="contact-label">Email Address</div>
+                            <div class="contact-value">nileshs2398@gmail.com</div>
+                        </div>
+                        <button class="copy-btn" onclick="copyToClipboard('nileshs2398@gmail.com', 'Email copied to clipboard!')">
+                            <i class="far fa-copy"></i> Copy
+                        </button>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon"><i class="fab fa-github"></i></div>
+                        <div class="contact-info">
+                            <div class="contact-label">GitHub</div>
+                            <div class="contact-value">github.com/nileshs23</div>
+                        </div>
+                        <a href="https://github.com/nileshs23" target="_blank" rel="noopener noreferrer" class="copy-btn" style="text-decoration: none;">
+                            <i class="fas fa-external-link-alt"></i> Open
+                        </a>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="contact-info">
+                            <div class="contact-label">Current Location</div>
+                            <div class="contact-value">Pune / Bengaluru, India</div>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
+                        <div class="contact-info">
+                            <div class="contact-label">Professional Profile</div>
+                            <div class="contact-value">linkedin.com/in/nilesh2398</div>
+                        </div>
+                        <a href="https://www.linkedin.com/in/nilesh2398/" target="_blank" rel="noopener noreferrer" class="copy-btn">
+                            <i class="fas fa-external-link-alt"></i> View
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Message Box -->
+                <div class="contact-form-box">
+                    <h3>Send Nilesh a Message</h3>
+                    <p>Have an open Software Engineer or Backend role? Fill in the details to send a direct email.</p>
+
+                    <form id="contact-form" onsubmit="handleContactSubmit(event)">
+                        <div class="form-group">
+                            <label class="form-label" for="contact-name">Your Name / Company *</label>
+                            <input type="text" id="contact-name" class="form-input" placeholder="e.g. Acme Corp / Jane Doe" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="contact-subject">Opportunity / Subject *</label>
+                            <input type="text" id="contact-subject" class="form-input" placeholder="e.g. Backend Engineer Role - Nilesh Solanki" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="contact-message">Message *</label>
+                            <textarea id="contact-message" class="form-textarea" placeholder="Tell me about the role, team, and stack..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-primary-glow" style="width: 100%; justify-content: center;">
+                            <i class="fas fa-paper-plane"></i> Send Message via Email
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================================================
+         FOOTER
+         ==================================================================== -->
+    <footer class="modern-footer">
+        <div class="container-modern">
+            <div class="footer-inner">
+                <div class="footer-credits">
+                    <p>&copy; <span id="current-year">2026</span> <strong>Nilesh Solanki</strong>. Java Backend Engineer @ greytHR.</p>
+                </div>
+
+                <div class="footer-links">
+                    <a href="#home">Back to Top</a>
+                    <a href="recruiter.html"><i class="fas fa-briefcase"></i> Recruiter Page</a>
+                    <span class="footer-status-pill" style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #10b981;">
+                        <span class="status-dot" style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #10b981; box-shadow: 0 0 8px #10b981;"></span> Available for Roles
+                    </span>
+                    <a href="resources/resume/Resume.pdf" download="Nilesh_Solanki_Resume"><i class="fas fa-file-pdf"></i> Resume</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="scripts/portfolio-data.js"></script>
     <script>
-        GitHubCalendar(".calendar", "nileshs23");
+        // Copy to clipboard helper
+        function copyToClipboard(text, message = 'Copied to clipboard!') {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast(message);
+            }).catch(err => {
+                console.warn('Copy failed:', err);
+            });
+        }
 
-        // or enable responsive functionality:
-        GitHubCalendar(".calendar", "nileshs23", { responsive: true });
+        // Toast feedback helper
+        function showToast(message) {
+            const toast = document.getElementById('main-toast');
+            toast.className = 'toast-notice toast-success';
+            toast.innerHTML = `<i class="fas fa-check-circle"></i> <span>${message}</span>`;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
 
-        // Use a proxy
-        GitHubCalendar(".calendar", "nileshs23", {
-            proxy(username) {
-                return fetch(`https://your-proxy.com/github?user=${nileshs23}`)
+        // Contact form mailto handler
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('contact-name').value;
+            const subject = document.getElementById('contact-subject').value;
+            const message = document.getElementById('contact-message').value;
+
+            const mailtoUrl = `mailto:nileshs2398@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("Sender / Company: " + name + "\n\n" + message)}`;
+            window.location.href = mailtoUrl;
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // 1. Render Dynamic Education & Experience Cards (with hover-expand)
+            if (window.PortfolioData) {
+                window.PortfolioData.renderEducation('#education-container', { showAdminHint: false, collapsible: true });
+                window.PortfolioData.renderExperience('#experience-container', { collapsible: true });
             }
-        }).then(r => r.text())
+
+            // Listen for any education / experience updates
+            window.addEventListener('portfolio-education-updated', function () {
+                if (window.PortfolioData) {
+                    window.PortfolioData.renderEducation('#education-container', { showAdminHint: false, collapsible: true });
+                }
+            });
+            window.addEventListener('portfolio-experience-updated', function () {
+                if (window.PortfolioData) {
+                    window.PortfolioData.renderExperience('#experience-container', { collapsible: true });
+                }
+            });
+
+            // 2. Theme Switcher System
+            const savedTheme = localStorage.getItem('nilesh_theme') || 'obsidian';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+
+            const themeToggleBtn = document.getElementById('theme-toggle-btn');
+            const themeDropdown = document.getElementById('theme-dropdown');
+            if (themeToggleBtn && themeDropdown) {
+                themeToggleBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    themeDropdown.classList.toggle('show');
+                });
+
+                document.addEventListener('click', function () {
+                    themeDropdown.classList.remove('show');
+                });
+
+                document.querySelectorAll('.theme-opt-btn').forEach(btn => {
+                    const themeName = btn.getAttribute('data-theme');
+                    if (themeName === savedTheme) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+
+                    btn.addEventListener('click', function (e) {
+                        e.stopPropagation();
+                        const selectedTheme = this.getAttribute('data-theme');
+                        document.documentElement.setAttribute('data-theme', selectedTheme);
+                        localStorage.setItem('nilesh_theme', selectedTheme);
+
+                        document.querySelectorAll('.theme-opt-btn').forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+                        themeDropdown.classList.remove('show');
+                        showToast(`Theme switched to ${selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)}`);
+                    });
+                });
+            }
+
+            // 3. Secret Admin Keyboard Shortcut: Ctrl + Shift + A or Cmd + Shift + A
+            window.addEventListener('keydown', function (e) {
+                if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === 'a') {
+                    e.preventDefault();
+                    window.location.href = 'admin.html';
+                }
+            });
+
+            // 4. Continuous Silky-Smooth Projects Carousel (Left-to-Right Loop)
+            const scrollWrapper = document.getElementById('projects-scroll-wrapper');
+            const prevBtn = document.getElementById('proj-prev-btn');
+            const nextBtn = document.getElementById('proj-next-btn');
+
+            if (scrollWrapper) {
+                let scrollPos = 0;
+                let isPaused = false;
+                const scrollSpeed = 0.75; // Silky smooth subpixel drift per frame (~45px/second)
+
+                function animateCarousel() {
+                    if (!isPaused && scrollWrapper) {
+                        scrollPos += scrollSpeed;
+                        const halfWidth = scrollWrapper.scrollWidth / 2;
+                        if (halfWidth > 0 && scrollPos >= halfWidth) {
+                            scrollPos = 0;
+                            scrollWrapper.scrollLeft = 0;
+                        } else {
+                            scrollWrapper.scrollLeft = scrollPos;
+                        }
+                    }
+                    requestAnimationFrame(animateCarousel);
+                }
+
+                // Start continuous RAF loop
+                requestAnimationFrame(animateCarousel);
+
+                // Pause immediately when hovering over carousel or any card
+                scrollWrapper.addEventListener('mouseenter', () => {
+                    isPaused = true;
+                });
+
+                // Resume smoothly from the exact current position when mouse leaves
+                scrollWrapper.addEventListener('mouseleave', () => {
+                    scrollPos = scrollWrapper.scrollLeft;
+                    isPaused = false;
+                });
+
+                // Mobile touch support
+                scrollWrapper.addEventListener('touchstart', () => {
+                    isPaused = true;
+                }, { passive: true });
+
+                scrollWrapper.addEventListener('touchend', () => {
+                    scrollPos = scrollWrapper.scrollLeft;
+                    isPaused = false;
+                }, { passive: true });
+
+                // Sync position if user manually scrolls with mousewheel or trackpad
+                scrollWrapper.addEventListener('scroll', () => {
+                    if (isPaused) {
+                        scrollPos = scrollWrapper.scrollLeft;
+                    }
+                });
+
+                // Manual Navigation buttons
+                if (prevBtn) {
+                    prevBtn.addEventListener('click', function () {
+                        isPaused = true;
+                        scrollPos = Math.max(0, scrollWrapper.scrollLeft - 400);
+                        scrollWrapper.scrollTo({ left: scrollPos, behavior: 'smooth' });
+                        setTimeout(() => { isPaused = false; }, 800);
+                    });
+                }
+
+                if (nextBtn) {
+                    nextBtn.addEventListener('click', function () {
+                        isPaused = true;
+                        const halfWidth = scrollWrapper.scrollWidth / 2;
+                        scrollPos = scrollWrapper.scrollLeft + 400;
+                        if (halfWidth > 0 && scrollPos >= halfWidth) {
+                            scrollPos = 0;
+                        }
+                        scrollWrapper.scrollTo({ left: scrollPos, behavior: 'smooth' });
+                        setTimeout(() => { isPaused = false; }, 800);
+                    });
+                }
+            }
+
+            // 3. Mobile Menu Toggle
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            if (mobileToggle && navMenu) {
+                mobileToggle.addEventListener('click', function () {
+                    navMenu.classList.toggle('mobile-open');
+                });
+
+                navMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navMenu.classList.remove('mobile-open');
+                    });
+                });
+            }
+
+            // 4. Navbar scroll effect
+            const navbar = document.getElementById('main-navbar');
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 40) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // 5. Update Current Year
+            const yearEl = document.getElementById('current-year');
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+        });
     </script>
-
 </body>
-
 </html>

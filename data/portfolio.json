@@ -1,0 +1,248 @@
+{
+  "version": "2.0",
+  "repository": "nileshs23/nileshs23.github.io",
+  "lastUpdated": "2026-11-22T01:25:00Z",
+  "education": [
+    {
+      "id": "edu-masai-school",
+      "institution": "Masai School",
+      "degree": "Full Stack Web Development",
+      "subtitle": "Java Backend Developer Track",
+      "duration": "2022 - 2023",
+      "location": "Bengaluru (Remote)",
+      "description": "Intensive 30+ weeks bootcamp with 1,200+ hours of hands-on coding. Mastered Java 21, Spring Boot 3, Hibernate, MySQL, Data Structures & Algorithms, RESTful APIs, and collaborative agile sprints.",
+      "badge": "Full Stack Certification",
+      "link": "\"https\"://drive.google.com/file/d/1fp4WsAePDUVZlBeuyXX0CdMT9savQry8/view?usp=sharing",
+      "accent": "brand"
+    },
+    {
+      "id": "edu-sinhgad-sppu",
+      "institution": "Sinhgad College Of Engineering (SPPU)",
+      "degree": "Bachelor of Engineering (B.E.)",
+      "subtitle": "Computer Engineering",
+      "duration": "2017 - 2021",
+      "location": "Pune, Maharashtra",
+      "description": "Graduated in Computer Engineering with strong foundation in Computer Systems, DBMS, Operating Systems, Computer Networks, System Architecture, and Object-Oriented Software Engineering.",
+      "badge": "Bachelor's Degree",
+      "link": "",
+      "accent": "accent"
+    }
+  ],
+  "experience": [
+    {
+      "id": "exp-greythr",
+      "company": "greytHR (Greytip Software)",
+      "role": "Java Backend Engineer",
+      "type": "Cloud HRMS & Payroll \u2022 Full-Time",
+      "location": "Bengaluru / Pune, India",
+      "duration": "2022 - Present (2+ Years)",
+      "isCurrent": true,
+      "summary": "Engineering scalable microservices for greytHR premier cloud-based HRMS and payroll platform, serving thousands of enterprises and handling millions of monthly employee transactions.",
+      "bullets": [
+        "Architecting, developing, and optimizing high-throughput microservices using Java 21, Spring Boot 3, and RESTful architectures.",
+        "Implementing Apache Kafka event streaming pipelines for real-time employee attendance tracking, biometric sync, and payroll calculation triggers.",
+        "Containerizing services with Docker, deploying in cloud microservices, and reducing query latency using Redis caching and PostgreSQL/MySQL indexing.",
+        "Designing secure RESTful endpoints, multi-tenant data isolation, and RBAC compliance for enterprise client organizations.",
+        "Collaborating in daily agile sprints, conducting code reviews, and optimizing system uptime and latency SLAs."
+      ]
+    },
+    {
+      "id": "exp-pwc",
+      "company": "PricewaterhouseCoopers Pvt Ltd (PwC)",
+      "role": "Cybersecurity Specialist",
+      "type": "Enterprise Tech Consulting \u2022 Full-Time",
+      "location": "Pune, India",
+      "duration": "Former Company",
+      "isCurrent": false,
+      "summary": "Specialized in enterprise cybersecurity auditing, vulnerability mitigation, and cyber risk management across corporate clients.",
+      "bullets": [
+        "Identified and reported software vulnerabilities adhering to industry standards and security compliance frameworks.",
+        "Implemented defense-in-depth principles and guided teams on security controls, identity verification, and data encryption.",
+        "Applied deep knowledge of system threats and network defenses to inform secure software engineering practices."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj-sanjivani",
+      "title": "\"Sanjivani\": Covid19 Registration App",
+      "badge": "Spring Boot REST",
+      "image": "resources/imgs/java-2.png",
+      "shortDesc": "High-concurrency vaccination booking engine facilitating citizen slot scheduling across regional health centers.",
+      "bullets": [
+        "Engineered transactional RESTful APIs handling simultaneous center booking slots.",
+        "Implemented relational data modeling with ACID transaction guarantees in MySQL.",
+        "Built modular Maven architecture with robust exception handling and validation."
+      ],
+      "stack": [
+        "Java 21",
+        "Spring Boot 3",
+        "Maven",
+        "MySQL"
+      ],
+      "demoUrl": "\"https\"://drive.google.com/file/d/1kTk_M4sugF2KYPzCSktIjT6CH8PrCP8X/view?usp=drive_link",
+      "githubUrl": "\"https\"://github.com/nileshs23/Sanjivani-A-Covid19-Registration-App"
+    },
+    {
+      "id": "proj-techy-town",
+      "title": "Techy Town E-Commerce API",
+      "badge": "AWS Deployed",
+      "image": "resources/imgs/java-3.png",
+      "shortDesc": "Scalable enterprise RESTful API with dual Admin & Customer authentication, product catalog CRUD, and cloud hosting.",
+      "bullets": [
+        "Designed role-based access control (RBAC) separating admin inventory and customer orders.",
+        "Deployed on AWS Elastic Beanstalk for automated provisioning and cloud scalability.",
+        "Optimized database queries and response payloads for sub-100ms API response times."
+      ],
+      "stack": [
+        "Java 21",
+        "Spring Boot 3",
+        "AWS Elastic Beanstalk",
+        "REST API"
+      ],
+      "demoUrl": "\"http\"://techytown-env.eba-cmzrmcwr.ap-south-1.elasticbeanstalk.com",
+      "githubUrl": "\"https\"://github.com/nileshs23/Techy-Town"
+    },
+    {
+      "id": "proj-student-mgmt",
+      "title": "Student Management System",
+      "badge": "Database & JDBC",
+      "image": "resources/imgs/java-1.jpg",
+      "shortDesc": "Database-driven management application implementing ACID transactions and parameterized queries.",
+      "bullets": [
+        "Implemented direct JDBC connectivity with prepared statements to prevent SQL injection.",
+        "Structured transaction rollback protocols for academic enrollment and fee records.",
+        "Built modular DAO design pattern separating business logic from persistence."
+      ],
+      "stack": [
+        "Java 21",
+        "JDBC",
+        "MySQL",
+        "Maven"
+      ],
+      "demoUrl": "\"https\"://drive.google.com/file/d/1ePEc9uJ6fWVfM3Z_e4nk2KmzBGO6dy6-/view?usp=drive_link",
+      "githubUrl": "\"https\"://github.com/nileshs23/divine-society-1574"
+    },
+    {
+      "id": "proj-memory-ai",
+      "title": "Memory.Ai Clone (Timely)",
+      "badge": "Frontend Web",
+      "image": "resources/imgs/web-1.jpg",
+      "shortDesc": "Time-tracking productivity web application with category management and automated wage calculation.",
+      "bullets": [
+        "Built reactive UI with modular vanilla JavaScript handling asynchronous wage math.",
+        "Implemented dynamic DOM manipulation and real-time category hours breakdown.",
+        "Deployed on Netlify with automated CI/CD continuous delivery."
+      ],
+      "stack": [
+        "JavaScript ES6+",
+        "HTML5",
+        "CSS3",
+        "Netlify"
+      ],
+      "demoUrl": "\"https\"://fantastic-queijadas-e98c0f.netlify.app/",
+      "githubUrl": "\"https\"://github.com/nileshs23/dear-shade-414"
+    },
+    {
+      "id": "proj-deccan-herald",
+      "title": "Deccan Herald e-Newspaper",
+      "badge": "Media Platform",
+      "image": "resources/imgs/web-2.jpg",
+      "shortDesc": "Digital news platform clone with responsive editorial layouts, categorized sports, trending, and political feeds.",
+      "bullets": [
+        "Implemented responsive multi-column layouts adapting seamlessly across mobile and desktop.",
+        "Custom category filtering for trending, sports, and political news feeds.",
+        "Optimized page asset delivery and responsive typography for fast load times."
+      ],
+      "stack": [
+        "JavaScript ES6+",
+        "HTML5",
+        "CSS3",
+        "Netlify"
+      ],
+      "demoUrl": "\"https\"://zippy-biscochitos-543e9f.netlify.app/",
+      "githubUrl": "\"https\"://github.com/nileshs23/Deccan-Herald-Clone"
+    },
+    {
+      "id": "proj-covid-ml",
+      "title": "Covid19 Analysis & Prediction",
+      "badge": "Data Science & ML",
+      "image": "resources/imgs/ml-1.jpg",
+      "shortDesc": "Predictive analytics modeling using Machine Learning algorithms to analyze epidemiological patterns.",
+      "bullets": [
+        "Implemented supervised regression and classification models in Python.",
+        "Conducted data cleaning, exploratory data analysis, and feature engineering.",
+        "Visualized projection curves and infection rate trajectories."
+      ],
+      "stack": [
+        "Python",
+        "Machine Learning",
+        "JavaScript"
+      ],
+      "demoUrl": "",
+      "githubUrl": "\"https\"://github.com/nileshs23/Covid19-Analysis_and_Prediction"
+    }
+  ],
+  "skills": [
+    {
+      "id": "skill-java",
+      "name": "Java 21 / OOP",
+      "category": "Backend",
+      "percent": 100
+    },
+    {
+      "id": "skill-spring",
+      "name": "Spring Boot 3 & Microservices",
+      "category": "Backend",
+      "percent": 100
+    },
+    {
+      "id": "skill-kafka",
+      "name": "Apache Kafka Event Streaming",
+      "category": "Backend",
+      "percent": 100
+    },
+    {
+      "id": "skill-docker",
+      "name": "Docker & Containerization",
+      "category": "Backend",
+      "percent": 100
+    },
+    {
+      "id": "skill-hibernate",
+      "name": "Hibernate & JPA / SQL",
+      "category": "Backend",
+      "percent": 100
+    },
+    {
+      "id": "skill-redis",
+      "name": "Redis Caching & Distributed Locks",
+      "category": "Backend",
+      "percent": 100
+    },
+    {
+      "id": "skill-js",
+      "name": "JavaScript (ES6+)",
+      "category": "Frontend",
+      "percent": 92
+    },
+    {
+      "id": "skill-html-css",
+      "name": "HTML5 & Modern CSS3",
+      "category": "Frontend",
+      "percent": 95
+    },
+    {
+      "id": "skill-react",
+      "name": "React.js & Component Design",
+      "category": "Frontend",
+      "percent": 88
+    },
+    {
+      "id": "skill-git",
+      "name": "Git, GitHub CI/CD & Agile",
+      "category": "DevOps & Tools",
+      "percent": 95
+    }
+  ]
+}
