@@ -1,7 +1,7 @@
 {
   "version": "2.0",
   "repository": "nileshs23/nileshs23.github.io",
-  "lastUpdated": "2026-11-21T20:31:31.984Z",
+  "lastUpdated": "2026-11-21T20:35:17.410Z",
   "education": [
     {
       "id": "edu-masai-school",
@@ -35,7 +35,7 @@
       "role": "Java Backend Engineer",
       "type": "Cloud HRMS & Payroll • Full-Time",
       "location": "Bengaluru / Pune, India",
-      "duration": "2022 - Present (2+ Years)",
+      "duration": "2024 - Present (2+ Years)",
       "isCurrent": true,
       "summary": "Engineering scalable microservices for greytHR premier cloud-based HRMS and payroll platform, serving thousands of enterprises and handling millions of monthly employee transactions.",
       "bullets": [
@@ -142,26 +142,6 @@
       ],
       "demoUrl": "\"https\"://fantastic-queijadas-e98c0f.netlify.app/",
       "githubUrl": "\"https\"://github.com/nileshs23/dear-shade-414"
-    },
-    {
-      "id": "proj-deccan-herald",
-      "title": "Deccan Herald e-Newspaper",
-      "badge": "Media Platform",
-      "image": "resources/imgs/web-2.jpg",
-      "shortDesc": "Digital news platform clone with responsive editorial layouts, categorized sports, trending, and political feeds.",
-      "bullets": [
-        "Implemented responsive multi-column layouts adapting seamlessly across mobile and desktop.",
-        "Custom category filtering for trending, sports, and political news feeds.",
-        "Optimized page asset delivery and responsive typography for fast load times."
-      ],
-      "stack": [
-        "JavaScript ES6+",
-        "HTML5",
-        "CSS3",
-        "Netlify"
-      ],
-      "demoUrl": "\"https\"://zippy-biscochitos-543e9f.netlify.app/",
-      "githubUrl": "\"https\"://github.com/nileshs23/Deccan-Herald-Clone"
     },
     {
       "id": "proj-covid-ml",
